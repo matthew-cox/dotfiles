@@ -7,3 +7,8 @@ if [ -d "${HOME}/.dotfiles/path" ]; then
     . "${X}"
   done
 fi
+
+# powerline
+if [ -d "${HOME}/.dotfiles/powerline" ]; then
+  . "${HOME}/.dotfiles/powerline/powerline/bindings/bash/powerline.sh"
+fi
