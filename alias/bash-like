@@ -5,7 +5,7 @@ alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/ren
 alias grep='grep --color=always'
 alias less='less -r'
 alias ls='ls -G'
-alias screen='screen -a -A -d -R -e^Ww'
+alias screen='screen -U -a -A -d -R -e^Ww'
 alias vi='vim'
 
 # git stuff
