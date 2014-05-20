@@ -12,5 +12,3 @@ if [ -d "${HOME}/.dotfiles/path" ]; then
     . "${X}"
   done
 fi
-
-

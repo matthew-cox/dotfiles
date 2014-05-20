@@ -1,26 +1,6 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Customize to your needs...
-JAVA_HOME=$(/usr/libexec/java_home)
-
-source ~/bin/ansiweather/ansiweather.plugin.zsh
-
-# zsh plugins
-if [ -d "${HOME}/.dotfiles/zsh/plugins/bd" ]; then
-  . "${HOME}/.dotfiles/zsh/plugins/bd/bd.zsh"
-fi
-
-# powerline
-if [ -d "${HOME}/.dotfiles/powerline" ]; then
-  . "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
+if [ -r "${HOME}/.dotfiles/zsh/zshrc" ]; then
+  . "${HOME}/.dotfiles/zsh/zshrc"
 fi

@@ -1,4 +1,4 @@
-if [ -e "${HOME}/.dotfiles/alias/bash-like" ]; then
+if [ -r "${HOME}/.dotfiles/alias/bash-like" ]; then
   . "${HOME}/.dotfiles/alias/bash-like"
 fi
 
