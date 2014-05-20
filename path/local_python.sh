@@ -4,7 +4,7 @@ if [ "${HOME}/lib/python2.7/site-packages" ]; then
 fi
 
 # add pip installed bins to the path
-if [ -x $(which pyenv) ]; then
-  PYPATH=$(dirname $(pyenv which python))
+if [ -x "$(which pyenv 2>/dev/null)" ]; then
+  PYPATH="$(dirname $(pyenv which python))"
   export PATH="$PYPATH:$PATH"
 fi
