@@ -1,0 +1,3 @@
+if [ -e "${HOME}/.dotfiles/zsh/zprofile" ]; then
+  . "${HOME}/.dotfiles/zsh/zprofile"
+fi

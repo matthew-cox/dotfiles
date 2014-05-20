@@ -1,0 +1,22 @@
+
+# for David Malan
+alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/render50.php"
+
+alias grep='grep --color=always'
+alias less='less -r'
+alias ls='ls -G'
+alias screen='screen -a -A -d -R -e^Ww'
+alias vi='vim'
+
+# git stuff
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+
+alias got='git '
+alias get='git '
