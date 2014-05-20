@@ -1,0 +1,6 @@
+#
+# Executes commands at the start of an interactive session.
+#
+if [ -r "${HOME}/.dotfiles/bashsh/bashrc" ]; then
+  . "${HOME}/.dotfiles/bash/bashrc"
+fi
