@@ -5,9 +5,9 @@ if [ -e "${HOME}/.dotfiles/alias/bash-like" ]; then
   . "${HOME}/.dotfiles/alias/bash-like"
 fi
 
-RC_EXPAND_PARAM=1
+setopt EXTENDED_GLOB
 if [ -d "${HOME}/.dotfiles/path" ]; then
-  for X in $(ls ${HOME}/.dotfiles/path/*.sh); do
+  for X in "${HOME}"/.dotfiles/path/*.sh; do
     #echo "$X"
     . "${X}"
   done
