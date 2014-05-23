@@ -8,9 +8,6 @@ alias ls='ls -G'
 alias screen='screen -U -a -A -d -R -e^Ww'
 alias vi='vim'
 
-# hub
-alias git='hub'
-
 # git stuff
 alias gs='git status '
 alias ga='git add '
