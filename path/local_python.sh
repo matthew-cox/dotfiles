@@ -5,7 +5,7 @@ fi
 
 if [ -r "${HOME}/.pyenv" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin"
+  export PATH="$PYENV_ROOT/bin:$PATH"
 fi
 
 # add pip installed bins to the path
