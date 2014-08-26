@@ -2,7 +2,7 @@
 # for David Malan
 alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/render50.php"
 
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
 alias less='less -r'
 alias ls='ls -G'
 alias screen='screen -U -a -A -d -R -e^Ww'
