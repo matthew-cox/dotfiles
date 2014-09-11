@@ -1,6 +1,20 @@
 #
 # Executes commands at login pre-zshrc.
 #
+
+my_resize() {
+  if [ -x $(which resize 2>/dev/null) ]; then
+    eval `resize`
+  fi
+}
+
+# Reset window info on resize
+TRAPWINCH () {
+  my_resize
+}
+
+my_resize
+
 if [ -e "${HOME}/.dotfiles/alias/bash-like" ]; then
   . "${HOME}/.dotfiles/alias/bash-like"
 fi
