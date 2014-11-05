@@ -14,6 +14,9 @@ Plugin 'gmarik/Vundle.vim'
 " Colors
 Bundle 'altercation/vim-colors-solarized'
 
+" EditorConfig Support
+Plugin 'editorconfig-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
