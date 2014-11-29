@@ -168,7 +168,7 @@
     "wget",
     "xctool",
     "yuicompressor",
-    ],
+  ],
   "icons": {
     "iTerm": "https://dribbble.com/shots/1702947-iTerm-Replacement-Icon/attachments/271548",
     "MacVim": "http://lab.colepeters.com/cole/tcpvimicon/raw/master/MacVim.icns"

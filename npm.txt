@@ -1,0 +1,54 @@
+/Users/mcox
+├─┬ iced-coffee-script@1.7.1-g
+│ ├─┬ docco@0.6.3
+│ │ ├── commander@2.5.0
+│ │ ├─┬ fs-extra@0.12.0
+│ │ │ ├── jsonfile@2.0.0
+│ │ │ ├─┬ mkdirp@0.5.0
+│ │ │ │ └── minimist@0.0.8
+│ │ │ ├── ncp@0.6.0
+│ │ │ └── rimraf@2.2.8
+│ │ ├── highlight.js@8.4.0
+│ │ ├── marked@0.3.2
+│ │ └── underscore@1.7.0
+│ ├── iced-runtime@1.0.2
+│ └── mkdirp@0.3.5
+└─┬ keybase-installer@1.0.0
+  ├── badnode@1.0.1
+  ├── colors@0.6.2
+  ├── gpg-wrapper@1.0.0
+  ├── iced-data-structures@0.0.5
+  ├── iced-error@0.0.9
+  ├── iced-logger@0.0.5
+  ├── iced-runtime@1.0.1
+  ├── iced-spawn@1.0.0
+  ├── iced-utils@0.1.22
+  ├── keybase-path@0.0.9
+  ├── pgp-utils@0.0.27
+  ├── progress@1.1.3
+  ├─┬ request@2.34.0
+  │ ├── aws-sign2@0.5.0
+  │ ├── forever-agent@0.5.2
+  │ ├─┬ form-data@0.1.2
+  │ │ ├── async@0.2.10
+  │ │ └─┬ combined-stream@0.0.4
+  │ │   └── delayed-stream@0.0.5
+  │ ├─┬ hawk@1.0.0
+  │ │ ├── boom@0.4.2
+  │ │ ├── cryptiles@0.2.2
+  │ │ ├── hoek@0.9.1
+  │ │ └── sntp@0.2.4
+  │ ├─┬ http-signature@0.10.0
+  │ │ ├── asn1@0.1.11
+  │ │ ├── assert-plus@0.1.2
+  │ │ └── ctype@0.5.2
+  │ ├── json-stringify-safe@5.0.0
+  │ ├── mime@1.2.11
+  │ ├── node-uuid@1.4.1
+  │ ├── oauth-sign@0.3.0
+  │ ├── qs@0.6.6
+  │ ├─┬ tough-cookie@0.12.1
+  │ │ └── punycode@1.2.4
+  │ └── tunnel-agent@0.3.0
+  └── semver@4.0.0
+
