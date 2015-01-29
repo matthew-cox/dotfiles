@@ -18,6 +18,7 @@
     "alfred",
     "amazon-cloud-drive",
     "amazon-music",
+    "atom"m
     "audacity",
     "audio-hijack-pro",
     "backblaze",
@@ -76,6 +77,7 @@
     "hex-fiend",
     "hipchat",
     "hosts",
+    "hub",
     "houdahgeo",
     "identify",
     "iterm2",
@@ -132,6 +134,7 @@
   "formulas": [
     "autoconf",
     "bash",
+    "bash-completions",
     "caskroom/cask/brew-cask",
     "chromedriver",
     "cscope",
@@ -169,6 +172,7 @@
     "wget",
     "xctool",
     "yuicompressor",
+    "zsh-completions"
   ],
   "icons": {
     "iTerm": "https://dribbble.com/shots/1702947-iTerm-Replacement-Icon/attachments/271548",
