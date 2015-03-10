@@ -1,6 +1,6 @@
 
 # for David Malan
-alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/render50.php"
+##alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/render50.php"
 
 alias grep='grep --color=auto'
 alias less='less -r'
@@ -30,10 +30,10 @@ function rule() {
 
 ## Print horizontal ruler with message
 function rulem() {
-if [ $# -eq 0 ]; then
-  echo "Usage: rulem MESSAGE [RULE_CHARACTER]"
-  return 1
-fi
+  if [ $# -eq 0 ]; then
+    echo "Usage: rulem MESSAGE [RULE_CHARACTER]"
+    return 1
+  fi
   # Fill line with ruler character ($2, default "-"), reset cursor, move 2 cols right, print message
   printf '%*s' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "${2--}" && echo -e "\r\033[2C[ $1 ]"
 }
