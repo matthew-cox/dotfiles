@@ -2,12 +2,18 @@
 # Executes commands at the start of an interactive session.
 #
 
-# Customize to your needs...
-JAVA_HOME=$(/usr/libexec/java_home)
-
 # completions
 if [ -d /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+if [ -d /usr/local/share/zsh/site-functions ]; then
+  fpath=(/usr/local/share/zsh/site-functions $fpath)
+fi
+
+# moar completions
+if [ -d "${HOME}/.dotfiles/zsh/completion.d" ]; then
+  fpath=(${HOME}/.dotfiles/zsh/completion.d $fpath)
 fi
 
 # zsh plugins
@@ -17,5 +23,7 @@ fi
 
 # powerline
 if [ -d "${HOME}/.dotfiles/powerline" ]; then
+  export PATH="$PATH:${HOME}/.dotfiles/powerline/scripts"
+  export PYTHONPATH="${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib:$PYTHONPATH"
   . "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
 fi

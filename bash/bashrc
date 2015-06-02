@@ -10,6 +10,13 @@ if [ -d "${HOME}/.dotfiles/path" ]; then
   done
 fi
 
+# completion files
+if [ -d "${HOME}/.dotfiles/bash/completion.d" ]; then
+  for X in "${HOME}"/.dotfiles/bash/completion.d/*.bash; do
+    . "${X}"
+  done
+fi
+
 # powerline
 if [ -d "${HOME}/.dotfiles/powerline" ]; then
   . "${HOME}/.dotfiles/powerline/powerline/bindings/bash/powerline.sh"

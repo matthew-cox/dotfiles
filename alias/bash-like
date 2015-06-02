@@ -23,6 +23,16 @@ alias get='git '
 
 # some functions
 
+## always run poet against dotfiles
+function poet(){
+  /usr/bin/poet $* --dir="${HOME}/.dotfiles/ssh/config.d"
+}
+
+## add gnu versions of utils to path
+function add_gnu_utils() {
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+}
+
 ## Print a horizontal rule
 function rule() {
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "${1--}"

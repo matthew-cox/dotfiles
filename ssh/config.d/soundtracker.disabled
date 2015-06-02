@@ -1,0 +1,21 @@
+#######################################################################
+#
+# Soundtracker
+#
+#Host dev.yourmusicon.com
+#    User mcox
+#    IdentityFile ~/.ssh/soundtrckr_rsa
+#
+#Host ec2-174-129-51-49.compute-1.amazonaws.com
+# Host db.soundtracker.fm
+#     IdentityFile ~/.ssh/dbserver2.pem
+#
+# Host *soundtracker.fm
+#     IdentityFile ~/.ssh/appserver2.pem
+# #
+#Host ec2-174-129-168-179.compute-1.amazonaws.com
+#    IdentityFile ~/.ssh/2010appserver.pem
+#
+#Host soundtrckr.sourcerepo.com
+#    User mcox
+#    IdentityFile ~/.ssh/soundtrckr_rsa

@@ -1,6 +1,6 @@
 # tell python about our stuff
 if [ "${HOME}/lib/python2.7/site-packages" ]; then
-  export PYTHONPATH="${HOME}/lib/python2.7/site-packages/:$PYTHONPATH:"
+  export PYTHONPATH="${HOME}/lib/python2.7/site-packages/:$PYTHONPATH"
 fi
 
 # look for pyenv - and set it up

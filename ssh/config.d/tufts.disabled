@@ -1,0 +1,13 @@
+#######################################################################
+#
+# Tufts
+#
+#Host *.uit.tufts.edu
+#    User mcox02
+#    ForwardAgent yes
+#Host *uit-rgts.us
+#    User ec2-user
+#    IdentityFile ~/.ssh/RGTS.pem
+#
+#Host *-rgts.rhcloud.com
+#    IdentityFile ~/.ssh/RGTS_OpenShift

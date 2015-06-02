@@ -1,0 +1,7 @@
+######################################################################
+#
+# RedPint
+#
+#Host redpint.sourcerepo.com
+#    User matt
+#    IdentityFile ~/.ssh/redpint_sourcerepo_key

@@ -1,0 +1,14 @@
+##
+## For RK Hosts
+##
+GlobalKnownHostsFile ~/.ssh/rk-known-hosts
+#
+# Global
+#
+Host *
+    Compression yes
+    CompressionLevel 4
+    FallBackToRsh no
+    ForwardAgent yes
+    KeepAlive yes
+    ServerAliveInterval 30
