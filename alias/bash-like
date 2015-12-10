@@ -2,6 +2,11 @@
 # for David Malan
 ##alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/render50.php"
 
+# ARGH - not sure how the other pip keeps getting into the env
+alias pip='/Users/mcox/.pyenv/shims/pip'
+
+alias pep8='pep8 --max-line-length=100'
+
 alias grep='grep --color=auto'
 alias less='less -r'
 alias ls='ls -G'
@@ -26,6 +31,13 @@ alias glol='git log --graph --decorate --pretty=oneline --abbrev-commit --color 
 alias glola='git log --graph --decorate --pretty=oneline --abbrev-commit -all --color| emojify | less'
 
 # some functions
+
+## get the fiftythree aws stuff into the env
+function get_fiftythree_aws() {
+  if [ -x "${HOME}/.dotfiles/zsh/fiftythree_aws" ]; then
+    eval $("${HOME}/.dotfiles/zsh/fiftythree_aws")
+  fi
+}
 
 ## always run poet against dotfiles
 function poet(){

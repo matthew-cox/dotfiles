@@ -1,0 +1,8 @@
+#######################################################################
+#
+# Home local lan
+#
+Host *.lan
+#    User mcox
+    Port 22
+    PreferredAuthentications keyboard-interactive,password
