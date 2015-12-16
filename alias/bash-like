@@ -39,6 +39,13 @@ function get_fiftythree_aws() {
   fi
 }
 
+## remove merged local branches
+function git_branch_cleanup() {
+  for X in $(git branch --merged | tail -n +2); do
+    git branch -d "$X"
+  done
+}
+
 ## always run poet against dotfiles
 function poet(){
   /usr/bin/poet $* --dir="${HOME}/.dotfiles/ssh/config.d"
