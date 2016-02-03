@@ -3,22 +3,16 @@ export EDITOR="emacs -nw"
 export JAVA_HOME=/usr
 export PATH=/usr/local/bin:/bin:/opt:$PATH
 
-if [[ $(grep -c '^\[' ~/.aws/credentials) -gt 1 ]]; then
-  CONFIG=$(grep -A5 '^\[fiftythree\]' ~/.aws/credentials)
-else
-  CONFIG=$(cat ~/.aws/config)
-fi
-
 # AWS Environment required by ansible
 # See: http://docs.ansible.com/ec2_module.html
-the_region="$(echo "$CONFIG" | tr " " "\n" | grep -A2 region | tail -1)"
+the_region="$(aws configure get fiftythree.region)"
 echo export AWS_DEFAULT_REGION="$the_region";
 echo export EC2_REGION="$the_region";
 
 # AWS Key info required by the AWS CLI tools
 # See: http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/set-up-ec2-cli-linux.html
-the_key="$(echo "$CONFIG" | tr " " "\n" | grep -A2 aws_access_key_id | tail -1)"
-the_secret="$(echo "$CONFIG" | tr " " "\n" | grep -A2 aws_secret_access_key | tail -1)"
+the_key="$(aws configure get fiftythree.aws_access_key_id)"
+the_secret="$(aws configure get fiftythree.aws_secret_access_key)"
 echo export AWS_ACCESS_KEY="$the_key";
 echo export AWS_SECRET_KEY="$the_secret";
 
