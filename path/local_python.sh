@@ -8,6 +8,7 @@ if [ -r "${HOME}/.pyenv" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
+  export PYTHONPATH="$(pyenv prefix)/lib/python2.7:$PYTHONPATH"
 fi
 
 # add pip installed bins to the path

@@ -24,6 +24,6 @@ fi
 # powerline
 if [ -d "${HOME}/.dotfiles/powerline" ]; then
   export PATH="$PATH:${HOME}/.dotfiles/powerline/scripts"
-  export PYTHONPATH="${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib:$PYTHONPATH"
+  export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
   . "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
 fi

@@ -6,3 +6,7 @@ Host *.lan
 #    User mcox
     Port 22
     PreferredAuthentications keyboard-interactive,password
+
+Host raspberrypi.lan
+    User pi
+    PreferredAuthentications keyboard-interactive,password
