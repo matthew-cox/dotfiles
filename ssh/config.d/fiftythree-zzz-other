@@ -2,13 +2,13 @@
 #
 # Non-VPC Hosts
 #
-Host *.sys53.com koala lbdb* nj*0? ec2-*.compute-1.amazonaws.com !spaceteam*
+Host *.sys53.com koala lbdb* nj*0? ec2-*.compute-1.amazonaws.com !spaceteam* !*.vpc.sys53.com
      User studio
      IdentityFile ~/.ssh/fiftythree/fiftythree-studio.pem
      StrictHostKeyChecking no
      UserKnownHostsFile=/dev/null
 
-Host *.sys53.com koala lbdb* nj*0? ec2-*.compute-1.amazonaws.com !spaceteam* !sandboxer* !*.hw.sys53.com
+Host *.sys53.com koala lbdb* nj*0? ec2-*.compute-1.amazonaws.com !spaceteam* !sandboxer* !*.hw.sys53.com !*.vpc.sys53.com
      ProxyCommand ssh -W %h:%p spaceteam.sys53.com
 
 Host st spaceteam spaceteam.sys53.com
