@@ -48,7 +48,7 @@ function git_branch_cleanup() {
 
 ## always run poet against dotfiles
 function poet(){
-  /usr/bin/poet $* --dir="${HOME}/.dotfiles/ssh/config.d"
+  /usr/local/bin/poet $* --dir="${HOME}/.dotfiles/ssh/config.d"
 }
 
 ## add gnu versions of utils to path

@@ -14,7 +14,7 @@ fi
 
 COMPS=0
 
-for X in $(ls -Frt "$MUSIC_DIR" | grep -vE '^(Downloads|Automatically Add|Podcasts|Tones)' | tail -${MAX_DIRS} | sed -e 's/ /==/g'); do
+for X in $(ls -Frt "$MUSIC_DIR" | grep -vE '^(Downloads|Automatically Add|Podcasts|Tones|iTunes Extras)' | tail -${MAX_DIRS} | sed -e 's/ /==/g'); do
   
   if [ "$X" = "Compilations/" ]; then
     COMPS=1
@@ -23,16 +23,16 @@ for X in $(ls -Frt "$MUSIC_DIR" | grep -vE '^(Downloads|Automatically Add|Podcas
   
   NEW=$(echo "$X" | sed -e 's/==/ /g' -e 's|/$||')
   echo "$NEW"
-  rsync --exclude '.DS_Store' -av "${MUSIC_DIR}/${NEW}" "${THUMB_DRIVE}"/
+  rsync --exclude '.DS_Store' --exclude '*.m4v' -av "${MUSIC_DIR}/${NEW}" "${THUMB_DRIVE}"/
 done
 
 if [ $COMPS -eq 1 ]; then
   
-  for X in $(ls -Frt "$MUSIC_DIR/Compilations" | grep -vE '^(Downloads|Automatically Add)' | tail -${MAX_COMPS} | sed -e 's/ /==/g'); do
+  for X in $(ls -Frt "$MUSIC_DIR/Compilations" | grep -vE '^(Downloads|Automatically Add|iTunes Extras)' | tail -${MAX_COMPS} | sed -e 's/ /==/g'); do
   
     NEW=$(echo "$X" | sed -e 's/==/ /g' -e 's|/$||')
     echo "$NEW"
-    rsync --exclude '.DS_Store' -av "${MUSIC_DIR}/Compilations/${NEW}" "${THUMB_DRIVE}"/
+    rsync --exclude '.DS_Store' --exclude '*.m4v' -av "${MUSIC_DIR}/Compilations/${NEW}" "${THUMB_DRIVE}"/
   done
   
 fi

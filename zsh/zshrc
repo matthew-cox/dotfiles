@@ -21,6 +21,11 @@ if [ -d "${HOME}/.dotfiles/zsh/plugins/bd" ]; then
   . "${HOME}/.dotfiles/zsh/plugins/bd/bd.zsh"
 fi
 
+# iterm integration
+if [ -f "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh" ]; then
+  . "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh"
+fi
+
 # powerline
 if [ -d "${HOME}/.dotfiles/powerline" ]; then
   export PATH="$PATH:${HOME}/.dotfiles/powerline/scripts"
