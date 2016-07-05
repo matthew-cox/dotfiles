@@ -34,14 +34,12 @@ alias glola='git log --graph --decorate --pretty=oneline --abbrev-commit -all --
 
 ## get the fiftythree aws stuff into the env
 function get_fiftythree_aws() {
-  if [ -x "${HOME}/.dotfiles/zsh/fiftythree_aws" ]; then
-    eval $("${HOME}/.dotfiles/zsh/fiftythree_aws")
-  fi
+  export AWS_PROFILE=fiftythree
 }
 
 ## remove merged local branches
 function git_branch_cleanup() {
-  for X in $(git branch --merged | tail -n +2); do
+  for X in $(git branch --merged | grep -v '^*'); do
     git branch -d "$X"
   done
 }
