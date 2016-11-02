@@ -39,7 +39,7 @@ function get_fiftythree_aws() {
 
 ## remove merged local branches
 function git_branch_cleanup() {
-  for X in $(git branch --merged | grep -v '^*'); do
+  for X in $(git branch --merged | grep -v -e '^*' -e 'master'); do
     git branch -d "$X"
   done
 }

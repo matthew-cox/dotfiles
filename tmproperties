@@ -1,0 +1,29 @@
+# global options
+softTabs    = true
+
+# perl
+[ *.p[lm] ]
+fileType    = "source.perl"
+
+[ source.perl ]
+softTabs    = true
+tabSize     = 4
+
+# python
+[ *.py ]
+fileType    = "source.python"
+
+[ source.python ]
+softTabs    = true
+tabSize     = 4
+
+# shell
+[ *.sh ]
+tabSize = 2
+
+# Makefiles
+[ Makefile.* ]
+fileType    = "source.makefile"
+
+[ source.makefile ]
+softTabs    = false
