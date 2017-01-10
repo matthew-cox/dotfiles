@@ -21,7 +21,7 @@ Host st spaceteam spaceteam.sys53.com
 
 # In order to SSH to spaceteam with a different key & user for admin purposes,
 # We need a different Host directive
-Host sta spaceteam-admin
+Host sta spaceteam-admin spaceteam-admin.sys53.com
     Hostname spaceteam-admin.sys53.com
     User studio
     IdentityFile ~/.ssh/fiftythree/sys53-bastion.cer

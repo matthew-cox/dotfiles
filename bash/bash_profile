@@ -12,6 +12,22 @@ trap 'my_resize' WINCH
 # set the initial size
 my_resize
 
+#
+# Mac OS X stuff
+#
+if [[ "$(uname -s)" == "Darwin" ]]; then
+
+    # disable smart quotes
+    if [[ $(defaults read NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled) -eq 1 ]]; then
+        defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+    fi
+
+    # disable emdash
+    if [[ $(defaults read NSGlobalDomain NSAutomaticDashSubstitutionEnabled) -eq 1 ]]; then
+        defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+    fi
+fi
+
 if [ -r "${HOME}/.dotfiles/alias/bash-like" ]; then
   . "${HOME}/.dotfiles/alias/bash-like"
 fi

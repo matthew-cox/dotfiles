@@ -1,23 +1,23 @@
 export LANG="en_US.UTF-8"
 
-if [ -r "${HOME}/.dotfiles/alias/bash-like" ]; then
-  . "${HOME}/.dotfiles/alias/bash-like"
-fi
-
-if [ -d "${HOME}/.dotfiles/path" ]; then
-  for X in "${HOME}"/.dotfiles/path/*.sh; do
-    . "${X}"
-  done
-fi
-
-# completion files
-if [ -d "${HOME}/.dotfiles/bash/completion.d" ]; then
-  for X in "${HOME}"/.dotfiles/bash/completion.d/*.bash; do
-    . "${X}"
-  done
-fi
-
-# powerline
-if [ -d "${HOME}/.dotfiles/powerline" ]; then
-  . "${HOME}/.dotfiles/powerline/powerline/bindings/bash/powerline.sh"
-fi
+# if [ -r "${HOME}/.dotfiles/alias/bash-like" ]; then
+#   . "${HOME}/.dotfiles/alias/bash-like"
+# fi
+#
+# if [ -d "${HOME}/.dotfiles/path" ]; then
+#   for X in "${HOME}"/.dotfiles/path/*.sh; do
+#     . "${X}"
+#   done
+# fi
+#
+# # completion files
+# if [ -d "${HOME}/.dotfiles/bash/completion.d" ]; then
+#   for X in "${HOME}"/.dotfiles/bash/completion.d/*.bash; do
+#     . "${X}"
+#   done
+# fi
+#
+# # powerline
+# if [ -d "${HOME}/.dotfiles/powerline" ]; then
+#   . "${HOME}/.dotfiles/powerline/powerline/bindings/bash/powerline.sh"
+# fi
