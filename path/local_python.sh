@@ -5,10 +5,13 @@ fi
 
 # look for pyenv - and set it up
 if [ -r "${HOME}/.pyenv" ]; then
+  export PYENV_VIRTUALENV_DISABLE_PROMPT=true
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
   export PYTHONPATH="$(pyenv prefix)/lib/python2.7:$PYTHONPATH"
+  # alias powerline="$(pyenv prefix)/bin/powerline"
 fi
 
 # add pip installed bins to the path

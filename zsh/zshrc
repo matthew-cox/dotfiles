@@ -1,6 +1,8 @@
 #
 # Executes commands at the start of an interactive session.
 #
+# increase open file limit
+ulimit -n 10240
 
 # completions
 if [ -d /usr/local/share/zsh-completions ]; then
