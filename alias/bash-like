@@ -44,6 +44,13 @@ function git_branch_cleanup() {
   done
 }
 
+## fix Mac OS X display
+function fix_display_macos() {
+  if [[ "$(uname -s)" == "Darwin" ]]; then
+    sudo killall VDCAssistant
+  fi
+}
+
 ## always run poet against dotfiles
 function poet(){
   /usr/local/bin/poet $* --dir="${HOME}/.dotfiles/ssh/config.d"
