@@ -8,9 +8,23 @@ the stuff with dots
 (Homebrew)[https://brew.sh]
 (Homebrew cask)[https://caskroom.github.io]
 
+    $ brew tap caskroom/cask
+
+(Homebrew cask drivers)[https://github.com/caskroom/homebrew-drivers/]
+
+    $ brew tap caskroom/drivers
+
+(Sudo-like-a-boss)[https://github.com/ravenac95/sudolikeaboss]
+
+    $ brew tap ravenac95/sudolikeaboss
+
 ## Disable analytics
 
     $ brew analytics off
+
+## Install 1password
+
+    $ brew cask install 1password
 
 # Get the dots
 
@@ -18,6 +32,7 @@ the stuff with dots
     $ cd .dotfiles/
     $ git submodule init
     $ git submodule update
+    $ ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
     
 ### Powerline compatibility
 
@@ -47,5 +62,6 @@ Needs poet:
     $ ln -s ~/.dotfiles/cider ~/.cider
     $ pip install -U cider
     $ yes | cider restore
+    $ cider apply-defaults
 
 
