@@ -12,6 +12,9 @@ trap 'my_resize' WINCH
 # set the initial size
 my_resize
 
+# Disable brew analytics
+export HOMEBREW_NO_ANALYTICS=1
+
 #
 # Mac OS X stuff
 #
