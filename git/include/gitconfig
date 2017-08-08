@@ -1,0 +1,48 @@
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+
+[color]
+  ui = true
+
+[core]
+  pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+
+[difftool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\"
+  # path = opendiff-w.sh
+
+[merge]
+    tool = p4merge
+    keepBackup = true
+
+[mergetool]
+    prompt = false
+    keepBackup = false
+
+[mergetool "p4merge"]
+    path = /Applications/p4merge.app/Contents/MacOS/p4merge
+    trustExitCode = false
+
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = false
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple
+
+[branch]
+  autosetuprebase = always
+
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true

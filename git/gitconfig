@@ -1,11 +1,9 @@
-[alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
-[color]
-  ui = true
+[user]
+  name = Matthew Cox
+  email = matt.cox@simplisafe.com
 
+[core]
+  excludesfile = ~/.dotfiles/git/include/gitignore_global
+
+[include]
+  path = ~/.dotfiles/git/include/gitconfig
