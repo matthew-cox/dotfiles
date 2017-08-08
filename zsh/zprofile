@@ -3,7 +3,7 @@
 #
 
 my_resize() {
-  if [ -x $(which resize 2>/dev/null) ]; then
+  if [[ $(command resize 2>/dev/null) ]]; then
     eval `resize`
   fi
 }
@@ -15,30 +15,41 @@ TRAPWINCH () {
 
 my_resize
 
+# Disable brew analytics
+export HOMEBREW_NO_ANALYTICS=1
+
 #
 # Mac OS X stuff
 #
 if [[ "$(uname -s)" == "Darwin" ]]; then
 
-    # look for keyboardservicesd
-    launchctl stop com.apple.keyboardservicesd
+  # look for keyboardservicesd
+  if [[ $(pgrep keyboardservicesd) ]]; then
+    echo "Damn you keyboardservicesd!"
+    sudo launchctl stop com.apple.keyboardservicesd
+    sudo pkill -9 keyboardservicesd
+  fi
 
-    # look for photoanalysisd
-    PHOTO_ANALYSISD_DISABLED=$(launchctl print-disabled gui/$UID | grep 'com.apple.photoanalysisd' | awk '{print $3}' 2>/dev/null)
-    if [[ "${PHOTO_ANALYSISD_DISABLED}" == "false" ]]; then
-        launchctl disable gui/$UID/com.apple.photoanalysisd
-        launchctl kill -TERM gui/$UID/com.apple.photoanalysisd
-    fi
+  # look for photoanalysisd
+  PHOTO_ANALYSISD_DISABLED=$(launchctl print-disabled gui/$UID | grep 'com.apple.photoanalysisd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${PHOTO_ANALYSISD_DISABLED}" == "false" ]]; then
+    launchctl disable gui/$UID/com.apple.photoanalysisd
+    launchctl kill -TERM gui/$UID/com.apple.photoanalysisd
+  fi
 
-    # disable smart quotes
-    if [[ $(defaults read NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled) -eq 1 ]]; then
-        defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-    fi
+  # disable smart quotes
+  QUOTE_SUBSITUTION="$(defaults read NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled 2>/dev/null)"
+  QUOTE_ERROR=$?
+  if [[ $QUOTE_SUBSITUTION -eq 1 || $QUOTE_ERROR -eq 1 ]]; then
+    defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+  fi
 
-    # disable emdash
-    if [[ $(defaults read NSGlobalDomain NSAutomaticDashSubstitutionEnabled) -eq 1 ]]; then
-        defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-    fi
+  # disable emdash
+  EMDASH_SUBSITUTION="$(defaults read NSGlobalDomain NSAutomaticDashSubstitutionEnabled 2>/dev/null)"
+  EMDASH_ERROR=$?
+  if [[ $EMDASH_SUBSITUTION -eq 1 || $EMDASH_ERROR -eq 1 ]]; then
+    defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+  fi
 fi
 
 if [ -e "${HOME}/.dotfiles/alias/bash-like" ]; then
