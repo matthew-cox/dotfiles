@@ -247,15 +247,17 @@
 #     "iTerm": "https://dribbble.com/shots/1702947-iTerm-Replacement-Icon/attachments/271548",
 #     "MacVim": "http://lab.colepeters.com/cole/tcpvimicon/raw/master/MacVim.icns"
 
-# "symlinks":
-#     "bash/.*": "~"
-#     "bin/*": "~/bin/"
-#     "fish/*.fish": "~/.config/fish/"
-#     "fish/functions/*": "~/.config/fish/functions/"
-#     "git/.*": "~"
-#     "sh/.*": "~"
-#     "vim/.*": "~"
-#     "xvim/.*": "~"
-#     "zsh/.zsh-functions/*": "~/.zsh-functions/"
-#     "zsh/.zshrc": "~"
+"symlinks":
+    "bash/bash_profile": "~/.bash_profile"
+    "bash/bashrc": "~/.bashrc"
+    "bin/*": "~/bin/"
+    # "fish/*.fish": "~/.config/fish/"
+    # "fish/functions/*": "~/.config/fish/functions/"
+    # "git/.*": "~"
+    # "sh/.*": "~"
+    "tmux-powerlinerc": "~/.tmux-powerlinerc"
+    "vim/.*": "~"
+    "xvim/.*": "~"
+    "zsh/.zsh-functions/*": "~/.zsh-functions/"
+    "zsh/.zshrc": "~"
 
