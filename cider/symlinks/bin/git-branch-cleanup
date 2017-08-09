@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# git-branch-cleanup - remove merged local branches
+#
+for X in $(git branch --merged | grep -v -e '^*' -e 'master'); do
+  git branch -d "$X"
+done

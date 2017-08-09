@@ -3,20 +3,13 @@ dotfiles
 
 the stuff with dots
 
-# First brew some :beers:
+# First brew some 🍻
 
-(Homebrew)[https://brew.sh]
-(Homebrew cask)[https://caskroom.github.io]
+Install (Homebrew)[https://brew.sh]
 
-    $ brew tap caskroom/cask
+Add some taps:
 
-(Homebrew cask drivers)[https://github.com/caskroom/homebrew-drivers/]
-
-    $ brew tap caskroom/drivers
-
-(Sudo-like-a-boss)[https://github.com/ravenac95/sudolikeaboss]
-
-    $ brew tap ravenac95/sudolikeaboss
+    $ ./scripts/homebrew_init.sh
 
 ## Disable analytics
 
@@ -26,42 +19,66 @@ the stuff with dots
 
     $ brew cask install 1password
 
+## Basic github configure
+
+Find `GitHub_rsa.priv` in 1password and install at `~/.ssh/GitHub_rsa.priv`; then:
+
+    $ chmod 400 ~/.ssh/GitHub_rsa.priv
+
+Configure a very basic `~/.ssh/config`:
+
+    $ echo -e "Host *github.com\n    IdentityFile ~/.ssh/GitHub_rsa.priv\n" > ~/.ssh/config
+
 # Get the dots
 
     $ git clone https://github.com/matthew-cox/dotfiles.git .dotfiles
     $ cd .dotfiles/
     $ git submodule init
     $ git submodule update
-    $ ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
-    
+
 ### Powerline compatibility
 
     $ cd powerline
     $ git checkout tags/2.1
 
-### SSH config.d
-
-Needs poet:
-
-    $ sudo gem install poet
-    $ . alias/bash-like
-    $ poet
-
 ### Python
 
-    $ ./python_init.sh
+Prefer (pyenv)[https://github.com/pyenv/pyenv] and (pynenv-virtualenv)[https://github.com/pyenv/pyenv-virtualenv] over the global version:
 
-### Zsh
+    $ ./scripts/python_init.sh
 
-    $ ln -s .dotfiles/zsh/zshrc .zshrc
-    $ ln -s .dotfiles/zsh/zprofile .zprofile
-    $ chsh -s /bin/zsh
+### Bootstrap
 
-### Brew restore
+Bootstrap many things with (Cider)[https://github.com/msanders/cider]:
 
     $ ln -s ~/.dotfiles/cider ~/.cider
     $ pip install -U cider
     $ yes | cider restore
     $ cider apply-defaults
+    $ cider relink
+
+### Ruby
+
+Prefer (rbenv)[https://github.com/rbenv/rbenv] over the global version:
+
+    $ ./scripts/ruby_init.sh
+
+### SSH config.d
+
+Needs (poet)[https://github.com/awendt/poet]:
+
+    $ gem install poet
+    $ rm -f ~/.ssh/config
+    $ poet
+
+### Zsh
+
+Change the user shell:
+
+    $ chsh -s /bin/zsh
+
+
+Open a new terminal
+
 
 

@@ -1,10 +1,6 @@
-
-# for David Malan
-##alias render50="/Applications/MAMP/bin/php5.2/bin/php ~/bin/render50-0.9/bin/render50.php"
-
-# ARGH - not sure how the other pip keeps getting into the env
-alias pip='/Users/mcox/.pyenv/shims/pip'
-
+#!/usr/bin/env bash
+#
+# Tell pep8 that a longer line is preferred
 alias pep8='pep8 --max-line-length=100'
 
 alias grep='grep --color=auto'
@@ -30,31 +26,12 @@ alias get='git '
 alias glol='git log --graph --decorate --pretty=oneline --abbrev-commit --color | emojify | less'
 alias glola='git log --graph --decorate --pretty=oneline --abbrev-commit -all --color| emojify | less'
 
+# hub
+if $(command -v hub >/dev/null); then
+  alias git='hub'
+fi
+
 # some functions
-
-## get the fiftythree aws stuff into the env
-function get_fiftythree_aws() {
-  export AWS_PROFILE=fiftythree
-}
-
-## remove merged local branches
-function git_branch_cleanup() {
-  for X in $(git branch --merged | grep -v -e '^*' -e 'master'); do
-    git branch -d "$X"
-  done
-}
-
-## fix Mac OS X display
-function fix_display_macos() {
-  if [[ "$(uname -s)" == "Darwin" ]]; then
-    sudo killall VDCAssistant
-  fi
-}
-
-## always run poet against dotfiles
-function poet(){
-  /usr/local/bin/poet $* --dir="${HOME}/.dotfiles/ssh/config.d"
-}
 
 ## add gnu versions of utils to path
 function add_gnu_utils() {
@@ -92,72 +69,72 @@ function rulem() {
 
 h() {
 
-	_usage() {
-		echo "usage: YOUR_COMMAND | h [-idn] args...
-	-i : ignore case
-	-d : disable regexp
-	-n : invert colors"
-	}
+  _usage() {
+    echo "usage: YOUR_COMMAND | h [-idn] args...
+  -i : ignore case
+  -d : disable regexp
+  -n : invert colors"
+  }
 
-	local _OPTS
+  local _OPTS
 
-	# detect pipe or tty
-	if test -t 0; then
-		_usage
-		return
-	fi
+  # detect pipe or tty
+  if test -t 0; then
+    _usage
+    return
+  fi
 
-	# manage flags
-	while getopts ":idnQ" opt; do
-		case $opt in
-			i) _OPTS+=" -i " ;;
-			d)  _OPTS+=" -Q " ;;
-			n) n_flag=true ;;
-			Q)  _OPTS+=" -Q " ;;
-				# let's keep hidden compatibility with -Q for original ack users
-			\?) _usage
-				return ;;
-		esac
-	done
+  # manage flags
+  while getopts ":idnQ" opt; do
+    case $opt in
+      i) _OPTS+=" -i " ;;
+      d)  _OPTS+=" -Q " ;;
+      n) n_flag=true ;;
+      Q)  _OPTS+=" -Q " ;;
+        # let's keep hidden compatibility with -Q for original ack users
+      \?) _usage
+        return ;;
+    esac
+  done
 
-	shift $(($OPTIND - 1))
+  shift $(($OPTIND - 1))
 
-	# check maximum allowed input
-	if (( ${#@} > 12)); then
-		echo "Too many terms. h supports a maximum of 12 groups. Consider relying on regular expression supported patterns like \"word1\\|word2\""
-		exit -1
-	fi;
+  # check maximum allowed input
+  if (( ${#@} > 12)); then
+    echo "Too many terms. h supports a maximum of 12 groups. Consider relying on regular expression supported patterns like \"word1\\|word2\""
+    exit -1
+  fi;
 
-	# set zsh compatibility
-	[[ -n $ZSH_VERSION ]] && setopt localoptions && setopt ksharrays && setopt ignorebraces
+  # set zsh compatibility
+  [[ -n $ZSH_VERSION ]] && setopt localoptions && setopt ksharrays && setopt ignorebraces
 
-	local _i=0
+  local _i=0
 
-	if [ -z $n_flag ]; then
-		#inverted-colors-last scheme
-		_COLORS=( "underline bold red" "underline bold green" "underline bold yellow" "underline bold blue" "underline bold magenta" "underline bold cyan" "bold on_red" "bold on_green" "bold black on_yellow" "bold on_blue" "bold on_cyan" "bold on_magenta" )
-	else
-		#inverted-colors-first scheme
-		_COLORS=( "bold on_red" "bold on_green" "bold black on_yellow" "bold on_blue" "bold on_magenta" "bold on_cyan" "bold black on_white" "underline bold red" "underline bold green" "underline bold yellow" "underline bold blue" "underline bold magenta" )
-	fi
+  if [ -z $n_flag ]; then
+    #inverted-colors-last scheme
+    _COLORS=( "underline bold red" "underline bold green" "underline bold yellow" "underline bold blue" "underline bold magenta" "underline bold cyan" "bold on_red" "bold on_green" "bold black on_yellow" "bold on_blue" "bold on_cyan" "bold on_magenta" )
+  else
+    #inverted-colors-first scheme
+    _COLORS=( "bold on_red" "bold on_green" "bold black on_yellow" "bold on_blue" "bold on_magenta" "bold on_cyan" "bold black on_white" "underline bold red" "underline bold green" "underline bold yellow" "underline bold blue" "underline bold magenta" )
+  fi
 
-	local ACK=ack
-	if ! which $ACK >/dev/null 2>&1; then
-		ACK=ack-grep
-		if ! which $ACK >/dev/null 2>&1; then
-			echo "Could not find ack or ack-grep"
-			exit -1
-		fi
-	fi
+  local ACK=ack
+  if ! which $ACK >/dev/null 2>&1; then
+    ACK=ack-grep
+    if ! which $ACK >/dev/null 2>&1; then
+      echo "Could not find ack or ack-grep"
+      exit -1
+    fi
+  fi
 
-	# build the filtering command
-	for keyword in "$@"
-	do
-		local _COMMAND=$_COMMAND"$ACK $_OPTS --noenv --flush --passthru --color --color-match=\"${_COLORS[$_i]}\" '$keyword' |"
-		_i=$_i+1
-	done
-	#trim ending pipe
-	_COMMAND=${_COMMAND%?}
-	#echo "$_COMMAND"
-	cat - | eval $_COMMAND
+  # build the filtering command
+  for keyword in "$@"
+  do
+    local _COMMAND=$_COMMAND"$ACK $_OPTS --noenv --flush --passthru --color --color-match=\"${_COLORS[$_i]}\" '$keyword' |"
+    _i=$_i+1
+  done
+  #trim ending pipe
+  _COMMAND=${_COMMAND%?}
+  #echo "$_COMMAND"
+  cat - | eval $_COMMAND
 }

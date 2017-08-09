@@ -1,0 +1,49 @@
+#!/usr/bin/env zsh
+#
+# Executes commands at the start of an interactive session.
+#
+# increase open file limit
+ulimit -n 10240
+
+# completions
+if [[ -d /usr/local/share/zsh-completions ]]; then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+if [[ -d /usr/local/share/zsh/site-functions ]]; then
+  fpath=(/usr/local/share/zsh/site-functions $fpath)
+fi
+
+# moar completions
+if [[ -d "${HOME}/.dotfiles/zsh/completion.d" ]]; then
+  fpath=(${HOME}/.dotfiles/zsh/completion.d $fpath)
+fi
+
+export fpath
+
+# zsh plugins
+if [[ -d "${HOME}/.dotfiles/zsh/plugins/" ]]; then
+  setopt EXTENDED_GLOB
+  for plugin in "${HOME}"/.dotfiles/zsh/plugins/*; do
+    # echo "$plugin"
+    source "$plugin"/*.zsh
+  done
+fi
+
+# iterm integration
+if [ -f "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh" ]; then
+  source "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh"
+fi
+
+# powerline
+if [ -d "${HOME}/.dotfiles/powerline" ]; then
+  export PATH="$PATH:${HOME}/.dotfiles/powerline/scripts"
+  export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
+  source "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
+fi
+
+# zsh-syntax highlighting
+if [[ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  # export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

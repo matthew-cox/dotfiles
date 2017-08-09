@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# restart the dock processes
+#
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  killall Dock
+fi

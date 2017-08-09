@@ -1,13 +1,20 @@
-"after-scripts":
+taps:
+  - 'caskroom/cask'
+  - 'caskroom/drivers'
+  - 'homebrew/command-not-found'
+  - 'homebrew/core'
+  - 'ravenac95/sudolikeaboss'
+
+after-scripts:
     # - "./scripts/update_ruby.sh"
     # - "./scripts/keybindings/install.sh"
     # - "'./scripts/Terminal Launcher/install.sh'"
     # - "cd ./scripts/swift && ./install"
     # - "./scripts/vim_setup.sh"
     - "brew linkapps"
-    - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app"
+    # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
 
-"casks":
+casks:
     - "1password"
     - "adapter"
     - "adium"
@@ -89,6 +96,7 @@
     - "omnigraffle"
     - "padre"
     - "path-finder"
+    - "plex-media-player"
     - "postbox"
     - "resilio-sync"
     - "screenflow"
@@ -138,6 +146,8 @@
     - "dateutils"
     # installed on Antares
     # - "dialog"
+    # fancy git diffs
+    - "diff-so-fancy"
     - "dirmngr"
     # installed on Antares
     # - "dnsmasq"
@@ -210,6 +220,8 @@
     - "pinentry"
     - "pixman"
     - "pkg-config"
+    # SimpliSafe VPN client
+    - "pritunl"
     - "pt"
     - "pth"
     - "py2cairo"
@@ -217,6 +229,9 @@
     - "pyenv-virtualenv"
     - "pygobject3"
     - "python"
+    # Virtual env for ruby
+    - "rbenv"
+    - "ruby-build"
     - "readline"
     - "reattach-to-user-namespace"
     - "s3cmd"
@@ -242,22 +257,26 @@
     - "zlib"
     - "zsh"
     - "zsh-completions"
+    - "zsh-syntax-highlighting"
 
 # "icons":
 #     "iTerm": "https://dribbble.com/shots/1702947-iTerm-Replacement-Icon/attachments/271548",
 #     "MacVim": "http://lab.colepeters.com/cole/tcpvimicon/raw/master/MacVim.icns"
 
-"symlinks":
+symlinks:
     "bash/bash_profile": "~/.bash_profile"
     "bash/bashrc": "~/.bashrc"
     "bin/*": "~/bin/"
     # "fish/*.fish": "~/.config/fish/"
     # "fish/functions/*": "~/.config/fish/functions/"
-    # "git/.*": "~"
+    "git/gitconfig": "~/.gitconfig"
     # "sh/.*": "~"
-    "tmux-powerlinerc": "~/.tmux-powerlinerc"
-    "vim/.*": "~"
-    "xvim/.*": "~"
-    "zsh/.zsh-functions/*": "~/.zsh-functions/"
-    "zsh/.zshrc": "~"
+    "ssh/config.d": "~/.ssh/config.d"
+    "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
+    # "vim/.*": "~"
+    # "xvim/.*": "~"
+    "zsh/zprofile": "~/.zprofile"
+    "zsh/zshrc": "~/.zshrc"
+    "zsh/zsh-functions/*": "~/.zsh-functions/"
+    # "zsh/.zshrc": "~"
 

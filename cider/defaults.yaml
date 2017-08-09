@@ -16,7 +16,9 @@
 
 "com.apple.dock":
     # "expose-animation-duration": 0.15
+    "no-glass": true
     "orientation": "right"
+    "pinning": "end"
     "show-process-indicators": false
     # "tilesize": 48
 

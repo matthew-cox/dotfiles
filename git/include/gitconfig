@@ -11,7 +11,8 @@
   ui = true
 
 [core]
-  pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+  # pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+  pager = diff-so-fancy | less --tabs=1,5 -R
 
 [difftool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\"

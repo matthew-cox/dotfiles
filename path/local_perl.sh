@@ -1,4 +1,7 @@
+#!/usr/bin/env bash
+#
 # perlbrew
+#
 if [ -d "${HOME}/lib/perl5/perlbrew" ]; then
   export PERLBREW_ROOT="${HOME}/lib/perl5/perlbrew"
   source ${PERLBREW_ROOT}/etc/bashrc
