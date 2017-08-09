@@ -5,7 +5,7 @@ the stuff with dots
 
 # First brew some 🍻
 
-Install (Homebrew)[https://brew.sh]
+Install [Homebrew](https://brew.sh)
 
 Add some taps:
 
@@ -43,13 +43,13 @@ Configure a very basic `~/.ssh/config`:
 
 ### Python
 
-Prefer (pyenv)[https://github.com/pyenv/pyenv] and (pynenv-virtualenv)[https://github.com/pyenv/pyenv-virtualenv] over the global version:
+Prefer [pyenv](https://github.com/pyenv/pyenv) and [pynenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) over the global version:
 
     $ ./scripts/python_init.sh
 
 ### Bootstrap
 
-Bootstrap many things with (Cider)[https://github.com/msanders/cider]:
+Bootstrap many things with [Cider](https://github.com/msanders/cider):
 
     $ ln -s ~/.dotfiles/cider ~/.cider
     $ pip install -U cider
@@ -59,13 +59,13 @@ Bootstrap many things with (Cider)[https://github.com/msanders/cider]:
 
 ### Ruby
 
-Prefer (rbenv)[https://github.com/rbenv/rbenv] over the global version:
+Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
 
     $ ./scripts/ruby_init.sh
 
 ### SSH config.d
 
-Needs (poet)[https://github.com/awendt/poet]:
+Needs [poet](https://github.com/awendt/poet):
 
     $ gem install poet
     $ rm -f ~/.ssh/config
@@ -79,6 +79,4 @@ Change the user shell:
 
 
 Open a new terminal
-
-
 
