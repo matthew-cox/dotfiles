@@ -57,6 +57,12 @@ Bootstrap many things with [Cider](https://github.com/msanders/cider):
     $ cider apply-defaults
     $ cider relink
 
+### Perl
+
+Prefer [perlbrew](https://github.com/gugod/App-perlbrew) over the global version:
+
+    $ ./scripts/perl_init.sh
+
 ### Ruby
 
 Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
@@ -76,7 +82,6 @@ Needs [poet](https://github.com/awendt/poet):
 Change the user shell:
 
     $ chsh -s /bin/zsh
-
 
 Open a new terminal
 
