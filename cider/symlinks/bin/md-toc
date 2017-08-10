@@ -1,0 +1,66 @@
+#!/usr/bin/env perl
+#
+# Take MarkDown from STDIN and turn the headers into a TOC list
+#
+# For example:
+#
+#    $ cat README.md | ./markdown-toc.pl
+#
+use strict;
+use warnings;
+# auto-flush
+$| = 1;
+
+my $NOW=`date '+%F %H:%M'`;
+chomp($NOW);
+
+print join('', "**Last Updated: ${NOW} @", $ENV{"USER"}, "**$/$/");
+
+print "Table of Contents$/=================$/";
+
+my(%allkeys);
+
+while ( <STDIN> ) {
+  chomp;
+  #
+  # only process header lines
+  #
+  if ( /^#/ ) {
+    #
+    # Grab the headers, and then everything after that (no leading whitespace)
+    #
+    my @p = /^([#]*)\s*(.*?)$/;
+
+    #
+    # Set the indent based on the number of #
+    #
+    $p[0] =~ s/\#/  /g;
+
+    #
+    # Take the rest and GitHub-ify it for the anchor
+    #
+    my $key = $p[1];
+    # spaces become hyphens
+    $key =~ s/\s/-/g;
+    # remove various special characters
+    $key =~ s/[\(\)\,\'\"\.`\/?]//g;
+    # lower case it
+    $key = lc($key);
+
+    # check if we've seen the key before
+    if (!exists($allkeys{$key})){
+      $allkeys{$key} = 1;
+    }
+    else {
+      # change the key name to include the count (0 indexed)
+      my $count = $allkeys{$key};
+      $allkeys{$key}++;
+      $key = join('-', $key, $count);
+    }
+
+    #
+    # spit out the resulting line
+    #
+    print join('', $p[0], "* [", $p[1], "](#", $key, ")$/");
+  }
+}

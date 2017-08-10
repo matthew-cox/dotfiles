@@ -64,6 +64,8 @@ casks:
     - "github"
     - "glimmerblocker"
     - "globalsync"
+    # GMail backup
+    - "gmvault"
     - "google-nik-collection"
     - "graphicconverter"
     - "guitar-tuner"
@@ -144,6 +146,8 @@ casks:
     - "ctags"
     - "cvs"
     - "dateutils"
+    # Camera RAW
+    - "dcraw"
     # installed on Antares
     # - "dialog"
     # fancy git diffs
@@ -237,10 +241,13 @@ casks:
     - "s3cmd"
     - "shellcheck"
     - "sqlite"
+    # static website deploy - http://stout.is
+    - "stout"
     - "sudolikeaboss"
     - "terraform"
     - "the_platinum_searcher"
     - "the_silver_searcher"
+    - "tivodecode"
     - "tmux"
     - "unixodbc"
     - "unison"

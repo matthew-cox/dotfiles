@@ -4,11 +4,15 @@ if [ "${HOME}/lib/python2.7/site-packages" ]; then
 fi
 
 # look for pyenv - and set it up
-if [[ -r "${HOME}/.pyenv" ]]; then
-  export PYENV_VIRTUALENV_DISABLE_PROMPT=true
+if $(command -v pyenv >/dev/null); then
   export PYENV_ROOT="$HOME/.pyenv"
   # export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
+fi
+
+# look for pyenv-virtualenv - and set it up
+if $(command -v pyenv-virtualenv-init >/dev/null); then
+  export PYENV_VIRTUALENV_DISABLE_PROMPT=true
   eval "$(pyenv virtualenv-init -)"
   # export PYTHONPATH="$(pyenv prefix)/lib/python2.7:$PYTHONPATH"
   # alias powerline="$(pyenv prefix)/bin/powerline"

@@ -1,0 +1,69 @@
+#!/usr/bin/perl
+# Show the processes using the most CPU time in a useful format
+# (prints different columns, depending on availability by OS, but tries to be
+# as similar as possible to BSD 'ps auxw')
+#
+# 1999.03.17 wjh1296 CSDL
+# 2000.01.19 wjh1296 - added Linux
+# 2002.01.16 mpc2144 - added Darwin
+
+$head_lines = 10;		# num. of lines to output as head
+
+# Determine the type of 'ps' syntax to use
+($os, $version) = (split(" ", `uname -a`))[0,2];
+if ($os eq "IRIX64") {
+    $ps_type="XPG4";
+    $ps_command="ps -e -ouser,pid,pcpu,vsz,rss,tty,stime,time,args";
+    $sortby=2;
+}
+elsif ($os eq "OSF1") {
+    $ps_type="XPG4";
+    $ps_command="ps -e -ouser,pid,pcpu,pmem,vsz,rss,tty,status,stime,time,args";
+    $sortby=2;
+}
+elsif ($os eq "ULTRIX" || $os eq "Darwin") { # Darwin is BSD too
+    $ps_type="BSD";
+}
+elsif ($os eq "SunOS") {
+    if ($version =~ /^[1-4]/) {
+	$ps_type="BSD";
+    }
+    elsif ($version =~ /^5/) {
+	$ps_type="XPG4";
+	$ps_command="ps -e -ouser,pid,pcpu,pmem,vsz,rss,tty,s,stime,time,args";
+	$sortby=2;
+    }
+}
+elsif ($os eq "Linux") {
+    $ps_type="XPG4";
+    $ps_command="ps -e -ouser,pid,pcpu,pmem,vsz,rss,tty,s,stime,time,args";
+    $sortby=2;
+}
+if ($ps_type eq "") {
+    die ("Unknown operating system: $os $version\n");
+}
+
+# Run 'ps' and parse the output
+$proc_count=0;
+if ($ps_type eq "XPG4") {
+    open (PS, "$ps_command |")
+	or die ("Couldn't execute ps: $!\n");
+    print($proc = <PS>);
+    while (defined($proc = <PS>)) {
+	push(@proc, $proc);
+    }
+    @proc = (sort { (split(" ", $b))[$sortby] <=> (split(" ", $a))[$sortby] }
+	     @proc
+	     )[0..($head_lines - 1)];
+    print @proc;
+}
+elsif ($ps_type eq "BSD") {
+    open (PS, "ps auxw |")
+	or die ("Couldn't execute ps: $!\n");
+    print($proc = <PS>);
+    for ($proc_count = 0;
+	 (defined($proc = <PS>) && ($proc_count < $head_lines));
+	 $proc_count++) {
+	print($proc);
+    }
+}
