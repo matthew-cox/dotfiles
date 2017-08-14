@@ -7,22 +7,28 @@ ulimit -n 10240
 #
 ##############################################################################
 #
-# completions
+# completions - https://stackoverflow.com/questions/26462667/git-completion-not-working-in-zsh-on-os-x-yosemite-with-homebrew#26479426
 #
 if [[ -d /usr/local/share/zsh-completions ]]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
+  fpath=(/usr/local/share/zsh-completions "${fpath[@]}")
 fi
-
-if [[ -d /usr/local/share/zsh/site-functions ]]; then
-  fpath=(/usr/local/share/zsh/site-functions $fpath)
-fi
+#
+# if [[ -d /usr/local/share/zsh/site-functions ]]; then
+#   fpath=(/usr/local/share/zsh/site-functions "${fpath[@]}")
+# fi
 
 # moar completions
-if [[ -d "${HOME}/.dotfiles/zsh/completion.d" ]]; then
-  fpath=(${HOME}/.dotfiles/zsh/completion.d $fpath)
+if [[ -d "${HOME}/.zsh-functions" ]]; then
+  fpath=(${HOME}/.zsh-functions "${fpath[@]}")
 fi
 
-export fpath
+if [[ -d "${HOME}/.dotfiles/zsh/completion.d" ]]; then
+  fpath=(${HOME}/.dotfiles/zsh/completion.d "${fpath[@]}")
+fi
+
+autoload -U compinit && compinit
+zmodload -i zsh/complist
+
 #
 ##############################################################################
 #

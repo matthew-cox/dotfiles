@@ -26,6 +26,7 @@ casks:
     - "alfred"
     - "amazon-music"
     - "atom"
+    - "avira-antivirus"
     - "backblaze"
     - "bartender"
     - "bean"
@@ -118,6 +119,7 @@ casks:
     - "tower"
     - "transmission"
     - "transmit"
+    - "usb-overdrive"
     - "vlc"
     - "vuescan"
     - "wedge"
@@ -126,7 +128,8 @@ casks:
     - "xquartz"
     - "zoomus"
 
-# "dependencies":
+"dependencies":
+  "crashplan": "java"
 #     "mit-scheme": "casks/xquartz"
 
 "formulas":

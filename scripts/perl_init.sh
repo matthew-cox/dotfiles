@@ -14,20 +14,20 @@ export PERL_VERSION=5.27.2
 #
 # perlbrew
 #
+export PERLBREW_ROOT="${HOME}/lib/perl5/perlbrew"
+
+if [[ -f "${PERLBREW_ROOT}/etc/bashrc" ]]; then
+  source "${PERLBREW_ROOT}/etc/bashrc"
+fi
+
 if $(command -v perlbrew >/dev/null); then
-  source ~/lib/perl5/perlbrew/etc/bashrc
+  source "${PERLBREW_ROOT}/etc/bashrc"
 else
   puterr "perlbrew not installed"
   curl -L https://install.perlbrew.pl | bash
-
-  if $(command -v perlbrew >/dev/null); then
-    putsuccess "perlbrew installed"
-    source ~/lib/perl5/perlbrew/etc/bashrc
-  else
-    puterr "perlbrew not installed"
-    exit 1
-  fi
+  perlbrew init
 fi
 
-perlbrew install --skip-existing perl-$PERL_VERSION
-perlbrew switch perl-$PERL_VERSION
+echo "Start a new terminal window and execute the following: "
+echo "perlbrew install --skip-existing perl-$PERL_VERSION"
+echo "perlbrew switch perl-$PERL_VERSION"

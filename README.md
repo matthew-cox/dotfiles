@@ -63,6 +63,11 @@ Prefer [perlbrew](https://github.com/gugod/App-perlbrew) over the global version
 
     $ ./scripts/perl_init.sh
 
+Start a new terminal, then:
+
+    $ perlbrew install --skip-existing perl-5.27.2
+    $ perlbrew switch perl-5.27.2
+
 ### Ruby
 
 Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
