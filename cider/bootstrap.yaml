@@ -11,6 +11,8 @@ after-scripts:
     # - "'./scripts/Terminal Launcher/install.sh'"
     # - "cd ./scripts/swift && ./install"
     # - "./scripts/vim_setup.sh"
+    # create some library links for handbrake
+    - "./scripts/handbrake_link.sh"
     - "brew linkapps"
     # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
 
@@ -210,6 +212,8 @@ casks:
     - "lighttpd"
     - "little-cms2"
     - "macvim"
+    # bluray support
+    - "makemkv"
     - "maven"
     - "mercurial"
     - "mpg123"
