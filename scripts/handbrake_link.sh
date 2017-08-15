@@ -25,9 +25,9 @@ if [[ -f "${LIB_SRC}" ]]; then
       putsuccess "Creating link for '${target}'"
       ln -s "${LIB_SRC}" "${HOME}/lib/${target}"
 
-    elif [[ -L "${HOME}/lib/libaacs.dylib" ]]; then
+    elif [[ -L "${HOME}/lib/${target}" ]]; then
 
-      link_target=$(stat ${target} --format '%N' | awk '{print $3}' | tr -d "'")
+      link_target=$(stat "${HOME}/lib/${target}" --format '%N' | awk '{print $3}' | tr -d "'")
 
       if [[ "${link_target}" != "${LIB_SRC}" ]]; then
         puterr "Link '${target}' exists but points to '${link_target}'!"
