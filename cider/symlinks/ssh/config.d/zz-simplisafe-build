@@ -1,0 +1,12 @@
+
+#######################################################################
+#
+# SimpliSafe build
+#
+Host *.ec2.internal 10.*
+  User ss_user
+# IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+
+  IdentitiesOnly yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
