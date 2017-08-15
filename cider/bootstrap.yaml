@@ -13,6 +13,8 @@ after-scripts:
     # - "./scripts/vim_setup.sh"
     # create some library links for handbrake
     - "~/.dotfiles/scripts/handbrake_link.sh"
+    # create sudo config for launchctl
+    - "~/.dotfiles/scripts/sudo_config.sh"
     - "brew linkapps"
     # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
 
