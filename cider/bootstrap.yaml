@@ -1,6 +1,7 @@
 taps:
   - 'caskroom/cask'
   - 'caskroom/drivers'
+  - 'caskroom/fonts'
   - 'homebrew/command-not-found'
   - 'homebrew/core'
   - 'ravenac95/sudolikeaboss'
@@ -19,6 +20,14 @@ after-scripts:
     # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
 
 casks:
+    # Fonts
+    - "font-source-code-pro"
+    - "font-source-sans-pro"
+    - "font-source-serif-pro"
+    - "font-source-code-pro-for-powerline"
+    - "font-sourcecodepro-nerd-font-mono"
+    - "font-sourcecodepro-nerd-font"
+    # Applications
     - "1password"
     - "adapter"
     - "adium"
@@ -215,6 +224,8 @@ casks:
     - "lighttpd"
     - "little-cms2"
     - "macvim"
+    # Mac App Store CLI
+    - "mas"
     - "maven"
     - "mercurial"
     - "mpg123"
@@ -285,6 +296,7 @@ symlinks:
     "git/gitconfig": "~/.gitconfig"
     # "sh/.*": "~"
     "ssh/config.d": "~/.ssh/config.d"
+    "tmux/tmux.conf": "~/.tmux.conf"
     "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
     # "vim/.*": "~"
     # "xvim/.*": "~"
