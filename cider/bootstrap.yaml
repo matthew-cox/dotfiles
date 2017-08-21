@@ -224,6 +224,8 @@ casks:
     - "lighttpd"
     - "little-cms2"
     - "macvim"
+    # Mac App Store CLI
+    - "mas"
     - "maven"
     - "mercurial"
     - "mpg123"
@@ -294,6 +296,7 @@ symlinks:
     "git/gitconfig": "~/.gitconfig"
     # "sh/.*": "~"
     "ssh/config.d": "~/.ssh/config.d"
+    "tmux/tmux.conf": "~/.tmux.conf"
     "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
     # "vim/.*": "~"
     # "xvim/.*": "~"

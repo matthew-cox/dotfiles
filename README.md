@@ -57,6 +57,12 @@ Bootstrap many things with [Cider](https://github.com/msanders/cider):
     $ cider apply-defaults
     $ cider relink
 
+### Mac AppStore Apps
+
+Install the apps from the AppStore:
+
+    # ./scripts/mas_install.sh
+
 ### Perl
 
 Prefer [perlbrew](https://github.com/gugod/App-perlbrew) over the global version:
