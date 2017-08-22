@@ -101,6 +101,7 @@ casks:
     - "logitech-unifying"
     - "macvim"
     - "magicprefs"
+    - "malwarebytes-anti-malware"
     - "mamp"
     # bluray support
     - "makemkv"

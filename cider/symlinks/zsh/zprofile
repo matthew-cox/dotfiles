@@ -24,22 +24,41 @@ export HOMEBREW_NO_ANALYTICS=1
 if [[ "$(uname -s)" == "Darwin" ]]; then
 
   # look for keyboardservicesd
-  if [[ $(pgrep keyboardservicesd) ]]; then
+  kbsd_disabled=$(launchctl print-disabled gui/$UID | grep 'com.apple.keyboardservicesd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${kbsd_disabled:-false}" == "false" ]]; then
     echo "Damn you keyboardservicesd!"
+    launchctl disable gui/$UID/com.apple.keyboardservicesd
     sudo launchctl stop com.apple.keyboardservicesd
     sudo pkill -9 keyboardservicesd
   fi
 
   # Google software update
-  if [[ $(pgrep -f -i GoogleSoftwareUpdate) ]]; then
-    sudo launchctl stop com.google.keystone
+  gsu_disabled=$(launchctl print-disabled gui/$UID | grep 'com.google.keystone.system.agent' | awk '{print $3}' 2>/dev/null)
+  if [[ "${gsu_disabled:-false}" == "false" ]]; then
+    launchctl disable gui/$UID/com.google.keystone.system.agent
+    sudo launchctl disable com.google.keystone.agent
+    sudo launchctl stop com.google.keystone.agent
+  fi
+
+  gsu_interval=$(defaults read com.google.Keystone.Agent checkInterval 2>/dev/null)
+  if [[ ${gsu_interval:-0} -ne 0 ]]; then
+    echo "Damn you Google!"
+    defaults write com.google.Keystone.Agent checkInterval 0
   fi
 
   # look for photoanalysisd
-  PHOTO_ANALYSISD_DISABLED=$(launchctl print-disabled gui/$UID | grep 'com.apple.photoanalysisd' | awk '{print $3}' 2>/dev/null)
-  if [[ "${PHOTO_ANALYSISD_DISABLED}" == "false" ]]; then
+  
+  pad_disabled=$(launchctl print-disabled gui/$UID | grep 'com.apple.photoanalysisd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${pad_disabled:-false}" == "false" ]]; then
     launchctl disable gui/$UID/com.apple.photoanalysisd
+    launchctl stop gui/$UID/com.apple.photoanalysisd
     launchctl kill -TERM gui/$UID/com.apple.photoanalysisd
+  fi
+
+  PHOTO_ANALYSISD_DISABLED=$(launchctl print-disabled system | grep 'com.apple.xpc.launchd.domain.pid.photoanalysisd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${PHOTO_ANALYSISD_DISABLED}" == "false" ]]; then
+    sudo launchctl disable system/com.apple.xpc.launchd.domain.pid.photoanalysisd
+    sudo launchctl stop system/com.apple.xpc.launchd.domain.pid.photoanalysisd
   fi
 
   # disable smart quotes
