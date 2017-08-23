@@ -99,4 +99,3 @@ Change the user shell:
     $ chsh -s /bin/zsh
 
 Open a new terminal
-

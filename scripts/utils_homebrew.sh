@@ -106,7 +106,7 @@ brew_install_cask_if_missing(){
       CASK_STATUS=$(brew_check_cask "$package")
       if [[ $CASK_STATUS -ne 0 ]]; then
           putinfo "Installing '$package'..."
-          brew cask install "$package" 
+          brew cask install "$package"
       fi
     done
   fi
@@ -159,7 +159,7 @@ brew_install_if_missing(){
       # Check for package
       PACKAGE_STATUS=$(brew_check_package "$package")
       if [[ $PACKAGE_STATUS -ne 0 ]]; then
-        brew install "$package" 
+        brew install "$package"
       fi
     done
   fi
@@ -184,4 +184,3 @@ brew_install_or_upgrade(){
   fi
 }
 export -f brew_install_or_upgrade
-
