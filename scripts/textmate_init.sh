@@ -23,6 +23,8 @@ done
 #
 GEMS=(
 "tmbundle-manager"
+"redcarpet"
+"pygments.rb"
 )
 
 TM_BUNDLES=(
@@ -35,6 +37,7 @@ TM_BUNDLES=(
 #
 # Install the bundle manager
 #
+ruby_check
 ruby_check_gem "${GEMS[@]}"
 #
 # Install the bundles

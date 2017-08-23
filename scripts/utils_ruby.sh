@@ -30,7 +30,7 @@ ruby_check() {
 
   rbenv=$(rbenv_check; exit 0)
   rvm=$(rvm_check; exit 0)
-  
+
   if [[ $rbenv -eq 0 || $rvm -eq 0 ]]; then
     putsuccess "Some non-global Ruby configured!"
   else
