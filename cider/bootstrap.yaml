@@ -120,6 +120,8 @@ casks:
     - "resilio-sync"
     - "screenflow"
     - "scrivener"
+    # Moom replacement?
+    - "shiftit"
     - "kindle"
     - "silverlight"
     - "skype"
@@ -298,7 +300,9 @@ symlinks:
     # "sh/.*": "~"
     "ssh/config.d": "~/.ssh/config.d"
     "tmux/tmux.conf": "~/.tmux.conf"
+    "tmux/tmux.local": "~/.tmux.local"
     "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
+    # .vimrc -> /Users/mcox/Devel/dotfiles/maximum-awesome/vimrc
     # "vim/.*": "~"
     # "xvim/.*": "~"
     "zsh/zprofile": "~/.zprofile"
