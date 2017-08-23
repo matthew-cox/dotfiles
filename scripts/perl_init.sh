@@ -2,7 +2,20 @@
 #
 #
 set -o errexit -o pipefail -o nounset
-. "$(dirname "$0")/common.sh"
+# set -x
+WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
+#
+##############################################################################
+#
+# Load some utilities
+#
+readonly THE_UTILS=( "common" )
+
+for utility in "${THE_UTILS[@]}"; do
+  if [[ -r "${WORKDIR}/utils_${utility}.sh" ]]; then
+    source "${WORKDIR}/utils_${utility}.sh"
+  fi
+done
 #
 ##############################################################################
 #

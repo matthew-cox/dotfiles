@@ -2,23 +2,36 @@
 #
 #
 set -o errexit -o pipefail -o nounset
-. "$(dirname "$0")/common.sh"
+# set -x
+WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
 #
-# Define taps for tapping
+##############################################################################
+#
+# Load some utilities
+#
+readonly THE_UTILS=( "common" "homebrew" )
+
+for utility in "${THE_UTILS[@]}"; do
+  if [[ -r "${WORKDIR}/utils_${utility}.sh" ]]; then
+    source "${WORKDIR}/utils_${utility}.sh"
+  fi
+done
+#
+##############################################################################
+#
+# Homebrew
+#
+putinfo "Checking Homebrew..."
+brew_install
+#
+# Define taps for tapping - only add Cask to allow bootstrapping with 1password
 #
 declare -a TAPS=(
 "caskroom/cask"
 )
-#
-#
-#
-if ! $(command -v brew >/dev/null); then
-    puterr "Homebrew not installed"
-    exit 1
-fi
 
 for tap in "${TAPS[@]}"; do
-  echo -n "Tapping '$tap'..."
+  putinfo "Tapping '$tap'..."
   brew tap "${tap}"
-  echo "done"
+  putsuccess "done"
 done

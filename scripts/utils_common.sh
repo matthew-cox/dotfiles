@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# common message functions
+#
 set -o errexit -o pipefail -o nounset
 
 puterr() {
@@ -7,6 +10,13 @@ puterr() {
 }
 
 export -f puterr
+
+putinfo() {
+  msg="$1"
+  echo -e "\e[34mNOTE:\e[39m $msg"
+}
+
+export -f putinfo
 
 putsuccess() {
   msg="$1"

@@ -5,9 +5,7 @@ the stuff with dots
 
 # First brew some 🍻
 
-Install [Homebrew](https://brew.sh)
-
-Add some taps:
+Initialize [Homebrew](https://brew.sh):
 
     $ ./scripts/homebrew_init.sh
 
@@ -87,6 +85,12 @@ Needs [poet](https://github.com/awendt/poet):
     $ gem install poet
     $ rm -f ~/.ssh/config
     $ poet
+
+### TextMate
+
+Install TextMate bundle manager and bundles:
+
+    # ./scripts/textmate_init.sh
 
 ### Zsh
 

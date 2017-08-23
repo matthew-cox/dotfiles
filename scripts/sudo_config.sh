@@ -2,7 +2,22 @@
 #
 # allow admin users to disable services without a password
 #
-echo "*** Creating sudo config..."
+# set -x
+WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
+#
+##############################################################################
+#
+# Load some utilities
+#
+readonly THE_UTILS=( "common" )
+
+for utility in "${THE_UTILS[@]}"; do
+  if [[ -r "${WORKDIR}/utils_${utility}.sh" ]]; then
+    source "${WORKDIR}/utils_${utility}.sh"
+  fi
+done
+
+putinfo "Creating sudo config..."
 sudo sh -c 'echo "
 #
 # allow admin users to disable services without a password

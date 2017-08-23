@@ -1,7 +1,10 @@
 # global options
 softTabs    = true
 
+# Features from - https://github.com/elia/avian-missing.tmbundle
 TM_STRIP_WHITESPACE_ON_SAVE = true
+TM_ENSURE_TRAILING_NEWLINE_ON_SAVE = true
+TM_TERMINAL_APP = "iTerm.app"
 
 # perl
 [ *.p[lm] ]

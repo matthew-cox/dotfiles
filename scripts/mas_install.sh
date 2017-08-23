@@ -10,7 +10,7 @@ WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
 #
 # Load some utilities
 #
-readonly THE_UTILS=( "common" "mas" )
+readonly THE_UTILS=( "common" )
 
 for utility in "${THE_UTILS[@]}"; do
   if [[ -r "${WORKDIR}/utils_${utility}.sh" ]]; then
@@ -47,15 +47,17 @@ MAS_APPS=(
   521142667
 )
 
-# need this if running under tmux
+# Might need this if running under tmux
 user_namespace_attach="$(command -v reattach-to-user-namespace 2>/dev/null)"
 
 if [[ $(command -v mas) ]]; then
   for APP in "${MAS_APPS[@]}"; do
+    putinfo "Installing '${APP}'..."
     if [[ -n "${user_namespace_attach:-}" ]]; then
       $user_namespace_attach mas install $APP
     else
       mas install $APP
     fi
+    putinfo "Done"
   done
 fi
