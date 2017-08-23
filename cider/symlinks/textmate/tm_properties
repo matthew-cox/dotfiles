@@ -1,6 +1,8 @@
 # global options
 softTabs    = true
 
+TM_STRIP_WHITESPACE_ON_SAVE = true
+
 # perl
 [ *.p[lm] ]
 fileType    = "source.perl"
