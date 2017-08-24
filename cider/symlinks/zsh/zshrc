@@ -41,6 +41,11 @@ if [[ -d "${HOME}/.dotfiles/zsh/plugins/" ]]; then
     source "$plugin"/*.zsh
   done
 fi
+
+# I dunno - TextMate rbenv support maybe?
+if [ -d "${HOME}/.dotfiles/path/zz-ruby.sh" ]; then
+    source "${HOME}/.dotfiles/path/zz-ruby.sh"
+fi
 #
 ##############################################################################
 #
@@ -55,6 +60,12 @@ fi
 # powerline
 #
 if [ -d "${HOME}/.dotfiles/powerline" ]; then
+
+  # performance?
+  if command -v powerline-daemon >/dev/null; then
+    powerline-daemon -q
+  fi
+
   export PATH="$PATH:${HOME}/.dotfiles/powerline/scripts"
   export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
   source "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
