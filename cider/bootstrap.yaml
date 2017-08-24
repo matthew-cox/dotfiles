@@ -88,6 +88,8 @@ casks:
     - "hex-fiend"
     - "hosts"
     - "houdahgeo"
+    # Crashplan replacement
+    - "idrive"
     - "iterm2"
     - "itsycal"
     - "java"

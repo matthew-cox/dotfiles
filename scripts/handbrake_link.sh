@@ -3,9 +3,22 @@
 # Make links for Handrake to MKMKV
 #
 set -o errexit -o pipefail -o nounset
-. "$(dirname "$0")/common.sh"
+# set -x
+WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
 #
+##############################################################################
 #
+# Load some utilities
+#
+readonly THE_UTILS=( "common" "homebrew" )
+
+for utility in "${THE_UTILS[@]}"; do
+  if [[ -r "${WORKDIR}/utils_${utility}.sh" ]]; then
+    source "${WORKDIR}/utils_${utility}.sh"
+  fi
+done
+#
+# Need ~/lib directory
 #
 mkdir -p "${HOME}/lib"
 #
@@ -16,7 +29,7 @@ LIB_TARGETS=(
 libaacs.dylib
 libbdplus.dylib
 )
-  
+
 if [[ -f "${LIB_SRC}" ]]; then
 
   for target in "${LIB_TARGETS[@]}"; do
