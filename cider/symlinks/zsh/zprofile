@@ -47,7 +47,6 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   fi
 
   # look for photoanalysisd
-  
   pad_disabled=$(launchctl print-disabled gui/$UID | grep 'com.apple.photoanalysisd' | awk '{print $3}' 2>/dev/null)
   if [[ "${pad_disabled:-false}" == "false" ]]; then
     launchctl disable gui/$UID/com.apple.photoanalysisd
@@ -86,4 +85,8 @@ if [ -d "${HOME}/.dotfiles/path" ]; then
     #echo "$X"
     source "${X}"
   done
+fi
+
+if command -v fortune >/dev/null; then
+  fortune ~/.fortunes
 fi
