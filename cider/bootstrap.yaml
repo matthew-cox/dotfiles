@@ -144,6 +144,8 @@ casks:
     - "wedge"
     - "wireshark"
     - "xbox360-controller-driver"
+    # X Lossless Decoder
+    - "xld"
     - "xquartz"
     - "zoomus"
 
