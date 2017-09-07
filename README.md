@@ -78,13 +78,19 @@ Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
 
     $ ./scripts/ruby_init.sh
 
-### SSH config.d
+### SSH
+
+#### config.d
 
 Needs [poet](https://github.com/awendt/poet):
 
     $ gem install poet
     $ rm -f ~/.ssh/config
     $ poet
+
+#### key symlinks
+
+    $ ln -s ~/.ssh/simplisafe/PrdCommon.pem ~/.ssh/
 
 ### TextMate
 
