@@ -88,7 +88,7 @@ Needs [poet](https://github.com/awendt/poet):
     $ rm -f ~/.ssh/config
     $ poet
 
-#### key symlinks
+#### Key Symlinks
 
     $ ln -s ~/.ssh/simplisafe/PrdCommon.pem ~/.ssh/
 
