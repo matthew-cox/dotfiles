@@ -25,4 +25,6 @@ sudo sh -c 'echo "
 %admin          ALL = (root) NOPASSWD: /bin/launchctl disable *
 %admin          ALL = (root) NOPASSWD: /bin/launchctl stop *
 %admin          ALL = (root) NOPASSWD: /usr/bin/pkill -9 keyboardservicesd
+%admin          ALL = (root) NOPASSWD: /usr/bin/dscacheutil -flushcache
+%admin          ALL = (root) NOPASSWD: /usr/bin/pkill -HUP mDNSResponder
 " > /private/etc/sudoers.d/10-service-control'
