@@ -1,21 +1,43 @@
 "NSGlobalDomain":
+    "AppleInterfaceStyle": "Dark"
+    "AppleMiniaturizeOnDoubleClick": false
     # "ApplePressAndHoldEnabled": false
+    "AppleShowAllExtensions": true
+    "AppleShowScrollBars": "always"
     # "KeyRepeat": 1
     # "NSScrollAnimationEnabled": false
     "NSAutomaticDashSubstitutionEnabled": false
     "NSAutomaticQuoteSubstitutionEnabled": false
+    "NSAutomaticSpellingCorrectionEnabled": false
+    "userMenuExtraStyle": 2
 
 # "com.apple.notificationcenterui":
 #     "bannerTime": 3
 
-# "com.apple.Safari":
+"com.apple.Safari":
+    "AlwaysRestoreSessionAtLaunch": true
+    "AutoFillCreditCardData": false
+    "AutoFillFromAddressBook": false
+    "AutoFillMiscellaneousForms": false
+    "AutoFillPasswords": false
+    "AutoOpenSafeDownloads": false
 #     "FindOnPageMatchesWordStartsOnly": false
+    "IncludeDevelopMenu": true
+    "LocalFileRestrictionsEnabled": true
+    "NewTabBehavior": 1
+    "NewWindowBehavior": 1
+    "PreloadTopHit": false
+    "SendDoNotTrackHTTPHeader": true
+    "SuppressSearchSuggestions": true
 
 "com.apple.desktopservices":
     "DSDontWriteNetworkStores": true
 
 "com.apple.dock":
+    "autohide": true
     # "expose-animation-duration": 0.15
+    "largesize": 68
+    "magnification": true
     "no-glass": true
     "orientation": "right"
     "pinning": "end"
@@ -24,8 +46,17 @@
 
 "com.apple.finder":
     # "FK_AppCentricViewStyle": "clmv"
-    # "FXArrangeGroupViewBy": "Name"
-    # "FXDefaultSearchScope": "SCcf"
-    # "FXPreferredGroupBy": "Name"
-    # "FXPreferredViewStyle": "Nlsv"
+    "FXArrangeGroupViewBy": "Name"
+    "FXDefaultSearchScope": "SCcf"
+    "FXEnableExtensionChangeWarning": false
+    "FXPreferredGroupBy": "Name"
+    "FXPreferredViewStyle": "Nlsv"
+    # Allow text selection in quick look
+    "NewWindowTarget": "PfHm"
+    "QLEnableTextSelection": true
     "QuitMenuItem": true
+    "ShowExternalHardDrivesOnDesktop": true
+    "ShowHardDrivesOnDesktop": false
+    "ShowRemovableMediaOnDesktop": true
+    "ShowSidebar": true
+    "ShowStatusBar": true
