@@ -290,6 +290,7 @@ casks:
     - "xvid"
     - "xz"
     - "yarn"
+    - "youtube-dl"
     - "yuicompressor"
     - "zlib"
     - "zsh"
@@ -317,6 +318,7 @@ symlinks:
     # .vimrc -> /Users/mcox/Devel/dotfiles/maximum-awesome/vimrc
     # "vim/.*": "~"
     # "xvim/.*": "~"
+    "youtube-dl/": "~/.config/youtube-dl"
     "zsh/zprofile": "~/.zprofile"
     "zsh/zshrc": "~/.zshrc"
     "zsh/zsh-functions/*": "~/.zsh-functions/"

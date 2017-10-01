@@ -1,0 +1,19 @@
+# Lines starting with # are comments
+
+# Always extract audio
+# -x
+
+# Download best mp4 format available or any other best if no mp4 available
+-f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+
+# Do not copy the mtime
+# --no-mtime
+
+# Use this proxy
+# --proxy 127.0.0.1:3128
+
+# Save all videos under Movies directory in your home directory
+-o ~/Movies/YouTube/%(title)s.%(ext)s
+
+# Myabe simplify the filename
+--restrict-filenames
