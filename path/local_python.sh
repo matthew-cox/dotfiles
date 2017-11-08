@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# >&2 echo "$0"
+# >&2 echo "$PATH"
 # tell python about our stuff
 if [ "${HOME}/lib/python2.7/site-packages" ]; then
   export PYTHONPATH="${HOME}/lib/python2.7/site-packages/:$PYTHONPATH"
@@ -23,3 +26,4 @@ fi
 #   PYPATH="$(dirname $(pyenv which python))"
 #   export PATH="$PYPATH:$PATH"
 # fi
+# >&2 echo "$PATH"

@@ -2,13 +2,15 @@
 #
 # perlbrew
 #
+# >&2 echo "$0"
+# >&2 echo "$PATH"
 if [[ -d "${HOME}/lib/perl5/perlbrew" ]]; then
   export PERLBREW_ROOT="${HOME}/lib/perl5/perlbrew"
-  source ${PERLBREW_ROOT}/etc/bashrc
+  source "${PERLBREW_ROOT}"/etc/bashrc
 fi
 
 RK_LIB_DIR="${HOME}/Devel/RunKeeper/devops-puppet/modules/runkeeper/files/filesys/lib/perl"
-if [ -d "${RK_LIB_DIR}" ]; then
+if [[ -d "${RK_LIB_DIR}" ]]; then
   export PERL5LIB="${PERL5LIB}:${RK_LIB_DIR}"
 fi
 
@@ -19,3 +21,4 @@ fi
 
 # cpanm??
 #export PERL_CPANM_OPT="--prompt --reinstall -l ~/lib/perl5 --mirror http://cpan.cpantesters.org"
+# >&2 echo "$PATH"

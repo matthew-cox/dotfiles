@@ -2,8 +2,7 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# increase open file limit
-ulimit -n 10240
+# echo "zshrc - $PATH"
 #
 ##############################################################################
 #
@@ -43,15 +42,15 @@ if [[ -d "${HOME}/.dotfiles/zsh/plugins/" ]]; then
 fi
 
 # I dunno - TextMate rbenv support maybe?
-if [ -d "${HOME}/.dotfiles/path/zz-ruby.sh" ]; then
-    source "${HOME}/.dotfiles/path/zz-ruby.sh"
-fi
+# if [ -d "${HOME}/.dotfiles/path/zz-ruby.sh" ]; then
+#     source "${HOME}/.dotfiles/path/zz-ruby.sh"
+# fi
 #
 ##############################################################################
 #
 # iterm integration
 #
-if [ -f "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh" ]; then
+if [[ -f "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh" ]]; then
   source "${HOME}/.dotfiles/zsh/iterm2_shell_integration.zsh"
 fi
 #
@@ -59,15 +58,19 @@ fi
 #
 # powerline
 #
-if [ -d "${HOME}/.dotfiles/powerline" ]; then
+powerline_dir="${HOME}/.dotfiles/powerline"
+if [[ -d "${powerline_dir}" ]]; then
 
   # performance?
   if command -v powerline-daemon >/dev/null; then
     powerline-daemon -q
   fi
 
-  export PATH="$PATH:${HOME}/.dotfiles/powerline/scripts"
-  export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
+  in_path=$(echo "$PATH" | grep -c "${powerline_dir}")
+  if [[ $in_path -le 0 ]]; then
+    export PATH="${PATH}:${powerline_dir}/scripts"
+    export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
+  fi
   source "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
 fi
 #
