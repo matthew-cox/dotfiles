@@ -14,11 +14,14 @@ else
   AWS_CLI="${AWS_CLI:?I was unable to located aws cli}"
 fi
 #
-# don't default the AWS_PROFILE
+# run help commands without vault
 #
 if echo "$@" | grep 'help' >/dev/null 2>&1; then
   exec "${AWS_CLI}" "$@"
 else
+  #
+  # don't default the AWS_PROFILE
+  #
   VAULT_PROFILE=${AWS_PROFILE:?AWS_PROFILE is not set, which profile should I use?}
 
   if command -v aws-vault 2>/dev/null; then
