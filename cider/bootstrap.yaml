@@ -303,6 +303,7 @@ casks:
 #     "MacVim": "http://lab.colepeters.com/cole/tcpvimicon/raw/master/MacVim.icns"
 
 symlinks:
+    "aws/": "~/.aws"
     "bash/bash_profile": "~/.bash_profile"
     "bash/bashrc": "~/.bashrc"
     "bin/*": "~/bin/"

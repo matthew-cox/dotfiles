@@ -1,0 +1,9 @@
+[default]
+output = json
+region = us-east-1
+s3 =
+    signature_version = s3v4
+
+[preview]
+cloudfront = true
+cloudwatch = true

@@ -24,7 +24,7 @@ else
   #
   VAULT_PROFILE=${AWS_PROFILE:?AWS_PROFILE is not set, which profile should I use?}
 
-  if command -v aws-vault 2>/dev/null; then
+  if command -v aws-vault >/dev/null 2>&1; then
     exec aws-vault exec "${VAULT_PROFILE}" -- "${AWS_CLI:?I was unable to located aws cli}" "$@"
   else
     exec "${AWS_CLI}" "$@"
