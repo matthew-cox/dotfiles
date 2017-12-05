@@ -7,6 +7,11 @@ Host *.lan
     Port 22
     PreferredAuthentications keyboard-interactive,password
 
+Host admin.lan
+  User root
+  # Almond+ uses older, smaller key
+  KexAlgorithms +diffie-hellman-group1-sha1
+
 Host raspberrypi.lan
     User pi
     PreferredAuthentications keyboard-interactive,password
