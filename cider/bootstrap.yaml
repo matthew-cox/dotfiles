@@ -68,6 +68,8 @@ casks:
     - "dropbox"
     - "emacs"
     - "espresso"
+    # Etcher - RaspberryPi image burner
+    - "etcher"
     - "evernote"
     - "expandrive"
     - "fantastical"
