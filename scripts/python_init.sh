@@ -46,14 +46,16 @@ fi
 #
 # virtualenv
 #
-if $(command -v virtualenv >/dev/null); then
+export PYENV_VIRTUALENV_DISABLE_PROMPT=true
+if $(command -v pyenv-virtualenv-init >/dev/null); then
   eval "$(pyenv virtualenv-init -)"
 else
   puterr "virtualenv not installed"
-  brew install virtualenv
+  brew install pyenv-virtualenv
 
-  if $(command -v virtualenv >/dev/null); then
+  if $(command -v pyenv-virtualenv-init >/dev/null); then
     putsuccess "virtualenv installed"
+    eval "$(pyenv virtualenv-init -)"
   else
     puterr "virtualenv not installed"
     exit 1

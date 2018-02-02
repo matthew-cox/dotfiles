@@ -88,10 +88,11 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   fi
 fi
 
-if [ -e "${HOME}/.dotfiles/alias/bash-like" ]; then
+if [[ -e "${HOME}/.dotfiles/alias/bash-like" ]]; then
   source "${HOME}/.dotfiles/alias/bash-like"
 fi
 
+# echo "$PATH"
 if command -v fortune >/dev/null; then
   fortune ~/.fortunes
 fi
