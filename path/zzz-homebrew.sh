@@ -5,12 +5,29 @@
 # >&2 echo "$0"
 # >&2 echo "$PATH"
 KEG_PATHS=(
-# sqlite
-"/usr/local/opt/sqlite/bin"
-# gpg-agent
+"/usr/local/opt/bison/bin"
+"/usr/local/opt/go/libexec/bin"
 "/usr/local/opt/gpg-agent/bin"
+"/usr/local/opt/icu4c/bin"
+"/usr/local/opt/icu4c/sbin"
+"/usr/local/opt/libxml2/bin"
+"/usr/local/opt/openssl@1.1"
+"/usr/local/opt/sqlite/bin"
 )
-
+#
+# paths for compiling things
+#
+BUILD_PATHS=(
+"bison"
+"icu4c"
+"libxml2"
+"openssl@1.1"
+"qt"
+"sqlite"
+)
+#
+# keg only binary paths
+#
 for keg_path in "${KEG_PATHS[@]}"; do
   if [[ -d "$keg_path" ]]; then
     in_path=$(echo "$PATH" | grep -c "${keg_path}")
@@ -21,9 +38,17 @@ for keg_path in "${KEG_PATHS[@]}"; do
   fi
 done
 # >&2 echo "$PATH"
-
-# Prefer the Homebrew installed openssl (new hotness)
-if [[ -d "/usr/local/opt/openssl" ]]; then
-  export LDFLAGS="-L/usr/local/opt/openssl/lib"
-  export CPPFLAGS="-I/usr/local/opt/openssl/include"
-fi
+#
+# build env variables
+#
+for build_path in "${BUILD_PATHS[@]}"; do
+  if [[ -d "/usr/local/opt/${build_path}/lib" ]]; then
+    export LDFLAGS="${LDFLAGS} -L/usr/local/opt/${build_path}/lib"
+  fi
+  if [[ -d "/usr/local/opt/${build_path}/include" ]]; then
+    export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/${build_path}/include"
+  fi
+  if [[ -d "/usr/local/opt/${build_path}/lib/pkgconfig" ]]; then
+    export PKG_CONFIG_PATH="/usr/local/opt/${build_path}/lib/pkgconfig:${PKG_CONFIG_PATH}"
+  fi
+done

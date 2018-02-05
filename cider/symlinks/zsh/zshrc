@@ -69,7 +69,8 @@ if [[ -d "${powerline_dir}" ]]; then
   in_path=$(echo "$PATH" | grep -c "${powerline_dir}")
   if [[ $in_path -le 0 ]]; then
     export PATH="${PATH}:${powerline_dir}/scripts"
-    export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
+    # this breaks python > 3.4 from a conflict with the selectors module
+    # export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
   fi
   source "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
 fi
