@@ -22,33 +22,23 @@ done
 #
 # "Global" variables
 #
-MAS_APPS=(
-  # Deliveries (3.0.3)
-  924726344
-  # Display Menu (2.2.2)
-  549083868
-  # LastPass (3.22.2)
-  926036361
-  # Moom (3.2.9)
-  419330170
-  # MuteMyMic (1.10)
-  456362093
-  # Radium (3.1.3)
-  597611879
-  # Slack (2.7.1)
-  803453959
-  # UnPlugged (3.0)
-  423123087
-  # Wunderlist (3.4.7)
-  410628904
-  # Xcode (8.3.3)
-  497799835
-  # properVOLUME (1.1.4)
-  521142667
-)
+readonly CONFIG_DIR="${HOME}/.dotfiles/config/mas"
+DEFAULT_CONFIG_FILE="${CONFIG_DIR}/default.sh"
+if [[ -r "${DEFAULT_CONFIG_FILE}" ]]; then
+  source "${DEFAULT_CONFIG_FILE}"
+fi
+
+#
+# define and load MAS app config file
+#
+USER_CONFIG_FILE="${CONFIG_DIR}/${USER}/config.sh"
+if [[ -r "${USER_CONFIG_FILE}" ]]; then
+  source "${USER_CONFIG_FILE}"
+fi
 
 # Might need this if running under tmux
-user_namespace_attach="$(command -v reattach-to-user-namespace 2>/dev/null)"
+# || echo ensures we don't fail in the event reattach-to-user-namespace is missing
+user_namespace_attach="$(command -v reattach-to-user-namespace 2>/dev/null || echo)"
 
 if [[ $(command -v mas) ]]; then
   for APP in "${MAS_APPS[@]}"; do
@@ -60,4 +50,7 @@ if [[ $(command -v mas) ]]; then
     fi
     putinfo "Done"
   done
+else
+  puterror "mas command not found"
+  exit 1
 fi

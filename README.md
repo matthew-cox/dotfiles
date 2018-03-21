@@ -1,13 +1,45 @@
-dotfiles
+# dotfiles
 ========
 
 the stuff with dots
 
-# First brew some 🍻
+**Last Updated: 2018-03-21 13:55 @mcox**
 
-Initialize [Homebrew](https://brew.sh):
+Table of Contents
+=================
+  * [Xcode CLI Tools](#xcode-cli-tools)
+  * [Brew some 🍻](#brew-some-🍻)
+    * [Disable analytics](#disable-analytics)
+    * [Install 1password](#install-1password)
+    * [Install MAS](#install-mas)
+    * [Basic github configure](#basic-github-configure)
+  * [Get the dots](#get-the-dots)
+    * [Powerline compatibility](#powerline-compatibility)
+    * [Python](#python)
+    * [Bootstrap](#bootstrap)
+    * [Mac AppStore Apps](#mac-appstore-apps)
+    * [Perl](#perl)
+    * [Ruby](#ruby)
+    * [SSH](#ssh)
+      * [config.d](#configd)
+      * [Key Symlinks](#key-symlinks)
+    * [TextMate](#textmate)
+    * [Zsh](#zsh)
+    * [Revel in your configured environment](#revel-in-your-configured-environment)
 
-    $ ./scripts/homebrew_init.sh
+========
+
+# Xcode CLI Tools
+
+A pre-req for most of this is the Xcode tools. One should be able to install them:
+
+    $ xcode-select --install
+
+# Brew some 🍻
+
+Install [Homebrew](https://brew.sh):
+
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ## Disable analytics
 
@@ -15,7 +47,14 @@ Initialize [Homebrew](https://brew.sh):
 
 ## Install 1password
 
+    $ brew tap caskroom/cask
     $ brew cask install 1password
+
+## Install MAS
+
+    $ brew install mas
+    # Sign in with your Apple ID
+    $ mas signin your-email@apple.id.com
 
 ## Basic github configure
 
@@ -34,34 +73,34 @@ Configure a very basic `~/.ssh/config`:
     $ git submodule init
     $ git submodule update
 
-### Powerline compatibility
+## Powerline compatibility
 
     $ cd powerline
     $ git checkout tags/2.1
 
-### Python
+## Python
 
-Prefer [pyenv](https://github.com/pyenv/pyenv) and [pynenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) over the global version:
+Prefer [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) over the global version:
 
     $ ./scripts/python_init.sh
 
-### Bootstrap
+## Bootstrap
 
 Bootstrap many things with [Cider](https://github.com/msanders/cider):
 
-    $ ln -s ~/.dotfiles/cider ~/.cider
+    $ ln -s ~/".dotfiles/cider/${USER}" ~/.cider
     $ pip install -U cider
     $ yes | cider restore
     $ cider apply-defaults
     $ cider relink
 
-### Mac AppStore Apps
+## Mac AppStore Apps
 
 Install the apps from the AppStore:
 
     # ./scripts/mas_install.sh
 
-### Perl
+## Perl
 
 Prefer [perlbrew](https://github.com/gugod/App-perlbrew) over the global version:
 
@@ -72,15 +111,15 @@ Start a new terminal, then:
     $ perlbrew install --skip-existing perl-5.27.2
     $ perlbrew switch perl-5.27.2
 
-### Ruby
+## Ruby
 
 Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
 
     $ ./scripts/ruby_init.sh
 
-### SSH
+## SSH
 
-#### config.d
+### config.d
 
 Needs [poet](https://github.com/awendt/poet):
 
@@ -88,20 +127,25 @@ Needs [poet](https://github.com/awendt/poet):
     $ rm -f ~/.ssh/config
     $ poet
 
-#### Key Symlinks
+### Key Symlinks
 
     $ ln -s ~/.ssh/simplisafe/PrdCommon.pem ~/.ssh/
 
-### TextMate
+## TextMate
 
 Install TextMate bundle manager and bundles:
 
     # ./scripts/textmate_init.sh
 
-### Zsh
+## Zsh
 
 Change the user shell:
 
     $ chsh -s /bin/zsh
 
-Open a new terminal
+## Revel in your configured environment
+
+Open a new terminal:
+
+    $ open /Applications/iTerm2.app
+

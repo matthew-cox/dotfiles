@@ -19,9 +19,20 @@ done
 #
 ##############################################################################
 #
-# Desired ruby version
+# config stuff
 #
-export RUBY_VERSION=2.4.1
+readonly CONFIG_DIR="${HOME}/.dotfiles/config/ruby"
+DEFAULT_CONFIG_FILE="${CONFIG_DIR}/default.sh"
+if [[ -r "${DEFAULT_CONFIG_FILE}" ]]; then
+  source "${DEFAULT_CONFIG_FILE}"
+fi
+#
+# define and load config file
+#
+USER_CONFIG_FILE="${CONFIG_DIR}/${USER}/config.sh"
+if [[ -r "${USER_CONFIG_FILE}" ]]; then
+  source "${USER_CONFIG_FILE}"
+fi
 # ???
 # export RBENV_ROOT=/usr/local/var/rbenv
 if $(command -v rbenv >/dev/null); then
