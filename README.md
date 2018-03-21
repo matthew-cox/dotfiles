@@ -1,5 +1,4 @@
 # dotfiles
-=================
 
 the stuff with dots
 
@@ -27,8 +26,6 @@ Table of Contents
     * [TextMate](#textmate)
     * [Zsh](#zsh)
     * [Revel in your configured environment](#revel-in-your-configured-environment)
-
-=================
 
 # Xcode CLI Tools
 
