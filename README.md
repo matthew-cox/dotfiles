@@ -1,14 +1,15 @@
 # dotfiles
-========
+=================
 
 the stuff with dots
 
-**Last Updated: 2018-03-21 13:55 @mcox**
+**Last Updated: 2018-03-21 16:54 @matthew-cox**
 
 Table of Contents
 =================
+  * [dotfiles](#dotfiles)
   * [Xcode CLI Tools](#xcode-cli-tools)
-  * [Brew some 🍻](#brew-some-🍻)
+  * [Brew some 🍻](#brew-some-)
     * [Disable analytics](#disable-analytics)
     * [Install 1password](#install-1password)
     * [Install MAS](#install-mas)
@@ -27,7 +28,7 @@ Table of Contents
     * [Zsh](#zsh)
     * [Revel in your configured environment](#revel-in-your-configured-environment)
 
-========
+=================
 
 # Xcode CLI Tools
 

@@ -11,6 +11,9 @@ use warnings;
 # auto-flush
 $| = 1;
 
+# use utf8;
+# use open ':std', ':encoding(UTF-8)';
+
 my $NOW=`date '+%F %H:%M'`;
 chomp($NOW);
 
@@ -43,7 +46,9 @@ while ( <STDIN> ) {
     # spaces become hyphens
     $key =~ s/\s/-/g;
     # remove various special characters
-    $key =~ s/[\(\)\,\'\"\.`\/?]//g;
+    # $key =~ s/[\(\)\,\'\"\.`\/?]//g;
+    # only word and hyphen chars? maybe?
+    $key =~ s/[^\w-]//g;
     # lower case it
     $key = lc($key);
 
