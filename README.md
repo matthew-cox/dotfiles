@@ -133,7 +133,7 @@ Needs [poet](https://github.com/awendt/poet):
 
 Install TextMate bundle manager and bundles:
 
-    # ./scripts/textmate_init.sh
+    $ ./scripts/textmate_init.sh
 
 ## Zsh
 

@@ -4,6 +4,11 @@
 #
 # echo "zshrc - $PATH"
 #
+# Command history stuff
+#
+HISTFILE=${HOME}/.zsh_history
+HISTSIZE=500
+#
 ##############################################################################
 #
 # completions - https://stackoverflow.com/questions/26462667/git-completion-not-working-in-zsh-on-os-x-yosemite-with-homebrew#26479426

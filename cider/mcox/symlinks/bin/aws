@@ -16,7 +16,7 @@ fi
 #
 # run help commands without vault
 #
-if echo "$@" | grep 'help' >/dev/null 2>&1; then
+if echo "$@" | grep -E '(configure|help)' >/dev/null 2>&1; then
   exec "${AWS_CLI}" "$@"
 else
   #
