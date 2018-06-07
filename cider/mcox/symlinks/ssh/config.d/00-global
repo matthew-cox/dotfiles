@@ -7,7 +7,6 @@ GlobalKnownHostsFile ~/.ssh/rk-known-hosts
 #
 Host *
     Compression yes
-    CompressionLevel 4
     FallBackToRsh no
     ForwardAgent yes
     KeepAlive yes
