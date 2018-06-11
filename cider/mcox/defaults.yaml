@@ -14,6 +14,9 @@
 # "com.apple.notificationcenterui":
 #     "bannerTime": 3
 
+"com.apple.screencapture":
+    "location": "~/Desktop/ScreenShots"
+
 "com.apple.Safari":
     "AlwaysRestoreSessionAtLaunch": true
     "AutoFillCreditCardData": false
