@@ -2,6 +2,12 @@
 #
 # Home local lan
 #
+
+Host rpi0.lan
+    User pi
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/rpi0.priv
+
 Host *.lan
 #    User mcox
     Port 22
