@@ -21,6 +21,9 @@ if $(command -v pyenv-virtualenv-init >/dev/null); then
   # alias powerline="$(pyenv prefix)/bin/powerline"
 fi
 
+# Work around for High Sierra Python fork crashes
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # add pip installed bins to the path
 # if $(command -v pyenv >/dev/null 2>&1); then
 #   PYPATH="$(dirname $(pyenv which python))"
