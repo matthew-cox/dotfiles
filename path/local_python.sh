@@ -22,6 +22,7 @@ if $(command -v pyenv-virtualenv-init >/dev/null); then
 fi
 
 # Work around for High Sierra Python fork crashes
+# https://github.com/ansible/ansible/issues/32499
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # add pip installed bins to the path
