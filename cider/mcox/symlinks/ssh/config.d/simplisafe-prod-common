@@ -11,3 +11,29 @@ Host s00.us
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
 
+# albert
+Host albert.simplisafe.com ip-10-20-0-127.ec2.internal 10.20.0.127
+  User centos
+  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+
+  IdentitiesOnly yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+
+# albino
+Host albino.simplisafe.com ip-10-20-0-212.ec2.internal 10.20.0.212
+  User centos
+  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+
+  IdentitiesOnly yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+
+# Zodiac
+Host zodiac.simplisafe.com ip-10-20-1-14.ec2.internal 10.20.1.14
+  User centos
+  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+
+  IdentitiesOnly yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
