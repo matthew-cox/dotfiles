@@ -31,6 +31,8 @@ if $(command -v hub >/dev/null); then
   alias git='hub'
 fi
 
+alias gti='say "vrooooom vrooom"'
+
 # some functions
 
 ## add gnu versions of utils to path
