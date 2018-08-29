@@ -68,6 +68,24 @@ def _clean_loggers():
 #
 ##############################################################################
 #
+# _except_hook()
+#
+def _except_hook(exctype, value, traceback): # pylint: disable=unused-argument
+    import traceback as tb
+    message = "I had a problem: \n\n{}".format(''.join(tb.format_exception(None, value, traceback)))
+    _get_logger().error(message)
+
+    # If an SNS topic is configured for error notification: send a message
+    if FAILURE_ARN:
+        from Aws.sns import Sns
+        subject = "ERROR for: {}".format(Path(__file__).resolve().name)
+        sns = Sns(topic_arn=FAILURE_ARN)
+        sns.publish_message(message=message, subject=subject)
+
+sys.excepthook = _except_hook
+#
+##############################################################################
+#
 # _get_logger()
 #
 def _get_logger():
