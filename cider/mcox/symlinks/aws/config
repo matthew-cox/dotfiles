@@ -11,3 +11,11 @@ cloudwatch = true
 [profile short-urls]
 region = us-east-1
 output = json
+
+[profile ss-prod2]
+output = json
+region = us-east-1
+
+[profile ss-prot]
+output = json
+region = us-east-1
