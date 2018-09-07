@@ -48,7 +48,8 @@ sys.path.append(str(LIB_PATH))
 #
 # Global variables
 #
-DEFAULT_LOG_LEVEL = 'WARNING' if not os.environ.get('PY_LOG_LEVEL') else os.environ['PY_LOG_LEVEL']
+DEFAULT_LOG_LEVEL = os.environ.get('PY_LOG_LEVEL', 'WARNING')
+FAILURE_ARN = os.environ.get('SNS_FAILURE_ARN', None)
 
 DESCRIPTION = "This is the Python frame program"
 #
@@ -77,10 +78,13 @@ def _except_hook(exctype, value, traceback): # pylint: disable=unused-argument
 
     # If an SNS topic is configured for error notification: send a message
     if FAILURE_ARN:
-        from Aws.sns import Sns
-        subject = "ERROR for: {}".format(Path(__file__).resolve().name)
-        sns = Sns(topic_arn=FAILURE_ARN)
-        sns.publish_message(message=message, subject=subject)
+        try:
+            from Aws.sns import Sns
+            subject = "ERROR for: {}".format(Path(__file__).resolve().name)
+            sns = Sns(topic_arn=FAILURE_ARN)
+            sns.publish_message(message=message, subject=subject)
+        except: # pylist: disable=bare-except
+            pass
 
 sys.excepthook = _except_hook
 #
