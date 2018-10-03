@@ -24,6 +24,7 @@ BUILD_PATHS=(
 "openssl@1.1"
 "qt"
 "sqlite"
+"zlib"
 )
 #
 # keg only binary paths
