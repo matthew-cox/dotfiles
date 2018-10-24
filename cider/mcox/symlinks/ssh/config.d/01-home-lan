@@ -3,12 +3,12 @@
 # Home local lan
 #
 
-Host rpi0.lan
+Host rpi0.lan rpi0.local 10.10.10.154
     User pi
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/rpi0.priv
 
-Host *.lan
+Host *.lan *.local
 #    User mcox
     Port 22
     PreferredAuthentications keyboard-interactive,password
@@ -18,6 +18,6 @@ Host admin.lan
   # Almond+ uses older, smaller key
   KexAlgorithms +diffie-hellman-group1-sha1
 
-Host raspberrypi.lan
+Host raspberrypi.lan raspberrypi.local 10.10.10.151
     User pi
     PreferredAuthentications keyboard-interactive,password
