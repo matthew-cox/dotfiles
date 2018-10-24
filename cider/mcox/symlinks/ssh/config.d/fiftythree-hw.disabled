@@ -1,8 +1,0 @@
-#######################################################################
-#
-# FiftyThree HW Instances
-#
-Host *.hw.sys53.com
-#    User mcox
-    Port 2222
-#    IdentityFile ~/.ssh/seas_key

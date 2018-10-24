@@ -1,7 +1,0 @@
-#
-# AWS CodeCommit
-#
-Host git-codecommit.*.amazonaws.com
-  User APKAJ27ODDV36WGPKHXQ
-  IdentityFile ~/.ssh/aws_azriel_home
-

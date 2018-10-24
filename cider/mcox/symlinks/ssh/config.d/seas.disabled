@@ -1,8 +1,0 @@
-#######################################################################
-#
-# SEAS - from graduate work
-#
-#Host *seas.harvard.edu
-#    User mcox
-#    ForwardAgent yes
-#    IdentityFile ~/.ssh/seas_key
