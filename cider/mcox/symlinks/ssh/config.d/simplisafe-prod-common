@@ -1,39 +1,38 @@
-
 #######################################################################
 #
 # SimpliSafe prod common
 #
 Host s00.us
   User ss_user
-  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+  IdentityFile ~/.ssh/simplisafe/PrdCommon.pem
 
   IdentitiesOnly yes
-  StrictHostKeyChecking no
+  StrictHostKeyChecking yes
   UserKnownHostsFile=/dev/null
 
 # albert
-Host albert.simplisafe.com ip-10-20-0-127.ec2.internal 10.20.0.127
+Host albert.simplisafe.com albert.prd.simplisafe.com ip-10-20-0-127.ec2.internal 10.20.0.127
   User centos
-  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+  IdentityFile ~/.ssh/simplisafe/PrdCommon.pem
 
   IdentitiesOnly yes
-  StrictHostKeyChecking no
+  StrictHostKeyChecking yes
   UserKnownHostsFile=/dev/null
 
 # albino
-Host albino.simplisafe.com ip-10-20-0-212.ec2.internal 10.20.0.212
+Host albino.simplisafe.com albino.prd.simplisafe.com ip-10-20-0-212.ec2.internal 10.20.0.212
   User centos
-  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+  IdentityFile ~/.ssh/simplisafe/PrdCommon.pem
 
   IdentitiesOnly yes
-  StrictHostKeyChecking no
+  StrictHostKeyChecking yes
   UserKnownHostsFile=/dev/null
 
 # Zodiac
-Host zodiac.simplisafe.com ip-10-20-1-14.ec2.internal 10.20.1.14
+Host zodiac.simplisafe.com zodiac.prd.simplisafe.com ip-10-20-1-14.ec2.internal 10.20.1.14
   User centos
-  IdentityFile ~/.ssh/simplisafe/prodcommon.priv
+  IdentityFile ~/.ssh/simplisafe/PrdCommon.pem
 
   IdentitiesOnly yes
-  StrictHostKeyChecking no
+  StrictHostKeyChecking yes
   UserKnownHostsFile=/dev/null
