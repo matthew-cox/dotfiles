@@ -17,7 +17,9 @@ $| = 1;
 my $NOW=`date '+%F %H:%M'`;
 chomp($NOW);
 
-print join('', "**Last Updated: ${NOW} @", $ENV{"USER"}, "**$/$/");
+my( $user_name ) = $ENV{"USER"} eq "mcox" ? "matthew-cox" : $ENV{"USER"};
+
+print "**Last Updated: ${NOW} \@${user_name}**$/$/";
 
 print "Table of Contents$/=================$/";
 
