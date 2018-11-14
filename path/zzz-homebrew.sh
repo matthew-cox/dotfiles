@@ -53,3 +53,9 @@ for build_path in "${BUILD_PATHS[@]}"; do
     export PKG_CONFIG_PATH="/usr/local/opt/${build_path}/lib/pkgconfig:${PKG_CONFIG_PATH}"
   fi
 done
+#
+# Enable brew command-not-found
+#
+if brew command command-not-found-init > /dev/null 2>&1; then
+  eval "$(brew command-not-found-init)";
+fi
