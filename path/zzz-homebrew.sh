@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 #
+# Homebrew path
+#
+BIN_PATHS=(
+"/usr/local/bin"
+"/usr/local/sbin"
+)
+
+for bin_path in "${BIN_PATHS[@]}"; do
+  if [[ ! ($PATH =~ "${bin_path}") ]]; then
+    export PATH="${PATH}:${bin_path}"
+  fi
+done
+#
 # misc homebrew keg only paths
 #
 # >&2 echo "$0"
