@@ -315,6 +315,8 @@ symlinks:
     # "fish/functions/*": "~/.config/fish/functions/"
     "fortunes/": "~/.fortunes"
     "git/gitconfig": "~/.gitconfig"
+    "pycodestyle": "~/.config/pycodestyle"
+    "pylintrc": "~/.config/pylintrc"
     # "sh/.*": "~"
     "textmate/tm_properties": "~/.tm_properties"
     "tmux/tmux.conf": "~/.tmux.conf"

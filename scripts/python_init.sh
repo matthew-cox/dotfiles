@@ -85,6 +85,11 @@ fi
 pyenv shell python-local-${PYENV_VERSION}
 pyenv which pip
 
+# ensure that pip and setuptools are new
+putinfo "Upgrading pip and setuptools..."
+pip install --upgrade pip setuptools
+putsuccess "done"
+
 USER_PIP_FILE="${CONFIG_DIR}/${USER}/pip.txt"
 if [[ -r "${USER_PIP_FILE}" ]]; then
   pip install -r "${USER_PIP_FILE}"

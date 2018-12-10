@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+#
+# This work is licensed under the terms of the GNU GPL, version 2 or later.
+# See the COPYING file in the top-level directory.
+
+import argparse
+import distutils.spawn
+import os
+import re
+import subprocess
+import sys
+
+
+def find_python_files():
+    """
+    Search under cwd for all python files.
+    """
+    modules = []
+    scripts = []
+
+    print("finding files")
+    skipdirs = ["./.git", "./.tox"]
+    for root, dirs, files in os.walk("."):
+        if root in modules:
+            continue
+
+        if root != "." and ".git" in dirs:
+            # Don't descend into other git repos
+            skipdirs.append(root)
+
+        do_skip = False
+        for skip in skipdirs:
+            if root == skip or root.startswith(skip + "/"):
+                do_skip = True
+                break
+        if do_skip:
+            continue
+
+        if "__init__.py" in files:
+            modules.append(root)
+            continue
+
+        for filename in [os.path.join(root, f) for f in files]:
+            if os.path.islink(filename):
+                continue
+            out = subprocess.check_output(["/usr/bin/file", filename])
+            if "Python script" in out.decode("utf-8"):
+                scripts.append(filename)
+
+    files = [(f.startswith("./") and f[2:] or f) for f in (scripts + modules)]
+    return files
+
+
+def distill_default_apps(options, files):
+    """
+    Try to determine the default app paths depending on the python
+    version of the code we are inspecting
+
+    :returns: (pylint bin name, pycodestyle bin name)
+    """
+    is_py2 = options.is_py2
+    is_py3 = options.is_py3
+    if not is_py2 and not is_py3:
+        for f in files:
+            if os.path.isdir(f):
+                f = os.path.join(f, "__init__.py")
+            line = open(f).readline()
+            if not is_py2 and re.search("python2", line):
+                print("Detected python2 env lines")
+                is_py2 = True
+            elif not is_py3 and re.search("python3", line):
+                print("Detected python3 env lines")
+                is_py3 = True
+            elif not is_py2 and not is_py3 and re.search("python", line):
+                print("Detected python env lines, assuming python2")
+                is_py2 = True
+        if is_py2 and is_py3:
+            is_py3 = False
+
+    py2_pylint = py3_pylint = "pylint"
+    py2_pycodestyle = py3_pycodestyle = "pycodestyle"
+    if distutils.spawn.find_executable("pylint-2"):
+        py2_pylint = "pylint-2"
+    if distutils.spawn.find_executable("pylint-3"):
+        py3_pylint = "pylint-3"
+    if distutils.spawn.find_executable("pycodestyle-2"):
+        py2_pycodestyle = "pycodestyle-2"
+    if distutils.spawn.find_executable("pycodestyle-3"):
+        py3_pycodestyle = "pycodestyle-3"
+
+    pylint_ret = []
+    pycode_ret = []
+    if is_py2:
+        pylint_ret.append(py2_pylint)
+        pycode_ret.append(py2_pycodestyle)
+    if is_py3:
+        pylint_ret.append(py3_pylint)
+        pycode_ret.append(py3_pycodestyle)
+
+    return pylint_ret, pycode_ret
+
+
+def parse_args():
+    desc = ("Helper script to intelligently run pylint against all "
+            "python code underneath the current directory")
+    parser = argparse.ArgumentParser(description=desc)
+
+    parser.add_argument("files", nargs="*",
+            help="Manually specify the filelist, instead of searching.")
+    parser.add_argument("-2", "--2", action="store_true", dest="is_py2",
+            help="Skip auto detection, use python2")
+    parser.add_argument("-3", "--3", action="store_true", dest="is_py3",
+            help="Skip auto detection, use python3")
+
+    options = parser.parse_args()
+    return options
+
+
+def main():
+    options = parse_args()
+
+    files = options.files
+    if not files:
+        files = find_python_files()
+    output_format = sys.stdout.isatty() and "colorized" or "text"
+    pylint_cmds, pycodestyle_cmds = distill_default_apps(options, files)
+
+    if not pylint_cmds:
+        print("No python files detected!")
+        return 1
+
+    for pycodestyle in pycodestyle_cmds:
+        print("running %s" % pycodestyle)
+        cmd = "%s " % pycodestyle
+        cmd += " ".join(files)
+        os.system(cmd)
+
+    for pylint in pylint_cmds:
+        print("running %s" % pylint)
+        cmd = "%s " % pylint
+        cmd += "--output-format=%s " % output_format
+        cmd += " ".join(files)
+        os.system(cmd)
+
+
+if __name__ == '__main__':
+    sys.exit(main())
