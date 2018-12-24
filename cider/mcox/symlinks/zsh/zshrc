@@ -7,7 +7,7 @@
 # Command history stuff
 #
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=500
+HISTSIZE=5000
 #
 ##############################################################################
 #
@@ -50,6 +50,16 @@ fi
 # if [ -d "${HOME}/.dotfiles/path/zz-ruby.sh" ]; then
 #     source "${HOME}/.dotfiles/path/zz-ruby.sh"
 # fi
+#
+##############################################################################
+#
+# zplug
+#
+export ZPLUG_HOME=/usr/local/opt/zplug
+# if [[ -f "${ZPLUG_HOME}/init.zsh" ]]; then
+#     source $ZPLUG_HOME/init.zsh
+# fi
+
 #
 ##############################################################################
 #
