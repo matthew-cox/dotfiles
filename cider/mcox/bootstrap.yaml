@@ -19,7 +19,7 @@ after-scripts:
     - "brew linkapps"
     # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
     # Because...terraform
-    - "brew switch terraform 0.9.11"
+    # - "brew switch terraform 0.9.11"
     - "brew pin terraform"
 
 casks:
@@ -53,6 +53,7 @@ casks:
     - "brackets"
     - "blu-ray-player"
     - "burn"
+    # 2019-03-01 - no longer works
     # - "caffeine"
     - "calibre"
     - "carbon-copy-cloner"
@@ -104,6 +105,10 @@ casks:
     - "itsycal"
     - "java"
     # - "jenkins-menu"
+    # Customize keyboard
+    - "karabiner-elements"
+    # replacement for Caffeine
+    - "keepingyouawake"
     # - "keepassx"
     # Caffeine replacement
     - "keepingyouawake"
@@ -148,7 +153,11 @@ casks:
     # - "spotify"
     # nvAlt replacement
     - "standard-notes"
+    # replacement for Moom (auto window layout)
+    - "stay"
     - "steam"
+    # manage terraform versions
+    - "tfenv"
     - "textmate"
     - "the-hit-list"
     - "the-unarchiver"
