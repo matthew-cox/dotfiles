@@ -42,7 +42,10 @@ if [[ -d "${HOME}/.dotfiles/zsh/plugins/" ]]; then
   setopt EXTENDED_GLOB
   for plugin in "${HOME}"/.dotfiles/zsh/plugins/*; do
     # echo "$plugin"
-    source "$plugin"/*.zsh
+    setopt +o nomatch
+    if [[ -r "$plugin"/*.zsh ]]; then
+      source "$plugin"/*.zsh
+    fi
   done
 fi
 
