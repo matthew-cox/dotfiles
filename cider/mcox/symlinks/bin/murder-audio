@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# murder-video - fix MacOS audio stuff
+#
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  echo "Ending current coreaudiod processes..."
+  sudo killall coreaudiod
+fi
