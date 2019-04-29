@@ -1,5 +1,6 @@
 [pycodestyle]
 select =
-#ignore = E226,E24,W504
+ignore = E402
+#E226,E24,W504
 max_line_length = 100
-max_doc_length = 100
+max_doc_length = 80
