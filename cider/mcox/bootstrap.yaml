@@ -51,7 +51,7 @@ casks:
     - "brackets"
     - "blu-ray-player"
     - "burn"
-    - "caffeine"
+    # - "caffeine"
     - "calibre"
     - "carbon-copy-cloner"
     - "charles"
@@ -70,7 +70,7 @@ casks:
     - "espresso"
     # Etcher - RaspberryPi image burner
     - "etcher"
-    - "evernote"
+    # - "evernote"
     # - "expandrive"
     - "fantastical"
     - "filezilla"
@@ -101,6 +101,8 @@ casks:
     - "java"
     # - "jenkins-menu"
     # - "keepassx"
+    # Caffeine replacement
+    - "keepingyouawake"
     - "keybase"
     - "kitematic"
     - "loadmytracks"
