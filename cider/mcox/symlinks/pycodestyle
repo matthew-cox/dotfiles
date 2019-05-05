@@ -2,4 +2,4 @@
 select =
 #ignore = E226,E24,W504
 max_line_length = 100
-max_doc_length = 72
+max_doc_length = 100

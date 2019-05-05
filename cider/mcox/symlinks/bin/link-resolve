@@ -17,11 +17,11 @@ try:
 except ModuleNotFoundError:
     from pathlib2 import Path
 import os
-import sys
 try:
-    from urllib.parse import urlparse
+    from urllib.parse import unquote, urlparse
 except ImportError:
-     from urlparse import urlparse
+    from urlparse import urlparse
+    import urllib
 
 #
 # Non-standard imports
@@ -30,15 +30,19 @@ import requests
 
 
 #
-##############################################################################
+###############################################################################
 #
 # Global variables
 #
 DEFAULT_LOG_LEVEL = os.environ.get('PY_LOG_LEVEL', 'WARNING')
 
 DESCRIPTION = "Resolve shortend URLs"
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:66.0) Gecko/20100101 Firefox/66.0'
+
+HEADERS = {'user-agent': USER_AGENT}
+
 #
-##############################################################################
+###############################################################################
 #
 # _clean_loggers()
 #
@@ -52,8 +56,9 @@ def _clean_loggers():
     logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s.%(funcName)s:%(message)s',
                         level=getattr(logging, DEFAULT_LOG_LEVEL))
 
+
 #
-##############################################################################
+###############################################################################
 #
 # _get_logger()
 #
@@ -66,8 +71,10 @@ def _get_logger():
 
     '''
     return logging.getLogger(Path(__file__).resolve().name)
+
+
 #
-##############################################################################
+###############################################################################
 #
 # _json_dump() - Little output to DRY
 #
@@ -86,15 +93,17 @@ def _json_dump(the_thing, pretty=False):
         output = json.dumps(the_thing, default=_json_serial)
     return output
 
+
 def _json_serial(obj):
-    '''JSON serializer for objects not serializable by default json code'''
+    '''JSON serializer for datetime and date objects'''
 
     if isinstance(obj, (datetime, date)):
         return obj.isoformat()
     raise TypeError("Type %s not serializable" % type(obj))
+
+
 #
-#
-##############################################################################
+###############################################################################
 #
 # handle_arguments()
 #
@@ -118,9 +127,10 @@ def handle_arguments():
                         help='Logging verbosity. Default: %(default)s')
 
     return parser.parse_args()
+
+
 #
-#
-##############################################################################
+###############################################################################
 #
 # main()
 #
@@ -137,21 +147,47 @@ def main():
 
     logger.info("Log level is '%s'", args.log_level.upper())
 
-    req = requests.get(args.url, allow_redirects=False)
+    # look for a URL hidden in the params
+    parsed = urlparse(args.url)
+    if 'http' in parsed.query:
+        try:
+            query = urllib.unquote(parsed.query).decode('utf8')
+        except Exception:
+            query = unquote(parsed.query)
+        params = query.split('&')
+        for param in params:
+            if 'http' in param:
+                print(param)
 
-    if req.status_code == 301:
-        redirect = req.headers.get('Location')
-        parsed = urlparse(redirect)
-        path = parsed.path
-        if 'ref=' in parsed.path:
-            path = '/'.join(parsed.path.split('/')[:-1])
-        print(''.join([parsed.netloc, path]))
+        import sys
+        sys.exit(0)
+
+    redirects = False
+    if 'abnb.me' in args.url:
+        redirects = True
+
+    req = requests.get(args.url, allow_redirects=redirects, headers=HEADERS)
+    final_url = None
+    if req.status_code > 300 and req.status_code < 400:
+        logger.info("Found redirect!")
+        if len(req.history) > 0:
+            final_url = req.url
+        else:
+            final_url = req.headers.get('Location')
+
     else:
-        parsed = urlparse(redirect)
-        path = parsed.path
-        print(''.join([parsed.netloc, path]))
+        logger.info("No redirect found!")
+        if len(req.history) > 0:
+            final_url = req.url
+
+    parsed = urlparse(final_url)
+    path = parsed.path
+    if 'ref=' in parsed.path:
+        path = '/'.join(parsed.path.split('/')[:-1])
+    print(''.join([parsed.netloc, path]))
+
 #
-##############################################################################
+###############################################################################
 #
 # Call the main function
 #

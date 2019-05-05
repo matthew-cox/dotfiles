@@ -44,7 +44,7 @@ sys.path.append(str(LIB_PATH))
 
 
 #
-##############################################################################
+###############################################################################
 #
 # Global variables
 #
@@ -52,8 +52,10 @@ DEFAULT_LOG_LEVEL = os.environ.get('PY_LOG_LEVEL', 'WARNING')
 FAILURE_ARN = os.environ.get('SNS_FAILURE_ARN', None)
 
 DESCRIPTION = "This is the Python frame program"
+
+
 #
-##############################################################################
+###############################################################################
 #
 # _clean_loggers()
 #
@@ -66,8 +68,10 @@ def _clean_loggers():
     # try this here
     logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s.%(funcName)s:%(message)s',
                         level=getattr(logging, DEFAULT_LOG_LEVEL))
+
+
 #
-##############################################################################
+###############################################################################
 #
 # _except_hook()
 #
@@ -87,8 +91,10 @@ def _except_hook(exctype, value, traceback): # pylint: disable=unused-argument
             pass
 
 sys.excepthook = _except_hook
+
+
 #
-##############################################################################
+###############################################################################
 #
 # _get_logger()
 #
@@ -101,8 +107,10 @@ def _get_logger():
 
     '''
     return logging.getLogger(Path(__file__).resolve().name)
+
+
 #
-##############################################################################
+###############################################################################
 #
 # _json_dump() - Little output to DRY
 #
@@ -127,9 +135,10 @@ def _json_serial(obj):
     if isinstance(obj, (datetime, date)):
         return obj.isoformat()
     raise TypeError("Type %s not serializable" % type(obj))
+
+
 #
-#
-##############################################################################
+###############################################################################
 #
 # handle_arguments()
 #
@@ -152,9 +161,10 @@ def handle_arguments():
                         help='Logging verbosity. Default: %(default)s')
 
     return parser.parse_args()
+
+
 #
-#
-##############################################################################
+###############################################################################
 #
 # main()
 #
@@ -171,8 +181,9 @@ def main():
 
     logger.info("Log level is '%s'", args.log_level.upper())
 
+
 #
-##############################################################################
+###############################################################################
 #
 # Call the main function
 #
