@@ -23,3 +23,7 @@ region = us-east-1
 [profile ss-legal]
 output = json
 region = us-east-1
+
+[profile ss-dev]
+output = json
+region = us-east-1
