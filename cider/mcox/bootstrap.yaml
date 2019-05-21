@@ -32,6 +32,8 @@ casks:
     - "font-sourcecodepro-nerd-font"
     # Applications
     - "1password"
+    # Adafruit
+    - "adafruit-arduino"
     - "adapter"
     - "adium"
     - "adobe-air"
@@ -78,6 +80,8 @@ casks:
     - "fission"
     # - "flashlight"
     - "fluid"
+    # serial driver for Arduino
+    - "ftdi-vcp-driver"
     - "gemini"
     # - "gfxcardstatus"
     # - "gimp"
@@ -104,6 +108,7 @@ casks:
     # Caffeine replacement
     - "keepingyouawake"
     - "keybase"
+    - "kindle"
     - "kitematic"
     - "loadmytracks"
     # - "logitech-harmony"
@@ -120,6 +125,8 @@ casks:
     # - "moom"
     - "mpeg-streamclip"
     - "mplayer-osx-extended"
+    # CirCuitPython IDE
+    - "mu-editor"
     # - "nvalt"
     - "omnigraffle"
     - "path-finder"
@@ -132,7 +139,8 @@ casks:
     - "scrivener"
     # Moom replacement
     - "shiftit"
-    - "kindle"
+    # driver for arduino
+    - "silicon-labs-vcp-driver"
     - "silverlight"
     - "skype"
     - "slimbatterymonitor"
@@ -159,9 +167,9 @@ casks:
     - "xquartz"
     - "zoomus"
 
-"dependencies":
-  "crashplan": "java"
-#     "mit-scheme": "casks/xquartz"
+# "dependencies":
+  # "crashplan": "java"
+  # "mit-scheme": "casks/xquartz"
 
 "formulas":
     - "ack"
