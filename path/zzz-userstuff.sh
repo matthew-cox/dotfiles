@@ -16,6 +16,14 @@ fi
 #   export PATH="${PATH}:${HOME}/.dotfiles/bin"
 # fi
 
+# Remove Zoom local webserver
+if pgrep ZoomOpener; then
+  echo "*** Closing Zoom web server..."
+  pkill "ZoomOpener";
+  rm -rf ~/.zoomus;
+  touch ~/.zoomus && chmod 000 ~/.zoomus;
+fi
+
 #
 # prefer gnu tools rather than OS X
 #
