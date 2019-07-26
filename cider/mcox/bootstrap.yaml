@@ -18,9 +18,6 @@ after-scripts:
     - "~/.dotfiles/scripts/sudo_config.sh"
     - "brew linkapps"
     # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
-    # Because...terraform
-    # - "brew switch terraform 0.9.11"
-    - "brew pin terraform"
 
 casks:
     # Fonts
@@ -296,9 +293,6 @@ casks:
     # static website deploy - http://stout.is
     - "stout"
     - "sudolikeaboss"
-    # terraform - locked to 0.9.11
-    # - "terraform"
-    - "https://raw.githubusercontent.com/Homebrew/homebrew-core/4f85ad5ec0cdd51202d96194f605af8ee5390b05/Formula/terraform.rb"
     - "the_platinum_searcher"
     - "the_silver_searcher"
     - "tivodecode"

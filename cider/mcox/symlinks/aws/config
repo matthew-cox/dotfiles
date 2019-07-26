@@ -12,7 +12,7 @@ cloudwatch = true
 region = us-east-1
 output = json
 
-[profile ss-prod2]
+[profile ss-prod]
 output = json
 region = us-east-1
 
