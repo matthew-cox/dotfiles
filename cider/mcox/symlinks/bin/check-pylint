@@ -10,6 +10,9 @@ import re
 import subprocess
 import sys
 
+# Ensure ./lib (symlink or submodule to python_lib) is in the lib path for local includes
+sys.path.append(f'{os.getcwd()}/lib')
+os.environ['PYTHONPATH'] = f"{os.getenv('PYTHONPATH', None)}:{os.getcwd()}/lib"
 
 def find_python_files():
     """
