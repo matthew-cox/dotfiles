@@ -22,3 +22,6 @@
 [submodule "zsh/plugins/zsh-iterm-touchbar"]
 	path = zsh/plugins/zsh-iterm-touchbar
 	url = https://github.com/iam4x/zsh-iterm-touchbar
+[submodule "themes/iTerm2-Color-Schemes"]
+	path = themes/iTerm2-Color-Schemes
+	url = git@github.com:mbadolato/iTerm2-Color-Schemes.git

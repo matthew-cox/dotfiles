@@ -204,6 +204,7 @@ casks:
     # installed on Antares
     # - "dnsmasq"
     - "dos2unix"
+    - "emojify"
     - "faac"
     - "ffmpeg"
     - "fftw"
@@ -259,6 +260,7 @@ casks:
     # Mac App Store CLI
     - "mas"
     - "maven"
+    - "mdcat"
     - "mercurial"
     - "mpg123"
     - "mysql"
