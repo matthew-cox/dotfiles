@@ -45,14 +45,13 @@ Install [Homebrew](https://brew.sh):
 
 ## Install 1password
 
-    $ brew tap caskroom/cask
+    $ brew tap homebrew/cask
     $ brew cask install 1password
 
 ## Install MAS
 
     $ brew install mas
-    # Sign in with your Apple ID
-    $ mas signin your-email@apple.id.com
+
 
 ## Basic github configure
 
@@ -87,8 +86,8 @@ Prefer [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://gi
 Bootstrap many things with [Cider](https://github.com/msanders/cider):
 
     $ ln -s ~/".dotfiles/cider/${USER}" ~/.cider
-    $ pip install -U cider
-    $ yes | cider restore
+    $ pip3 install -U cider
+    $ yes | cider restore 2>&1 | grep -Ev -e 'already installed' -e '(re-|re)install'
     $ cider apply-defaults
     $ cider relink
 
