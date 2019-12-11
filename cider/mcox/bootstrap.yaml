@@ -330,6 +330,7 @@ symlinks:
     # "fish/functions/*": "~/.config/fish/functions/"
     "fortunes/": "~/.fortunes"
     "git/gitconfig": "~/.gitconfig"
+    "pihole": "~/.config/pihole"
     "pycodestyle": "~/.config/pycodestyle"
     "pylintrc": "~/.config/pylintrc"
     # "sh/.*": "~"
