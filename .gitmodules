@@ -25,3 +25,9 @@
 [submodule "themes/iTerm2-Color-Schemes"]
 	path = themes/iTerm2-Color-Schemes
 	url = git@github.com:mbadolato/iTerm2-Color-Schemes.git
+[submodule "powerlevel10k"]
+	path = powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "powerlevel10k-media"]
+	path = powerlevel10k-media
+	url = git@github.com:romkatv/powerlevel10k-media.git

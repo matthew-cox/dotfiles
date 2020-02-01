@@ -346,5 +346,6 @@ symlinks:
     "zsh/zprofile": "~/.zprofile"
     "zsh/zshrc": "~/.zshrc"
     "zsh/zsh-functions/*": "~/.zsh-functions/"
+    "zsh/p10k.zsh": "~/.p10k.zsh"
     # "zsh/.zshrc": "~"
 

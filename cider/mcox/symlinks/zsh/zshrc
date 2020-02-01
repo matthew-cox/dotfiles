@@ -73,24 +73,33 @@ fi
 #
 ##############################################################################
 #
+# powerlevel10k
+#
+powerlevel_dir="${HOME}/.dotfiles/powerlevel10k"
+if [[ -d "${powerlevel_dir}" ]]; then
+  source "${powerlevel_dir}/powerlevel10k.zsh-theme"
+fi
+#
+##############################################################################
+#
 # powerline
 #
 powerline_dir="${HOME}/.dotfiles/powerline"
-if [[ -d "${powerline_dir}" ]]; then
-
-  # performance?
-  if command -v powerline-daemon >/dev/null; then
-    powerline-daemon -q
-  fi
-
-  in_path=$(echo "$PATH" | grep -c "${powerline_dir}")
-  if [[ $in_path -le 0 ]]; then
-    export PATH="${PATH}:${powerline_dir}/scripts"
-    # this breaks python > 3.4 from a conflict with the selectors module
-    # export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
-  fi
-  source "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
-fi
+# if [[ -d "${powerline_dir}" ]]; then
+#
+#   # performance?
+#   if command -v powerline-daemon >/dev/null; then
+#     powerline-daemon -q
+#   fi
+#
+#   in_path=$(echo "$PATH" | grep -c "${powerline_dir}")
+#   if [[ $in_path -le 0 ]]; then
+#     export PATH="${PATH}:${powerline_dir}/scripts"
+#     # this breaks python > 3.4 from a conflict with the selectors module
+#     # export PYTHONPATH="${PYTHONPATH}:${HOME}/.dotfiles/powerline/powerline:${HOME}/.dotfiles/powerline/powerline/lib"
+#   fi
+#   source "${HOME}/.dotfiles/powerline/powerline/bindings/zsh/powerline.zsh"
+# fi
 #
 ##############################################################################
 #
@@ -100,3 +109,6 @@ if [[ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" 
   # export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
