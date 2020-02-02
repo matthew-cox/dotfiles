@@ -87,7 +87,7 @@
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
-    # vpn_ip                # virtual private network indicator
+    vpn_ip                # virtual private network indicator
     # load                  # CPU load
     # disk_usage            # disk usage
     # ram                   # free RAM
@@ -96,10 +96,11 @@
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     # time                  # current time
     # =========================[ Line #2 ]=========================
-    newline
+    # newline
     # public_ip             # public IP address
+    private_ip
     # proxy                 # system-wide http/https/ftp proxy
-    # battery               # internal battery
+    battery               # internal battery
     # example               # example user-defined segment (see prompt_example function below)
   )
 
@@ -1183,6 +1184,12 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -b 1 -f 3 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_private_ip() {
+    p10k segment -b 88 -f 251 -t "$(get-ip)"
+    # p10k segment -b 88 -f 251 -i VPN_ICON -r -t "$(get-ip | tr -s ' ')"
+    #'🕸'
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
