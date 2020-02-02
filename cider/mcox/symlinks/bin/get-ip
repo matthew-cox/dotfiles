@@ -27,7 +27,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
         type_icon=$(echo -ne '\uF0AC') # 
       esac
       #printf '%-8s (%3s): %s\n' "${TYPE}" "${INTERFACE}" "${IP}"
-      addresses+=("$type_icon ${IP}")
+      addresses+=("${IP} ${type_icon}")
     fi
   done
 fi

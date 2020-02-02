@@ -99,6 +99,7 @@
     # newline
     # public_ip             # public IP address
     private_ip
+    wifi_speed
     # proxy                 # system-wide http/https/ftp proxy
     battery               # internal battery
     # example               # example user-defined segment (see prompt_example function below)
@@ -1191,6 +1192,60 @@
     # p10k segment -b 88 -f 251 -i VPN_ICON -r -t "$(get-ip | tr -s ' ')"
     #'🕸'
   }
+
+  function color_from_speed(){
+    local speed="$1"
+    if [[ $speed -gt 400 ]]; then
+      bg_color='047'
+    elif [[ $speed -gt 300 ]]; then
+      bg_color='041'
+    elif [[ $speed -gt 200 ]]; then
+      bg_color='028'
+    elif [[ $speed -ge 100 ]]; then
+      bg_color='011'
+    elif [[ $speed -ge 75 ]]; then
+      bg_color='166'
+    elif [[ $speed -le 50 ]]; then
+      bg_color='196'
+    fi
+    echo $bg_color
+  }
+
+  function prompt_wifi_speed(){
+    local output_text=""
+    local bg_color=''
+    local fg_color='black'
+
+    if [[ $OSTYPE == darwin* ]]; then
+      local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
+      local airport=$(echo "$output" | grep 'AirPort' | awk -F': ' '{print $2}')
+
+      if [[ "$airport" = "Off" ]]; then
+        #echo -n "%{$color%}Wifi Off"
+        output_text=""
+      else
+        #local ssid=$(echo $output | grep ' SSID' | awk -F': ' '{print $2}')
+        local speed=$(echo "$output" | grep 'lastTxRate' | awk -F': ' '{print $2}')
+
+        bg_color=$(color_from_speed "$speed")
+
+        output_text=$(echo -n "$speed Mbps \uf1eb")
+      fi
+    elif [[ -x $(command -v nmcli) ]]; then
+      local signal=$(nmcli device wifi | grep yes | awk '{print $8}')
+      fg_color='yellow'
+
+      bg_color=$(color_from_speed "$speed")
+      output_text=$(echo -n "$signal \uf230") # \uf230 is 
+    else
+      # No WiFi or no way to find WiFi signal.
+    fi
+
+    if [[ -n "$output_text" ]]; then
+      p10k segment -b $bg_color -f $fg_color -t "$output_text"
+    fi
+  }
+
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
