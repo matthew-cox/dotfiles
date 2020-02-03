@@ -96,3 +96,14 @@ fi
 if command -v fortune >/dev/null; then
   fortune ~/.fortunes
 fi
+#
+# SimpliSafe Python Init - Add pyenv
+#
+eval "$(pyenv init -)"
+#
+# SimpliSafe Python Init - Add pyenv virtualenv
+#
+
+# https://docs.python-guide.org/dev/pip-virtualenv/
+export PIP_REQUIRE_VIRTUALENV=true
+eval "$(pyenv virtualenv-init -)"

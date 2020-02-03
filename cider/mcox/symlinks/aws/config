@@ -1,42 +1,61 @@
 [default]
-output = json
-region = us-east-1
-s3 =
-    signature_version = s3v4
+output=json
+region=us-east-1
+s3=
+  signature_version = s3v4
 
 [preview]
-cloudfront = true
-cloudwatch = true
+cloudfront=true
+cloudwatch=true
 
 [profile short-urls]
-region = us-east-1
-output = json
+region=us-east-1
+output=json
 
 [profile ss-prod]
-output = json
-region = us-east-1
+output=json
+region=us-east-1
 credential_process=aws-vault exec -m arn:aws:iam::618804428340:mfa/mcox -j ss-prod
 
 [profile ss-prod-ro]
-source_profile = ss-prod
-role_arn = arn:aws:iam::618804428340:role/AdminsReadonly
+source_profile=ss-prod
+role_arn=arn:aws:iam::618804428340:role/AdminsReadonly
 
 [profile ss-prod-admin]
-source_profile = ss-prod-ro
-role_arn = arn:aws:iam::618804428340:role/AdminUsers
+source_profile=ss-prod-ro
+role_arn=arn:aws:iam::618804428340:role/AdminUsers
 
 [profile ss-prod2]
-output = json
-region = us-east-1
+output=json
+region=us-east-1
 
 [profile ss-prot]
-output = json
-region = us-east-1
+output=json
+region=us-east-1
+
+[profile ss-prot-root]
+output=json
+region=us-east-1
 
 [profile ss-legal]
-output = json
-region = us-east-1
+output=json
+region=us-east-1
+
+[profile ss-legal-hold]
+output=json
+region=us-east-1
+source_profile=ss-prot
+role_arn=arn:aws:iam::483468849860:role/ssprotected-legal-hold-role
+role_session_name=legal-hold
 
 [profile ss-dev]
-output = json
-region = us-east-1
+output=json
+region=us-east-1
+
+[profile azriel-home]
+
+
+[profile bi]
+output=json
+region=us-east-1
+credential_process=/Applications/gsuite-saml-aws.app/Contents/MacOS/gsuite-saml-aws - -i C02wxv2kz -s 388332637458 -a 875029979081 -p gsuite -r saml-admin
