@@ -3,33 +3,52 @@
 # List out the network interfaces, types, and IPv4 addresses for Mac OS X
 #
 addresses=()
+out_str=""
 
-function join_by {
-  local IFS="$1";
-  shift;
-  echo "$*";
+function icon_from_type(){
+  local TYPE="$1"
+  case $TYPE in
+    Ethernet)
+      type_icon='\uF6FF' # 
+      ;;
+    Wi-Fi)
+      type_icon='\uF1EB' # 
+      ;;
+    *)
+      type_icon='\uF0AC' # 
+      ;;
+  esac
+  echo -ne "$type_icon"
 }
 
-if [[ "$(uname -s)" = "Darwin" ]]; then
+case "$(uname -s)" in
+Darwin)
   for INTERFACE in $(ifconfig -l); do
     IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
     if [[ -n "$IP" ]]; then
-      TYPE=$(ifconfig -v "${INTERFACE}" | grep 'type' | awk '{print $2}')
-      type_icon=""
-      case $TYPE in
-      Ethernet)
-        type_icon=$(echo -ne '\uF6FF') # 
-        ;;
-      Wi-Fi)
-        type_icon=$(echo -ne '\uF1EB') # 
-        ;;
-      *)
-        type_icon=$(echo -ne '\uF0AC') # 
-      esac
-      #printf '%-8s (%3s): %s\n' "${TYPE}" "${INTERFACE}" "${IP}"
+      TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
+      type_icon=$(icon_from_type "$TYPE")
       addresses+=("${IP} ${type_icon}")
     fi
   done
-fi
+  ;;
+Linux)
+  for INTERFACE in $(ifconfig -s | tail -n +2 | awk '{print $1}'); do
+    IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
+    if [[ -n "$IP" ]]; then
+      TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
+      type_icon=$(icon_from_type "$TYPE")
+      addresses+=("${IP} ${type_icon}")
+    fi
+  done
+  ;;
+esac
 
-join_by " | " $addresses
+for ((i = 0; i < ${#addresses[@]}; i++)); do
+  if [[ -n "$out_str" ]]; then
+      out_str+=" | "
+  fi
+  out_str+="${addresses[$i]}"
+done
+
+echo "$out_str"
