@@ -103,9 +103,7 @@ casks:
     - "java"
     # - "jenkins-menu"
     # Customize keyboard
-    - "karabiner-elements"
-    # replacement for Caffeine
-    - "keepingyouawake"
+    # - "karabiner-elements"
     # - "keepassx"
     # Caffeine replacement
     - "keepingyouawake"
@@ -171,6 +169,7 @@ casks:
     # X Lossless Decoder
     - "xld"
     - "xquartz"
+    - "yubico-authenticator"
     - "zoomus"
 
 # "dependencies":
@@ -299,6 +298,7 @@ casks:
     - "the_silver_searcher"
     - "tivodecode"
     - "tmux"
+    - "tree"
     - "unixodbc"
     - "unison"
     - "vips"
