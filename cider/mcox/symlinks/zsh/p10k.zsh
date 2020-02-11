@@ -102,8 +102,8 @@
     # public_ip             # public IP address
     private_ip
     # proxy                 # system-wide http/https/ftp proxy
-    battery               # internal battery
     wifi                  # wifi speed
+    battery               # internal battery
     # example               # example user-defined segment (see prompt_example function below)
   )
 
