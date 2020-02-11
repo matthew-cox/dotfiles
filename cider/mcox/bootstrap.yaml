@@ -258,11 +258,11 @@ casks:
     - "macvim"
     # Mac App Store CLI
     - "mas"
-    - "maven"
+    # - "maven"
     - "mdcat"
     - "mercurial"
     - "mpg123"
-    - "mysql"
+    # - "mysql"
     - "node"
     - "nmap"
     - "openssl"
