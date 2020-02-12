@@ -2,8 +2,13 @@
 #
 # List out the network interfaces, types, and IPv4 addresses for Mac OS X
 #
-addresses=()
-out_str=""
+
+timeout="2s"
+
+function timeout_monitor() {
+  sleep "$1"
+  kill "$2" 2>/dev/null
+}
 
 function icon_from_type(){
   local TYPE="$1"
@@ -21,34 +26,51 @@ function icon_from_type(){
   echo -ne "$type_icon"
 }
 
-case "$(uname -s)" in
-Darwin)
-  for INTERFACE in $(ifconfig -l); do
-    IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
-    if [[ -n "$IP" ]]; then
-      TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
-      type_icon=$(icon_from_type "$TYPE")
-      addresses+=("${IP} ${type_icon}")
-    fi
-  done
-  ;;
-Linux)
-  for INTERFACE in $(ifconfig -s | tail -n +2 | awk '{print $1}'); do
-    IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
-    if [[ -n "$IP" ]]; then
-      TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
-      type_icon=$(icon_from_type "$TYPE")
-      addresses+=("${IP} ${type_icon}")
-    fi
-  done
-  ;;
-esac
+function get_addresses(){
+  addresses=()
+  out_str=""
 
-for ((i = 0; i < ${#addresses[@]}; i++)); do
-  if [[ -n "$out_str" ]]; then
-      out_str+=" | "
-  fi
-  out_str+="${addresses[$i]}"
-done
+  case "$(uname -s)" in
+  Darwin)
+    for INTERFACE in $(ifconfig -l); do
+      IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
+      if [[ -n "$IP" ]]; then
+        TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
+        type_icon=$(icon_from_type "$TYPE")
+        addresses+=("${IP} ${type_icon}")
+      fi
+    done
+    ;;
+  Linux)
+    for INTERFACE in $(ifconfig -s | tail -n +2 | awk '{print $1}'); do
+      IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
+      if [[ -n "$IP" ]]; then
+        TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
+        type_icon=$(icon_from_type "$TYPE")
+        addresses+=("${IP} ${type_icon}")
+      fi
+    done
+    ;;
+  esac
 
-echo "$out_str"
+  for ((i = 0; i < ${#addresses[@]}; i++)); do
+    if [[ -n "$out_str" ]]; then
+        out_str+=" | "
+    fi
+    out_str+="${addresses[$i]}"
+  done
+
+  echo "$out_str"
+
+}
+
+# start the timeout monitor in background and pass the PID:
+timeout_monitor "$timeout" "$$" &
+timeout_monitor_pid=$!
+
+get_addresses
+
+# kill timeout monitor when terminating:
+[[ -n "$timeout_monitor" ]] && kill -9 "$timeout_monitor_pid"
+#kill -- -$$ 2>/dev/null
+#wait "$timeout_monitor_pid"

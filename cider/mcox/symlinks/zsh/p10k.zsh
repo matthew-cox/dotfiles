@@ -81,7 +81,7 @@
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     context                 # user@hostname
-    nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
+    #nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     ranger                  # ranger shell (https://github.com/ranger/ranger)
     nnn                     # nnn shell (https://github.com/jarun/nnn)
     vim_shell               # vim shell indicator (:sh)
@@ -94,7 +94,7 @@
     # ram                   # free RAM
     # swap                  # used swap
     todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
-    timewarrior             # timewarrior tracking status (https://timewarrior.net/)
+    #timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     # time                  # current time
     # =========================[ Line #2 ]=========================
     #newline
@@ -1387,7 +1387,11 @@
   }
 
   function prompt_private_ip() {
-    p10k segment -b 88 -f 251 -t "$(get-ip)"
+    if command -v timeout >/dev/null; then
+      p10k segment -b 88 -f 251 -t "$(timeout .5s get-ip)"
+    else
+      p10k segment -b 88 -f 251 -t "$(get-ip)"
+    fi
     # p10k segment -b 88 -f 251 -i VPN_ICON -r -t "$(get-ip | tr -s ' ')"
     #'🕸'
   }
