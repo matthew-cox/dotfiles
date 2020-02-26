@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 '''
@@ -13,25 +13,13 @@ from datetime import date, datetime
 import json
 import logging
 import os
-try:
-    from pathlib import Path
-except ModuleNotFoundError:
-    from pathlib2 import Path
+from pathlib import Path
 import sys
 #
 # Non-standard imports
 #
 
 
-#
-# You might need this to better handle utf8 characters
-# https://stackoverflow.com/questions/21129020/how-to-fix-unicodedecodeerror-ascii-codec-cant-decode-byte#21190382
-# pylint: disable=undefined-variable,no-member,broad-except
-try:
-    reload(sys)
-    sys.setdefaultencoding('utf8')
-except Exception:
-    pass
 #
 # Ensure ./lib is in the lib path for local includes
 #
@@ -48,7 +36,7 @@ sys.path.append(str(LIB_PATH))
 #
 # Global variables
 #
-DEFAULT_LOG_LEVEL = os.environ.get('PY_LOG_LEVEL', 'WARNING')
+DEFAULT_LOG_LEVEL = os.environ.get('PY_LOG_LEVEL', 'WARNING').upper()
 FAILURE_ARN = os.environ.get('SNS_FAILURE_ARN', None)
 
 DESCRIPTION = "This is the Python frame program"

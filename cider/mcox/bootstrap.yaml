@@ -263,7 +263,7 @@ casks:
     - "mercurial"
     - "mpg123"
     # - "mysql"
-    - "node"
+    - "nodenv"
     - "nmap"
     - "openssl"
     - "orc"
