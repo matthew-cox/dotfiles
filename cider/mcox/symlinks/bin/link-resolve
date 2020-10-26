@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/Users/mcox/.pyenv/versions/mcox-3.8.2/bin/python3
 # -*- coding: utf-8 -*-
 #
 '''
@@ -147,6 +147,74 @@ def search_query_string(url=None):
                     result.append('='.join(param.split('=')[1:]))
     return result
 
+
+def resolve_url(url: str = None):
+    final_url = None
+    logger = _get_logger()
+    if url:
+        redirects = False
+
+        if 'doubleclick.net' in url:
+            raise RuntimeError("DoubleClick is the worst")
+
+        if 'abnb.me' in url:
+            redirects = True
+
+        if 'wclink.co' in url:
+            redirects = False
+
+            if 'merchant=' in url:
+                redirects = True
+
+        if 'thewirecutter.com' in url:
+            redirects = False
+
+            if 'merchant=' in url:
+                redirects = True
+
+
+        if 'un.cr' in url:
+            redirects = True
+
+        if 'shop-links.co' in url:
+            redirects = True
+
+        req = requests.get(url, allow_redirects=redirects, headers=HEADERS)
+
+        #from pprint import pprint
+        #pprint(req.history)
+        #pprint(req.headers)
+
+        if req.status_code > 300 and req.status_code < 400:
+            logger.info("Found redirect!")
+            if len(req.history) > 0:
+                logger.info("Redirect followed, chossing last one")
+                final_url = req.url
+            elif req.headers.get('Location'):
+                final_url = req.headers.get('Location')
+
+        else:
+            logger.info("No redirect found!")
+            query_url = search_query_string(req.url)
+            if query_url:
+                return query_url
+            elif len(req.history) > 0:
+                final_url = req.url
+            else:
+                raise RuntimeError("Teh badness!")
+
+        if final_url and final_url.count('http') > 1:
+            final_url = search_query_string(final_url)
+        else:
+            parsed = urlparse(final_url)
+            # pprint(parsed)
+            path = parsed.path
+            # Amazon link case
+            if 'ref=' in parsed.path:
+                path = '/'.join(parsed.path.split('/')[:-1])
+            final_url = ''.join([parsed.netloc, path])
+
+    return final_url
 #
 ###############################################################################
 #
@@ -172,58 +240,11 @@ def main():
         import sys
         sys.exit(0)
 
-    redirects = False
-    if 'abnb.me' in args.url:
-        redirects = True
+    final_url = resolve_url(args.url)
 
-    if 'wclink.co' in args.url:
-        redirects = False
-
-        if 'merchant=' in args.url:
-            redirects = True
-
-    if 'shop-links.co' in args.url:
-        redirects = True
-
-    req = requests.get(args.url, allow_redirects=redirects, headers=HEADERS)
-    final_url = None
-    from pprint import pprint
-    #pprint(req.history)
-    #pprint(req.headers)
-
-    if req.status_code > 300 and req.status_code < 400:
-        logger.info("Found redirect!")
-        if len(req.history) > 0:
-            logger.info("Redirect followed, chossing last one")
-            final_url = req.url
-        elif req.headers.get('Location'):
-            final_url = req.headers.get('Location')
-
-    else:
-        logger.info("No redirect found!")
-        query_url = search_query_string(req.url)
-        if query_url:
-            print(query_url)
-            import sys
-            sys.exit(0)
-
-        elif len(req.history) > 0:
-            final_url = req.url
-        else:
-            raise RuntimeError("Teh badness!")
-
-    if final_url and final_url.count('http') > 1:
-        final_url = search_query_string(final_url)
-        print(final_url)
-    else:
-        parsed = urlparse(final_url)
-        # pprint(parsed)
-        path = parsed.path
-        # Amazon link case
-        if 'ref=' in parsed.path:
-            path = '/'.join(parsed.path.split('/')[:-1])
-        print(''.join([parsed.netloc, path]))
-
+    # if 'wclink.co' in final_url:
+    #     final_url = resolve_url(final_url)
+    print(final_url)
 #
 ###############################################################################
 #

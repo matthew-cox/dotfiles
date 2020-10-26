@@ -1,3 +1,6 @@
 pihole-FTL.db
 gravity.list
 list.*
+localversions
+GitHubVersions
+gravity.db
