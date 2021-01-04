@@ -17,6 +17,7 @@ done
 #
 # >&2 echo "$0"
 # >&2 echo "$PATH"
+
 KEG_PATHS=(
 "/usr/local/opt/bison/bin"
 "/usr/local/opt/go/libexec/bin"
@@ -26,6 +27,7 @@ KEG_PATHS=(
 "/usr/local/opt/libxml2/bin"
 "/usr/local/opt/openssl@1.1"
 "/usr/local/opt/sqlite/bin"
+"/usr/local/opt/openjdk/bin"
 )
 #
 # paths for compiling things
@@ -34,6 +36,7 @@ BUILD_PATHS=(
 "bison"
 "icu4c"
 "libxml2"
+"openjdk"
 "openssl@1.1"
 "qt"
 "sqlite"

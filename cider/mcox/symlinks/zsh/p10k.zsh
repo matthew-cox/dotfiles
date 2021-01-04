@@ -88,7 +88,7 @@
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
-    # vpn_ip                # virtual private network indicator
+    vpn_ip                # virtual private network indicator
     # load                  # CPU load
     # disk_usage            # disk usage
     # ram                   # free RAM
@@ -98,7 +98,7 @@
     # time                  # current time
     # =========================[ Line #2 ]=========================
     #newline
-    # ip                    # ip address and bandwidth usage for a specified network interface
+    #ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     private_ip
     # proxy                 # system-wide http/https/ftp proxy
@@ -1305,7 +1305,7 @@
   typeset -g POWERLEVEL9K_IP_CONTENT_EXPANSION='⇣$P9K_IP_RX_RATE ⇡$P9K_IP_TX_RATE $P9K_IP_IP'
   # Show information for the first network interface whose name matches this regular expression.
   # Run `ifconfig` or `ip -4 a show` to see the names of all network interfaces.
-  typeset -g POWERLEVEL9K_IP_INTERFACE='e.*'
+  typeset -g POWERLEVEL9K_IP_INTERFACE='en.*'
   # Custom icon.
   # typeset -g POWERLEVEL9K_IP_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1386,12 +1386,54 @@
     p10k segment -b 1 -f 3 -i '⭐' -t 'hello, %n'
   }
 
-  function prompt_private_ip() {
-    if command -v timeout >/dev/null; then
-      p10k segment -b 88 -f 251 -t "$(timeout .5s get-ip)"
-    else
-      p10k segment -b 88 -f 251 -t "$(get-ip)"
-    fi
+  function my_get_addresses(){
+    typeset -a addresses
+
+    local type_icon='\uF0AC'
+
+    typeset -A my_net_icons
+    my_net_icons[default]='\uF0AC'
+    my_net_icons[Ethernet]='\uF6FF'
+    my_net_icons[Wi-Fi]='\uF1EB'
+
+    case "$OSTYPE" in
+    darwin*)
+      ifconfig_cmd='ifconfig'
+      if (( $+commands[timeout] )); then
+        ifconfig_cmd='timeout --foreground .1s ifconfig'
+      fi
+      for INTERFACE in $(ifconfig -l); do
+        iface_lines=("${(f)$(eval ${ifconfig_cmd} -v $INTERFACE inet)}")
+
+        IP=${(M)iface_lines:#*[[:space:]]broadcast[[:space:]]*}
+        if [[ -n "$IP" ]]; then
+          IP=("${(@s< >)IP}")
+          TYPE=${(M)iface_lines:#*[^:]*type:[[:space:]]*}
+          TYPE=("${(@s< >)TYPE}")
+          type_icon=${my_net_icons[$TYPE[2]]}
+          addresses+=("$IP[2] ${type_icon:=\uF0AC}")
+        fi
+      done
+      ;;
+    Linux)
+      for INTERFACE in $(ifconfig -s | tail -n +2 | awk '{print $1}'); do
+        IP=$(ifconfig "${INTERFACE}" | grep 'broadcast' | awk '{print $2}')
+        if [[ -n "$IP" ]]; then
+          TYPE=$(ifconfig -v "${INTERFACE}" | grep '^[^:]*type:' | awk -F ': ' '{print $2}')
+          type_icon=${my_net_icons[$TYPE]}
+          addresses+=("$IP[2] ${type_icon:=\uF0AC}")
+        fi
+      done
+      ;;
+    esac
+
+    ADDRESS_STRING=${(j< | >)addresses}
+  }
+
+  function prompt_my_private_ip() {
+    local ADDRESS_STRING
+    my_get_addresses
+    p10k segment -b 88 -f 251 -t "${ADDRESS_STRING}"
     # p10k segment -b 88 -f 251 -i VPN_ICON -r -t "$(get-ip | tr -s ' ')"
     #'🕸'
   }

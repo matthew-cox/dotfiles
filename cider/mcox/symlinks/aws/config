@@ -15,7 +15,8 @@ output=json
 [profile ss-prod]
 output=json
 region=us-east-1
-credential_process=aws-vault exec -m arn:aws:iam::618804428340:mfa/mcox -j ss-prod
+credential_process=aws-vault exec --prompt=osascript --json ss-prod
+mfa_serial = arn:aws:iam::618804428340:mfa/mcox
 
 [profile ss-prod-ro]
 source_profile=ss-prod
@@ -47,6 +48,11 @@ region=us-east-1
 source_profile=ss-prot
 role_arn=arn:aws:iam::483468849860:role/ssprotected-legal-hold-role
 role_session_name=legal-hold
+
+[profile payer-account]
+source_profile=ss-prod
+role_arn=arn:aws:iam::853736300610:role/simplisafe-payer-cross-account
+role_session_name=simplisafe_payer
 
 [profile ss-dev]
 output=json
