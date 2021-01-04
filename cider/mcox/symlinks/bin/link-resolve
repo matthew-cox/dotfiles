@@ -12,10 +12,8 @@ import argparse
 from datetime import date, datetime
 import json
 import logging
-try:
-    from pathlib import Path
-except ModuleNotFoundError:
-    from pathlib2 import Path
+
+from pathlib import Path
 import os
 try:
     from urllib.parse import unquote, urlparse
