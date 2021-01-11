@@ -3,4 +3,4 @@
 #
 # Desired python version
 #
-export PYENV_VERSION=3.7.5
+export PYENV_VERSION=3.8.7

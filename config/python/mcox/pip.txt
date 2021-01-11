@@ -61,7 +61,6 @@ ordereddict==1.1
 paramiko==1.16.0
 pigar
 ply==3.4
-powerline-status
 prettytable==0.7.2
 prompt-toolkit==0.52
 py==1.4.26
