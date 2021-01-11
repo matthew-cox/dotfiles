@@ -37,7 +37,7 @@ A pre-req for most of this is the Xcode tools. One should be able to install the
 
 Install [Homebrew](https://brew.sh):
 
-    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 ## Disable analytics
 
@@ -65,15 +65,10 @@ Configure a very basic `~/.ssh/config`:
 
 # Get the dots
 
-    $ git clone https://github.com/matthew-cox/dotfiles.git .dotfiles
+    $ git clone --recurse-submodules https://github.com/matthew-cox/dotfiles.git .dotfiles
     $ cd .dotfiles/
     $ git submodule init
     $ git submodule update
-
-## Powerline compatibility
-
-    $ cd powerline
-    $ git checkout tags/2.1
 
 ## Python
 
