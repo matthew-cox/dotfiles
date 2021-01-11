@@ -74,13 +74,22 @@ else
   fi
 fi
 
+#
+# Get some good paths for compilation
+#
+set +o nounset
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig:${PKG_CONFIG_PATH}"
+set -o nounset
+
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 pyenv install --skip-existing $PYENV_VERSION
 if $(pyenv versions --bare | grep python-local-${PYENV_VERSION} &> /dev/null); then
   putsuccess "virtual environment 'python-local-${PYENV_VERSION}' already exists."
 else
-  pyenv virtualenv $PYENV_VERSION python-local-${PYENV_VERSION}
+  pyenv virtualenv --force $PYENV_VERSION python-local-${PYENV_VERSION}
 fi
 pyenv shell python-local-${PYENV_VERSION}
 pyenv which pip

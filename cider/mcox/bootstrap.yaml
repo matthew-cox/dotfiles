@@ -1,10 +1,10 @@
 taps:
-  - 'caskroom/cask'
-  - 'caskroom/drivers'
-  - 'caskroom/fonts'
+  - 'homebrew/cask'
+  - 'homebrew/cask-drivers'
+  - 'homebrew/cask-fonts'
   - 'homebrew/command-not-found'
   - 'homebrew/core'
-  - 'ravenac95/sudolikeaboss'
+  # - 'ravenac95/sudolikeaboss'
 
 after-scripts:
     # - "./scripts/update_ruby.sh"
@@ -32,7 +32,7 @@ casks:
     # Adafruit
     - "adafruit-arduino"
     - "adapter"
-    - "adium"
+    # - "adium"
     - "adobe-air"
     - "adobe-creative-cloud"
     - "adobe-dng-converter"
@@ -46,8 +46,9 @@ casks:
     - "backblaze"
     - "bartender"
     - "bean"
-    - "blink1control"
+    # - "blink1control"
     - "brackets"
+    - "brave-browser"
     - "blu-ray-player"
     - "burn"
     # 2019-03-01 - no longer works
@@ -58,8 +59,9 @@ casks:
     - "chatology"
     - "choosy"
     - "chromium"
-    - "cleanmymac"
-    - "colorpicker-hex"
+    ##- "cleanmymac"
+    ##- "cloak"
+    ##- "colorpicker-hex"
     # - "controlplane"
     # - "crashplan"
     # - "cyberduck"
@@ -68,11 +70,11 @@ casks:
     - "emacs"
     - "espresso"
     # Etcher - RaspberryPi image burner
-    #- "etcher"
+    ##- "etcher"
     # - "evernote"
     # - "expandrive"
     - "fantastical"
-    - "filezilla"
+    ##- "filezilla"
     - "firefox"
     - "fission"
     # - "flashlight"
@@ -82,19 +84,19 @@ casks:
     - "gemini"
     # - "gfxcardstatus"
     # - "gimp"
-    - "github-desktop"
+    ##- "github-desktop"
     # - "glimmerblocker"
-    - "globalsync"
+    ##- "globalsync"
     # GMail backup
     - "gmvault"
     - "google-nik-collection"
     - "graphicconverter"
-    - "guitar-tuner"
+    ##- "guitar-tuner"
     - "handbrake"
-    - "heroku"
+    ##- "heroku"
     - "hex-fiend"
-    - "hosts"
-    - "houdahgeo"
+    ##- "hosts"
+    ##- "houdahgeo"
     # Crashplan replacement
     - "idrive"
     - "iterm2"
@@ -109,18 +111,19 @@ casks:
     - "keybase"
     - "kindle"
     - "kitematic"
-    - "loadmytracks"
+    ##- "loadmytracks"
     # - "logitech-harmony"
     - "logitech-myharmony"
-    - "logitech-unifying"
+    ##- "logitech-unifying"
     - "macvim"
     - "magicprefs"
-    - "malwarebytes-anti-malware"
+    - "malwarebytes"
     - "mamp"
     # bluray support
     - "makemkv"
     # video file tagging
     - "metaz"
+    - "micro-snitch"
     # - "moom"
     - "mpeg-streamclip"
     - "mplayer-osx-extended"
@@ -129,6 +132,7 @@ casks:
     # - "nvalt"
     - "omnigraffle"
     - "path-finder"
+    - "plexamp"
     - "plex-media-player"
     - "postbox"
     # SimpliSafe VPN client
@@ -137,7 +141,8 @@ casks:
     # ShiftIt replacement
     - "rectangle"
     - "resilio-sync"
-    - "screenflow"
+    # Still need this?
+    ###- "screenflow"
     - "scrivener"
     # Moom replacement
     #- "shiftit"
@@ -146,15 +151,14 @@ casks:
     - "silverlight"
     - "skype"
     - "slimbatterymonitor"
-    #- "spideroakone"
+    # Still need this?
+    ###- "spideroakone"
     # - "spotify"
     # nvAlt replacement
     - "standard-notes"
     # replacement for Moom (auto window layout)
     - "stay"
     - "steam"
-    # manage terraform versions
-    - "tfenv"
     - "textmate"
     - "the-hit-list"
     - "the-unarchiver"
@@ -169,8 +173,9 @@ casks:
     - "mullvadvpn"
     - "tunnelbear"
     # Old scanner app
-    - "vuescan"
-    - "wedge"
+    # Bad MD5
+    ###- "vuescan"
+    #- "wedge"
     - "wireshark"
     # - "xbox360-controller-driver"
     # X Lossless Decoder
@@ -206,7 +211,7 @@ casks:
     # - "dialog"
     # fancy git diffs
     - "diff-so-fancy"
-    - "dirmngr"
+    ##- "dirmngr"
     # installed on Antares
     # - "dnsmasq"
     - "dos2unix"
@@ -229,11 +234,11 @@ casks:
     - "gnupg"
     - "go"
     - "gobject-introspection"
-    - "gpg-agent"
+    ##- "gpg-agent"
     - "gpsbabel"
     - "graphicsmagick"
     - "harfbuzz"
-    - "heroku"
+    ##- "heroku"
     - "httpie"
     # Github's replacement for git
     - "hub"
@@ -270,7 +275,7 @@ casks:
     - "mercurial"
     - "mpg123"
     # - "mysql"
-    - "nodenv"
+    # - "node"
     - "nmap"
     - "openssl"
     - "orc"
@@ -288,8 +293,8 @@ casks:
     - "py2cairo"
     - "pyenv"
     - "pyenv-virtualenv"
-    - "pygobject3"
-    - "python"
+    # - "pygobject3"
+    ##- "python"
     # Virtual env for ruby
     - "rbenv"
     - "ruby-build"
@@ -300,7 +305,9 @@ casks:
     - "sqlite"
     # static website deploy - http://stout.is
     - "stout"
-    - "sudolikeaboss"
+    # - "sudolikeaboss"
+    # manage terraform versions
+    - "tfenv"
     - "the_platinum_searcher"
     - "the_silver_searcher"
     - "tivodecode"
@@ -316,7 +323,7 @@ casks:
     - "xctool"
     - "xvid"
     - "xz"
-    - "yarn"
+    # - "yarn"
     - "youtube-dl"
     - "yuicompressor"
     - "zlib"
