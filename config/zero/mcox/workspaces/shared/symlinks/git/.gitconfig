@@ -1,0 +1,9 @@
+[user]
+  name = Matthew Cox
+  email = matt.cox@simplisafe.com
+
+[core]
+  excludesfile = ~/.dotfiles/git/include/gitignore_global
+
+[include]
+  path = ~/.dotfiles/git/include/gitconfig

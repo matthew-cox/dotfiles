@@ -1,0 +1,141 @@
+"NSGlobalDomain":
+    AppleAquaColorVariant: 6
+    AppleInterfaceStyle: "Dark"
+    AppleMiniaturizeOnDoubleClick: false
+    AppleScrollAnimationEnabled: true
+    AppleShowAllExtensions: true
+    AppleShowScrollBars: "WhenScrolling"
+    InitialKeyRepeat: 15
+    KeyRepeat: 6
+    NSAutomaticCapitalizationEnabled: false
+    NSAutomaticDashSubstitutionEnabled: false
+    NSAutomaticPeriodSubstitutionEnabled: false
+    NSAutomaticQuoteSubstitutionEnabled: false
+    NSAutomaticSpellingCorrectionEnabled: false
+    NSAutomaticTextCompletionEnabled: true
+    NSNavSidebarWidth: 200
+
+    # Always expand the save dialog
+    NSNavPanelExpandedStateForSaveMode: true
+    NSNavPanelExpandedStateForSaveMode2: true
+
+    # NSPreferredWebServices:
+    #   NSWebServicesProviderWebSearch:
+    #     NSDefaultDisplayName: "DuckDuckGo"
+    #     NSProviderIdentifier: "com.duckduckgo"
+
+
+    # NSUserDictionaryReplacementItems:
+    #   - on: 1
+    #     replace: "lymi"
+    #     with: "lymi"
+    #   - on: 1
+    #     replace: "omw"
+    #     with: "On my way!"
+    #   - on: 1
+    #     replace: "ducking"
+    #     with: "fucking"
+
+    com.apple.mouse.scaling: 3
+    com.apple.scrollwheel.scaling: "1.7"
+    com.apple.sound.beep.feedback: 1
+    com.apple.sound.beep.flash: 0
+    com.apple.springing.delay: "0.5"
+    com.apple.springing.enabled: 1
+    com.apple.trackpad.scaling: 3
+    userMenuExtraStyle: 2
+
+com.apple.AdLib:
+  allowApplePersonalizedAdvertising: 0
+  allowIdentifierForAdvertising: 1
+  forceLimitAdTracking: 1
+        
+com.apple.AppleMultitouchTrackpad:
+    ActuateDetents: 1
+    Clicking: 0
+    DragLock: 0
+    Dragging: 0
+    FirstClickThreshold: 2
+    ForceSuppressed: 0
+    SecondClickThreshold: 2
+    TrackpadCornerSecondaryClick: 0
+    TrackpadFiveFingerPinchGesture: 0
+    TrackpadFourFingerHorizSwipeGesture: 1
+    TrackpadFourFingerPinchGesture: 0
+    TrackpadFourFingerVertSwipeGesture: 0
+    TrackpadHandResting: 1
+    TrackpadHorizScroll: 1
+    TrackpadMomentumScroll: 1
+    TrackpadPinch: 1
+    TrackpadRightClick: 1
+    TrackpadRotate: 0
+    TrackpadScroll: 1
+    TrackpadThreeFingerDoubleTapGesture: 2
+    TrackpadThreeFingerDrag: 0
+    TrackpadThreeFingerHorizSwipeGesture: 2
+    TrackpadThreeFingerSwipe: 1
+    TrackpadThreeFingerTapGesture: 0
+    TrackpadThreeFingerVertSwipeGesture: 0
+    TrackpadThreeFingersRightClick: 0
+    TrackpadTwoFingerDoubleTapGesture: 1
+    TrackpadTwoFingerFromRightEdgeSwipeGesture: 3
+
+# com.apple.notificationcenterui:
+#     "bannerTime: 3
+
+com.apple.screencapture:
+    disable-shadow: true
+    location: "~/Desktop/ScreenShots"
+
+com.apple.Safari:
+    AlwaysRestoreSessionAtLaunch: true
+    AutoFillCreditCardData: false
+    AutoFillFromAddressBook: false
+    AutoFillMiscellaneousForms: false
+    AutoFillPasswords: false
+    AutoOpenSafeDownloads: false
+#     "FindOnPageMatchesWordStartsOnly: false
+    IncludeDevelopMenu: true
+    LocalFileRestrictionsEnabled: true
+    NewTabBehavior: 1
+    NewWindowBehavior: 1
+    PreloadTopHit: false
+    SendDoNotTrackHTTPHeader: true
+    SuppressSearchSuggestions: true
+
+com.apple.TextEdit:
+    RichText: 0
+
+com.apple.desktopservices:
+    DSDontWriteNetworkStores: true
+
+com.apple.dock:
+    autohide: true
+    # "expose-animation-duration: 0.15
+    largesize: 68
+    magnification: true
+    no-glass: true
+    orientation: "right"
+    pinning: "end"
+    show-process-indicators: false
+    # "tilesize: 48
+
+com.apple.finder:
+    # "FK_AppCentricViewStyle: "clmv"
+    FXArrangeGroupViewBy: "Name"
+    FXDefaultSearchScope: "SCcf"
+    FXEnableExtensionChangeWarning: false
+    FXPreferredGroupBy: "Name"
+    FXPreferredViewStyle: "Nlsv"
+    # Allow text selection in quick look
+    NewWindowTarget: "PfHm"
+    QLEnableTextSelection: true
+    QuitMenuItem: true
+    ShowExternalHardDrivesOnDesktop: true
+    ShowHardDrivesOnDesktop: false
+    ShowRemovableMediaOnDesktop: true
+    ShowSidebar: true
+    ShowStatusBar: true
+
+com.google.Chrome:
+    DisablePrintPreview: true

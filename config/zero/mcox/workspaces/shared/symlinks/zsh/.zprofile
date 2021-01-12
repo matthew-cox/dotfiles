@@ -1,0 +1,109 @@
+#
+# Executes commands at login pre-zshrc.
+#
+##############################################################################
+#
+# PATH customization
+#
+setopt EXTENDED_GLOB
+if [ -d "${HOME}/.dotfiles/path" ]; then
+  for X in "${HOME}"/.dotfiles/path/*.sh; do
+    # echo "$X"
+    source "${X}"
+  done
+fi
+#
+##############################################################################
+#
+# handle window resizing
+#
+my_resize() {
+  if [[ $(command resize 2>/dev/null) ]]; then
+    eval `resize`
+  fi
+}
+
+# Reset window info on resize
+TRAPWINCH () {
+  my_resize
+}
+
+my_resize
+#
+##############################################################################
+#
+# Mac OS X stuff
+#
+if [[ "$(uname -s)" == "Darwin" ]]; then
+
+  # look for keyboardservicesd
+  kbsd_disabled=$(launchctl print-disabled gui/$UID | grep 'com.apple.keyboardservicesd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${kbsd_disabled:-false}" == "false" ]]; then
+    echo "Damn you keyboardservicesd!"
+    launchctl disable gui/$UID/com.apple.keyboardservicesd
+    sudo launchctl stop com.apple.keyboardservicesd
+    sudo pkill -9 keyboardservicesd
+  fi
+
+  # Google software update
+  gsu_disabled=$(launchctl print-disabled gui/$UID | grep 'com.google.keystone.system.agent' | awk '{print $3}' 2>/dev/null)
+  if [[ "${gsu_disabled:-false}" == "false" ]]; then
+    launchctl disable gui/$UID/com.google.keystone.system.agent
+    sudo launchctl disable com.google.keystone.agent
+    sudo launchctl stop com.google.keystone.agent
+  fi
+
+  gsu_interval=$(defaults read com.google.Keystone.Agent checkInterval 2>/dev/null)
+  if [[ ${gsu_interval:-0} -ne 0 ]]; then
+    echo "Damn you Google!"
+    defaults write com.google.Keystone.Agent checkInterval 0
+  fi
+
+  # look for photoanalysisd
+  pad_disabled=$(launchctl print-disabled gui/$UID | grep 'com.apple.photoanalysisd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${pad_disabled:-false}" == "false" ]]; then
+    launchctl disable gui/$UID/com.apple.photoanalysisd
+    launchctl stop gui/$UID/com.apple.photoanalysisd
+    launchctl kill -TERM gui/$UID/com.apple.photoanalysisd
+  fi
+
+  PHOTO_ANALYSISD_DISABLED=$(launchctl print-disabled system | grep 'com.apple.xpc.launchd.domain.pid.photoanalysisd' | awk '{print $3}' 2>/dev/null)
+  if [[ "${PHOTO_ANALYSISD_DISABLED}" == "false" ]]; then
+    sudo launchctl disable system/com.apple.xpc.launchd.domain.pid.photoanalysisd
+    sudo launchctl stop system/com.apple.xpc.launchd.domain.pid.photoanalysisd
+  fi
+
+  # disable smart quotes
+  QUOTE_SUBSITUTION="$(defaults read NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled 2>/dev/null)"
+  QUOTE_ERROR=$?
+  if [[ $QUOTE_SUBSITUTION -eq 1 || $QUOTE_ERROR -eq 1 ]]; then
+    defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+  fi
+
+  # disable emdash
+  EMDASH_SUBSITUTION="$(defaults read NSGlobalDomain NSAutomaticDashSubstitutionEnabled 2>/dev/null)"
+  EMDASH_ERROR=$?
+  if [[ $EMDASH_SUBSITUTION -eq 1 || $EMDASH_ERROR -eq 1 ]]; then
+    defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+  fi
+fi
+
+if [[ -e "${HOME}/.dotfiles/alias/bash-like" ]]; then
+  source "${HOME}/.dotfiles/alias/bash-like"
+fi
+
+# echo "$PATH"
+if command -v fortune >/dev/null; then
+  fortune ~/.fortunes
+fi
+#
+# SimpliSafe Python Init - Add pyenv
+#
+eval "$(pyenv init -)"
+#
+# SimpliSafe Python Init - Add pyenv virtualenv
+#
+
+# https://docs.python-guide.org/dev/pip-virtualenv/
+export PIP_REQUIRE_VIRTUALENV=true
+eval "$(pyenv virtualenv-init -)"

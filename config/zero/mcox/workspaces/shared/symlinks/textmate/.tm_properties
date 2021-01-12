@@ -1,0 +1,34 @@
+# global options
+softTabs    = true
+
+# Features from - https://github.com/elia/avian-missing.tmbundle
+TM_STRIP_WHITESPACE_ON_SAVE = true
+TM_ENSURE_TRAILING_NEWLINE_ON_SAVE = true
+TM_TERMINAL_APP = "iTerm.app"
+
+# perl
+[ *.p[lm] ]
+fileType    = "source.perl"
+
+[ source.perl ]
+softTabs    = true
+tabSize     = 4
+
+# python
+[ *.py ]
+fileType    = "source.python"
+
+[ source.python ]
+softTabs    = true
+tabSize     = 4
+
+# shell
+[ *.sh ]
+tabSize = 2
+
+# Makefiles
+[ Makefile.* ]
+fileType    = "source.makefile"
+
+[ source.makefile ]
+softTabs    = false

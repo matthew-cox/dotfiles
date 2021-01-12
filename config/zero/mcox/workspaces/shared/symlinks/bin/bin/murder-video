@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# murder-video - fix MacOS camera stuff
+#
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  echo "Ending current VDC assistant processes..."
+  sudo killall VDCAssistant
+fi

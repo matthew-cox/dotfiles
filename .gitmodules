@@ -1,6 +1,3 @@
-[submodule "powerline"]
-	path = powerline
-	url = https://github.com/Lokaltog/powerline.git
 [submodule "fonts/powerline-fonts"]
 	path = fonts/powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts.git
@@ -31,3 +28,6 @@
 [submodule "powerlevel10k-media"]
 	path = powerlevel10k-media
 	url = git@github.com:romkatv/powerlevel10k-media.git
+[submodule "zero"]
+	path = zero
+	url = https://github.com/zero-sh/zero.sh

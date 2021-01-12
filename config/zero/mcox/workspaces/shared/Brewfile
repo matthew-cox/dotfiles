@@ -1,0 +1,413 @@
+##############################################################################
+#
+# Taps
+#
+tap 'homebrew/cask'
+tap 'homebrew/cask-drivers'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/command-not-found'
+tap 'homebrew/core'
+  # - 'ravenac95/sudolikeaboss'
+
+##############################################################################
+#
+# Brew formulas
+#
+brew "ack"
+brew "ansiweather"
+brew "ascii"
+brew "autoconf"
+brew "bash"
+brew "bash-completion"
+brew "bison"
+brew "brew-cask-completion"
+brew "cairo"
+brew "coreutils"
+brew "cscope"
+brew "ctags"
+# brew "cvs"
+brew "dateutils"
+# Camera RAW
+brew "dcraw"
+# fancy git diffs
+brew "diff-so-fancy"
+brew "dos2unix"
+brew "emojify"
+brew "faac"
+brew "ffmpeg"
+brew "fftw"
+brew "figlet"
+brew "fontconfig"
+brew "fortune"
+brew "freetype"
+brew "gdbm"
+brew "gettext"
+brew "git"
+brew "git-standup"
+brew "glib"
+brew "gmp"
+brew "gnu-sed"
+brew "gnu-time"
+brew "gnupg"
+brew "go"
+brew "gobject-introspection"
+    ##- "gpg-agent"
+brew "gpsbabel"
+brew "graphicsmagick"
+brew "harfbuzz"
+brew "httpie"
+# Github's replacement for git
+brew "hub"
+brew "icu4c"
+brew "imagemagick"
+brew "jhead"
+brew "jpeg"
+brew "jq"
+brew "lame"
+brew "libassuan"
+brew "libdvdcss"
+brew "libevent"
+brew "libexif"
+brew "libffi"
+brew "libgcrypt"
+brew "libgpg-error"
+brew "libgsf"
+brew "libksba"
+brew "libpng"
+brew "libtiff"
+brew "libtool"
+brew "libusb"
+brew "libusb-compat"
+brew "libvo-aacenc"
+brew "libxml2"
+brew "libyaml"
+brew "lighttpd"
+## brew "little-cms2"
+brew "macvim"
+    # Mac App Store CLI
+brew "mas"
+    # - "maven"
+brew "mdcat"
+brew "mercurial"
+brew "mpg123"
+    # - "mysql"
+    # - "node"
+brew "nmap"
+brew "openssl"
+brew "orc"
+brew "ossp-uuid"
+brew "pango"
+brew "pcre"
+brew "pdsh"
+brew "pinentry"
+brew "pixman"
+brew "pkg-config"
+brew "pt"
+brew "pth"
+brew "py2cairo"
+brew "pyenv"
+brew "pyenv-virtualenv"
+    # - "pygobject3"
+    ##- "python"
+# Virtual env for ruby
+brew "rbenv"
+brew "ruby-build"
+brew "readline"
+brew "reattach-to-user-namespace"
+brew "s3cmd"
+brew "shellcheck"
+brew "sqlite"
+# static website deploy - http://stout.is
+brew "stout"
+# needed for some font Casks
+brew "svn"
+brew "the_platinum_searcher"
+brew "the_silver_searcher"
+brew "tmux"
+brew "tree"
+brew "unixodbc"
+brew "unison"
+brew "vips"
+brew "watch"
+brew "webp"
+brew "wget"
+brew "x264"
+brew "xvid"
+brew "xz"
+brew "youtube-dl"
+brew "yuicompressor"
+brew "zlib"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+    
+    
+    
+# after-scripts:
+#     # - "./scripts/update_ruby.sh"
+#     # - "./scripts/keybindings/install.sh"
+#     # - "'./scripts/Terminal Launcher/install.sh'"
+#     # - "cd ./scripts/swift && ./install"
+#     # - "./scripts/vim_setup.sh"
+#     # create some library links for handbrake
+#     - "~/.dotfiles/scripts/handbrake_link.sh"
+#     # create sudo config for launchctl
+#     - "~/.dotfiles/scripts/sudo_config.sh"
+#     - "brew linkapps"
+#     # - "open /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app"
+#
+##############################################################################
+#
+# Fonts
+#
+cask "font-source-code-pro"
+cask "font-source-sans-pro"
+cask "font-source-serif-pro"
+cask "font-source-code-pro-for-powerline"
+cask "font-sourcecodepro-nerd-font-mono"
+cask "font-sourcecodepro-nerd-font"
+cask "font-menlo-for-powerline"
+cask "font-meslo-for-powerline"
+cask "font-monofur-for-powerline"
+
+#
+##############################################################################
+#
+# Cask Applications
+#
+cask "1password"
+# Adafruit
+cask "adafruit-arduino"
+# cask "adapter"
+    # - "adium"
+cask "adobe-air"
+cask "adobe-creative-cloud"
+cask "adobe-dng-converter"
+cask "airfoil"
+cask "airserver"
+cask "alfred"
+cask "amazon-music"
+cask "atom"
+cask "aws-vault"
+cask "backblaze"
+cask "bartender"
+cask "bean"
+    # - "blink1control"
+cask "brackets"
+cask "brave-browser"
+
+# 2019-03-01 - no longer works
+# - "caffeine"
+cask "calibre"
+
+cask "charles"
+# deprecated on BigSur
+##cask "chatology"
+cask "choosy"
+cask "chromium"
+    ##- "cleanmymac"
+    ##- "colorpicker-hex"
+    # - "controlplane"
+    # - "cyberduck"
+cask "docker"
+cask "dropbox"
+cask "emacs"
+cask "espresso"
+# Etcher - RaspberryPi image burner
+##- "etcher"
+    # - "evernote"
+    # - "expandrive"
+cask "fantastical"
+    ##- "filezilla"
+cask "firefox"
+cask "fission"
+# - "flashlight"
+cask "fluid"
+# serial driver for Arduino
+cask "ftdi-vcp-driver"
+cask "gemini"
+    # - "gfxcardstatus"
+    # - "gimp"
+    ##- "github-desktop"
+    # - "glimmerblocker"
+    ##- "globalsync"
+    # GMail backup
+cask "gmvault"
+cask "google-nik-collection"
+cask "graphicconverter"
+    ##- "guitar-tuner"
+cask "handbrake"
+    ##- "heroku"
+cask "hex-fiend"
+    ##- "hosts"
+    ##- "houdahgeo"
+# Crashplan replacement
+cask "idrive"
+cask "iterm2"
+cask "itsycal"
+cask "java"
+    # - "jenkins-menu"
+    # Customize keyboard
+    # - "karabiner-elements"
+    # - "keepassx"
+# Caffeine replacement
+cask "keepingyouawake"
+cask "keybase"
+cask "kindle"
+cask "kitematic"
+cask "littlesnitch"
+    ##- "loadmytracks"
+    # - "logitech-harmony"
+cask "logitech-myharmony"
+    ##- "logitech-unifying"
+cask "macvim"
+cask "magicprefs"
+cask "malwarebytes"
+cask "mamp"
+# bluray support
+cask "makemkv"
+# video file tagging
+cask "metaz"
+cask "micro-snitch"
+# Window management
+# - "moom"
+cask "mpeg-streamclip"
+cask "mplayer-osx-extended"
+# CirCuitPython IDE
+cask "mu-editor"
+    # - "nvalt"
+cask "omnigraffle"
+# cask "path-finder"
+cask "plexamp"
+cask "plex-media-player"
+cask "postbox"
+# SimpliSafe VPN client
+cask "pritunl"
+cask "raspberry-pi-imager"
+# ShiftIt replacement
+cask "rectangle"
+cask "resilio-sync"
+# Still need this?
+###- "screenflow"
+cask "scrivener"
+# Moom replacement
+#- "shiftit"
+# driver for arduino
+cask "silicon-labs-vcp-driver"
+cask "silverlight"
+cask "skype"
+cask "slimbatterymonitor"
+# Still need this?
+###- "spideroakone"
+# - "spotify"
+# nvAlt replacement
+cask "standard-notes"
+# replacement for Moom (auto window layout)
+cask "stay"
+cask "steam"
+cask "textmate"
+cask "the-hit-list"
+cask "the-unarchiver"
+cask "tripmode"
+#- "totals"
+#- "tower"
+#- "transmission"
+#- "transmit"
+# - "usb-overdrive"
+cask "vlc"
+# Personal VPN app
+#- "cloak"
+cask "mullvadvpn"
+cask "tunnelbear"
+# Old scanner app
+# Bad MD5
+###- "vuescan"
+#- "wedge"
+cask "wireshark"
+# - "xbox360-controller-driver"
+# X Lossless Decoder
+cask "xld"
+cask "xquartz"
+cask "yubico-authenticator"
+cask "zoomus"
+#
+##############################################################################
+#
+# App store apps
+#
+# Bulldock Browser (1.0.4)
+#1203425759
+# Deliveries (3.0.7)
+mas "Deliveries", id: 924726344
+  
+# Display Menu (2.2.3)
+mas "Display Menu", id: 549083868
+# Flycut (1.5)
+#442160987
+# GarageBand (10.2.0)
+#682658836
+# Guardian Angel (2.0.1)
+#657241260
+# Keynote (7.3.1)
+#409183694
+# LastPass (3.25.0)
+#926036361
+# Microsoft Remote Desktop (8.0.27325)
+mas "Microsoft Remote Desktop", id: 715768417
+# Moom (3.2.10)
+#419330170
+# MuteMyMic (1.10)
+#456362093
+# Numbers (4.3.1)
+#409203825
+# Pages (6.3.1)
+#409201541
+# Radium (3.1.3)
+mas "Radium", id: 597611879
+# Slack (3.1.0)
+mas "Slack", id: 803453959
+# UnPlugged (3.0)
+mas "UnPlugged", id: 423123087
+# Wunderlist (3.4.7)
+#410628904
+# Xcode (9.2)
+#497799835
+# iMovie (10.1.8)
+#408981434
+# properVOLUME (1.1.4)
+#521142667
+
+# Todoist
+# mas "Todoist", id: 
+  
+  
+  
+
+# symlinks:
+    # "aws/": "~/.aws"
+    # "bash/bash_profile": "~/.bash_profile"
+    # "bash/bashrc": "~/.bashrc"
+    # "bin/*": "~/bin/"
+    # "fish/*.fish": "~/.config/fish/"
+    # "fish/functions/*": "~/.config/fish/functions/"
+    # "fortunes/": "~/.fortunes"
+    # "git/gitconfig": "~/.gitconfig"
+#    "pihole": "~/.config/pihole"
+#    "pycodestyle": "~/.config/pycodestyle"
+#    "pylintrc": "~/.config/pylintrc"
+    # "sh/.*": "~"
+    # "textmate/tm_properties": "~/.tm_properties"
+    # "tmux/tmux.conf": "~/.tmux.conf"
+    # "tmux/tmux.local": "~/.tmux.local"
+    # "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
+    # .vimrc -> /Users/mcox/Devel/dotfiles/maximum-awesome/vimrc
+    # "vim/.*": "~"
+    # "xvim/.*": "~"
+#    "youtube-dl/": "~/.config/youtube-dl"
+    # "zsh/zshenv": "~/.zshenv"
+    # "zsh/zprofile": "~/.zprofile"
+    # "zsh/zshrc": "~/.zshrc"
+#    "zsh/zsh-functions/*": "~/.zsh-functions/"
+    # "zsh/p10k.zsh": "~/.p10k.zsh"
+    # "zsh/.zshrc": "~"
+

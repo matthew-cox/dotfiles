@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# secure wrapper for aws cli tools
+#
+set -euo pipefail
+#
+# Where is the awscli?
+#
+if [[ -x "${HOME}/.pyenv/shims/aws" ]]; then
+  AWS_CLI="${HOME}/.pyenv/shims/aws"
+elif [[ -x "/usr/local/bin/aws" ]]; then
+  AWS_CLI="/usr/local/bin/aws"
+else
+  AWS_CLI="${AWS_CLI:?I was unable to located aws cli}"
+fi
+#
+# run help commands without vault
+#
+if echo "$@" | grep -E '(configure|help)' >/dev/null 2>&1; then
+  exec "${AWS_CLI}" "$@"
+else
+  #
+  # don't default the AWS_PROFILE
+  #
+  VAULT_PROFILE=${AWS_PROFILE:?AWS_PROFILE is not set, which profile should I use?}
+
+  if command -v aws-vault >/dev/null 2>&1; then
+    exec aws-vault exec "${VAULT_PROFILE}" -- "${AWS_CLI:?I was unable to located aws cli}" "$@"
+  else
+    exec "${AWS_CLI}" "$@"
+  fi
+fi
