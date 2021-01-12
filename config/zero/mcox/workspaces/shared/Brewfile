@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# Taps
+# Taps - ALL
 #
 tap 'homebrew/cask'
 tap 'homebrew/cask-drivers'
@@ -11,7 +11,7 @@ tap 'homebrew/core'
 
 ##############################################################################
 #
-# Brew formulas
+# Brew formulas - ALL
 #
 brew "ack"
 brew "ansiweather"
@@ -83,8 +83,8 @@ brew "libxml2"
 brew "libyaml"
 brew "lighttpd"
 ## brew "little-cms2"
-brew "macvim"
-    # Mac App Store CLI
+
+# Mac App Store CLI
 brew "mas"
     # - "maven"
 brew "mdcat"
@@ -158,14 +158,14 @@ brew "zsh-syntax-highlighting"
 #
 ##############################################################################
 #
-# Fonts
+# Fonts - ALL
 #
 cask "font-source-code-pro"
 cask "font-source-sans-pro"
 cask "font-source-serif-pro"
 cask "font-source-code-pro-for-powerline"
-cask "font-sourcecodepro-nerd-font-mono"
-cask "font-sourcecodepro-nerd-font"
+# cask "font-sourcecodepro-nerd-font-mono"
+# cask "font-sourcecodepro-nerd-font"
 cask "font-menlo-for-powerline"
 cask "font-meslo-for-powerline"
 cask "font-monofur-for-powerline"
@@ -173,7 +173,7 @@ cask "font-monofur-for-powerline"
 #
 ##############################################################################
 #
-# Cask Applications
+# Cask Applications - ALL
 #
 cask "1password"
 # Adafruit
@@ -231,9 +231,8 @@ cask "gemini"
     ##- "github-desktop"
     # - "glimmerblocker"
     ##- "globalsync"
-    # GMail backup
+  # GMail backup
 cask "gmvault"
-cask "google-nik-collection"
 cask "graphicconverter"
     ##- "guitar-tuner"
 cask "handbrake"
@@ -245,7 +244,7 @@ cask "hex-fiend"
 cask "idrive"
 cask "iterm2"
 cask "itsycal"
-cask "java"
+# cask "java"
     # - "jenkins-menu"
     # Customize keyboard
     # - "karabiner-elements"
@@ -255,7 +254,7 @@ cask "keepingyouawake"
 cask "keybase"
 cask "kindle"
 cask "kitematic"
-cask "littlesnitch"
+cask "little-snitch"
     ##- "loadmytracks"
     # - "logitech-harmony"
 cask "logitech-myharmony"
@@ -263,7 +262,6 @@ cask "logitech-myharmony"
 cask "macvim"
 cask "magicprefs"
 cask "malwarebytes"
-cask "mamp"
 # bluray support
 cask "makemkv"
 # video file tagging
@@ -271,8 +269,6 @@ cask "metaz"
 cask "micro-snitch"
 # Window management
 # - "moom"
-cask "mpeg-streamclip"
-cask "mplayer-osx-extended"
 # CirCuitPython IDE
 cask "mu-editor"
     # - "nvalt"
@@ -295,7 +291,6 @@ cask "scrivener"
 # driver for arduino
 cask "silicon-labs-vcp-driver"
 cask "silverlight"
-cask "skype"
 cask "slimbatterymonitor"
 # Still need this?
 ###- "spideroakone"
@@ -306,7 +301,7 @@ cask "standard-notes"
 cask "stay"
 cask "steam"
 cask "textmate"
-cask "the-hit-list"
+# cask "the-hit-list"
 cask "the-unarchiver"
 cask "tripmode"
 #- "totals"
@@ -333,7 +328,7 @@ cask "zoomus"
 #
 ##############################################################################
 #
-# App store apps
+# App store apps - ALL
 #
 # Bulldock Browser (1.0.4)
 #1203425759
@@ -363,7 +358,7 @@ mas "Microsoft Remote Desktop", id: 715768417
 # Pages (6.3.1)
 #409201541
 # Radium (3.1.3)
-mas "Radium", id: 597611879
+# mas "Radium", id: 597611879
 # Slack (3.1.0)
 mas "Slack", id: 803453959
 # UnPlugged (3.0)

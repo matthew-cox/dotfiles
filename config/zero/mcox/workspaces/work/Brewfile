@@ -1,6 +1,6 @@
 ##############################################################################
 #
-# Brew formulas
+# Brew formulas - Work Only
 #
 brew "git-standup"
 brew "glib"
@@ -94,7 +94,7 @@ brew "zsh-syntax-highlighting"
 #
 ##############################################################################
 #
-# Cask Applications
+# Cask Applications - Work Only
 #
 
 # serial driver for Arduino
@@ -130,81 +130,9 @@ cask "zoomus"
 #
 ##############################################################################
 #
-# App store apps
+# App store apps - Work only
 #
 # Bulldock Browser (1.0.4)
 #1203425759
 # Deliveries (3.0.7)
 mas "Deliveries", id: 924726344
-  
-# Display Menu (2.2.3)
-mas "Display Menu", id: 549083868
-# Flycut (1.5)
-#442160987
-# GarageBand (10.2.0)
-#682658836
-# Guardian Angel (2.0.1)
-#657241260
-# Keynote (7.3.1)
-#409183694
-# LastPass (3.25.0)
-#926036361
-# Microsoft Remote Desktop (8.0.27325)
-mas "Microsoft Remote Desktop", id: 715768417
-# Moom (3.2.10)
-#419330170
-# MuteMyMic (1.10)
-#456362093
-# Numbers (4.3.1)
-#409203825
-# Pages (6.3.1)
-#409201541
-# Radium (3.1.3)
-mas "Radium", id: 597611879
-# Slack (3.1.0)
-mas "Slack", id: 803453959
-# UnPlugged (3.0)
-mas "UnPlugged", id: 423123087
-# Wunderlist (3.4.7)
-#410628904
-# Xcode (9.2)
-#497799835
-# iMovie (10.1.8)
-#408981434
-# properVOLUME (1.1.4)
-#521142667
-
-# Todoist
-# mas "Todoist", id: 
-  
-  
-  
-
-# symlinks:
-    # "aws/": "~/.aws"
-    # "bash/bash_profile": "~/.bash_profile"
-    # "bash/bashrc": "~/.bashrc"
-    # "bin/*": "~/bin/"
-    # "fish/*.fish": "~/.config/fish/"
-    # "fish/functions/*": "~/.config/fish/functions/"
-    # "fortunes/": "~/.fortunes"
-    # "git/gitconfig": "~/.gitconfig"
-#    "pihole": "~/.config/pihole"
-#    "pycodestyle": "~/.config/pycodestyle"
-#    "pylintrc": "~/.config/pylintrc"
-    # "sh/.*": "~"
-    # "textmate/tm_properties": "~/.tm_properties"
-    # "tmux/tmux.conf": "~/.tmux.conf"
-    # "tmux/tmux.local": "~/.tmux.local"
-    # "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
-    # .vimrc -> /Users/mcox/Devel/dotfiles/maximum-awesome/vimrc
-    # "vim/.*": "~"
-    # "xvim/.*": "~"
-#    "youtube-dl/": "~/.config/youtube-dl"
-    # "zsh/zshenv": "~/.zshenv"
-    # "zsh/zprofile": "~/.zprofile"
-    # "zsh/zshrc": "~/.zshrc"
-#    "zsh/zsh-functions/*": "~/.zsh-functions/"
-    # "zsh/p10k.zsh": "~/.p10k.zsh"
-    # "zsh/.zshrc": "~"
-

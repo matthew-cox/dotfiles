@@ -1,17 +1,11 @@
 ##############################################################################
 #
-# Taps
+# Taps - Home only
 #
-tap 'homebrew/cask'
-tap 'homebrew/cask-drivers'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/command-not-found'
-tap 'homebrew/core'
-  # - 'ravenac95/sudolikeaboss'
 
 ##############################################################################
 #
-# Brew formulas
+# Brew formulas - Home only
 #
 brew "ack"
 brew "ansiweather"
@@ -62,43 +56,8 @@ brew "icu4c"
 brew "imagemagick"
 brew "jhead"
 brew "jpeg"
-brew "jq"
-brew "lame"
-brew "libassuan"
-brew "libdvdcss"
-brew "libevent"
-brew "libexif"
-brew "libffi"
-brew "libgcrypt"
-brew "libgpg-error"
-brew "libgsf"
-brew "libksba"
-brew "libpng"
-brew "libtiff"
-brew "libtool"
-brew "libusb"
-brew "libusb-compat"
-brew "libvo-aacenc"
-brew "libxml2"
-brew "libyaml"
-brew "lighttpd"
-## brew "little-cms2"
-brew "macvim"
-    # Mac App Store CLI
-brew "mas"
-    # - "maven"
-brew "mdcat"
-brew "mercurial"
-brew "mpg123"
-    # - "mysql"
-    # - "node"
-brew "nmap"
-brew "openssl"
-brew "orc"
-brew "ossp-uuid"
-brew "pango"
-brew "pcre"
-brew "pdsh"
+
+
 # installed on Antares
 brew "peco"
 brew "tivodecode"
@@ -126,8 +85,8 @@ cask "font-source-code-pro"
 cask "font-source-sans-pro"
 cask "font-source-serif-pro"
 cask "font-source-code-pro-for-powerline"
-cask "font-sourcecodepro-nerd-font-mono"
-cask "font-sourcecodepro-nerd-font"
+# cask "font-sourcecodepro-nerd-font-mono"
+# cask "font-sourcecodepro-nerd-font"
 #
 ##############################################################################
 #
@@ -193,11 +152,9 @@ cask "gemini"
     ##- "globalsync"
     # GMail backup
 cask "gmvault"
-cask "google-nik-collection"
 cask "graphicconverter"
     ##- "guitar-tuner"
 cask "handbrake"
-    ##- "heroku"
 cask "hex-fiend"
     ##- "hosts"
     ##- "houdahgeo"
@@ -205,17 +162,14 @@ cask "hex-fiend"
 cask "idrive"
 cask "iterm2"
 cask "itsycal"
-cask "java"
-    # - "jenkins-menu"
     # Customize keyboard
     # - "karabiner-elements"
-    # - "keepassx"
 # Caffeine replacement
 cask "keepingyouawake"
 cask "keybase"
 cask "kindle"
 cask "kitematic"
-cask "littlesnitch"
+cask "little-snitch"
     ##- "loadmytracks"
     # - "logitech-harmony"
 cask "logitech-myharmony"
@@ -223,15 +177,13 @@ cask "logitech-myharmony"
 cask "macvim"
 cask "magicprefs"
 cask "malwarebytes"
-cask "mamp"
 # bluray support
 cask "makemkv"
 # video file tagging
 cask "metaz"
 cask "micro-snitch"
-# Window management
-# - "moom"
-cask "mpeg-streamclip"
+
+###cask "mpeg-streamclip"
 cask "mplayer-osx-extended"
 # CirCuitPython IDE
 cask "mu-editor"
@@ -241,8 +193,7 @@ cask "omnigraffle"
 cask "plexamp"
 cask "plex-media-player"
 cask "postbox"
-# SimpliSafe VPN client
-cask "pritunl"
+
 cask "raspberry-pi-imager"
 # ShiftIt replacement
 cask "rectangle"
@@ -266,7 +217,7 @@ cask "standard-notes"
 cask "stay"
 cask "steam"
 cask "textmate"
-cask "the-hit-list"
+# cask "the-hit-list"
 cask "the-unarchiver"
 cask "tripmode"
 #- "totals"
@@ -279,8 +230,7 @@ cask "vlc"
 #- "cloak"
 cask "mullvadvpn"
 cask "tunnelbear"
-# Old scanner app
-# Bad MD5
+# Old scanner app (Bad MD5)
 ###- "vuescan"
 #- "wedge"
 cask "wireshark"
@@ -312,6 +262,8 @@ mas "Display Menu", id: 549083868
 #409183694
 # LastPass (3.25.0)
 #926036361
+
+mas "Meeter", id: 1510445899
 # Microsoft Remote Desktop (8.0.27325)
 mas "Microsoft Remote Desktop", id: 715768417
 # Moom (3.2.10)
@@ -323,7 +275,7 @@ mas "Microsoft Remote Desktop", id: 715768417
 # Pages (6.3.1)
 #409201541
 # Radium (3.1.3)
-mas "Radium", id: 597611879
+# mas "Radium", id: 597611879
 # Slack (3.1.0)
 mas "Slack", id: 803453959
 # UnPlugged (3.0)
@@ -338,7 +290,8 @@ mas "UnPlugged", id: 423123087
 #521142667
 
 # Todoist
-# mas "Todoist", id: 
+mas "Todoist", id: 585829637
+
   
   
   
