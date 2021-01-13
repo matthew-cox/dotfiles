@@ -2,7 +2,7 @@
 
 the stuff with dots
 
-**Last Updated: 2018-03-21 16:54 @matthew-cox**
+**Last Updated: 2021-01-12 21:59 @matthew-cox**
 
 Table of Contents
 =================
@@ -11,20 +11,16 @@ Table of Contents
   * [Brew some 🍻](#brew-some-)
     * [Disable analytics](#disable-analytics)
     * [Install 1password](#install-1password)
-    * [Install MAS](#install-mas)
     * [Basic github configure](#basic-github-configure)
   * [Get the dots](#get-the-dots)
-    * [Powerline compatibility](#powerline-compatibility)
-    * [Python](#python)
     * [Bootstrap](#bootstrap)
-    * [Mac AppStore Apps](#mac-appstore-apps)
+    * [Python](#python)
     * [Perl](#perl)
     * [Ruby](#ruby)
     * [SSH](#ssh)
       * [config.d](#configd)
       * [Key Symlinks](#key-symlinks)
     * [TextMate](#textmate)
-    * [Zsh](#zsh)
     * [Revel in your configured environment](#revel-in-your-configured-environment)
 
 # Xcode CLI Tools
@@ -82,10 +78,11 @@ Prefer [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://gi
 
 Prefer [perlbrew](https://github.com/gugod/App-perlbrew) over the global version:
 
-    ❯ ./scripts/perl_init.sh
+    ❯ ./scripts/perl_init
 
-Start a new terminal, then:
+Then:
 
+    ❯ new_iterm_window
     ❯ perlbrew install --switch perl-5.32.0
 
 ## Ruby
@@ -100,7 +97,7 @@ Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
 
 SSH configs are in Keybase git repo:
 
-    ❯ open /Applications/Keybase.app
+    ❯ open -a Keybase
     ❯ git clone keybase://private/mcox/ssh_config ~/.ssh/config.d
 
 Needs [poet](https://github.com/awendt/poet) to generate:
