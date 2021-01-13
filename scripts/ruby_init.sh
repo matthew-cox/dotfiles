@@ -50,7 +50,7 @@ else
     fi
 fi
 
-echo "Updating Ruby..."
+putinfo "Updating Ruby..."
 rbenv install "${RUBY_VERSION}" --skip-existing
 rbenv global "${RUBY_VERSION}"
 gem update --system

@@ -3,5 +3,4 @@
 # Secure brew zsh comp dirs
 #
 
-chmod 755 /usr/local/share/zsh/site-functions
-chmod 750 /usr/local/share/zsh
+chmod 755 /usr/local/share /usr/local/share/zsh /usr/local/share/zsh/site-functions

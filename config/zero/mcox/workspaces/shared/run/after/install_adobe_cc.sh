@@ -31,7 +31,7 @@ if [[ -d "${_installer}" ]]; then
   open "${_installer}"
 else
   puterr "unable to find installer"
-done
+fi
 
 
 # restore the settings
