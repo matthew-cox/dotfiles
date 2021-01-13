@@ -285,6 +285,8 @@ cask "scrivener"
 cask "silicon-labs-vcp-driver"
 cask "silverlight"
 cask "slimbatterymonitor"
+# Sound I/O manager
+cask "soundsource"
 # Still need this?
 ###- "spideroakone"
 # - "spotify"

@@ -67,10 +67,10 @@ brew "shellcheck"
 brew "sqlite"
 # static website deploy - http://stout.is
 brew "stout"
-# needed for some font Casks
-brew "svn"
+
 # manage terraform versions
 brew "tfenv"
+
 brew "the_platinum_searcher"
 brew "the_silver_searcher"
 brew "tmux"
@@ -102,6 +102,7 @@ cask "ftdi-vcp-driver"
 
 # SimpliSafe VPN client
 cask "pritunl"
+
 cask "raspberry-pi-imager"
 # ShiftIt replacement
 cask "rectangle"
@@ -132,7 +133,5 @@ cask "zoomus"
 #
 # App store apps - Work only
 #
-# Bulldock Browser (1.0.4)
-#1203425759
 # Deliveries (3.0.7)
 mas "Deliveries", id: 924726344

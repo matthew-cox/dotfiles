@@ -61,9 +61,7 @@ brew "jpeg"
 # installed on Antares
 brew "peco"
 brew "tivodecode"
-    
-    
-    
+
 # after-scripts:
 #     # - "./scripts/update_ruby.sh"
 #     # - "./scripts/keybindings/install.sh"
@@ -79,18 +77,13 @@ brew "tivodecode"
 #
 ##############################################################################
 #
-# Fonts
+# Fonts - Home only
 #
-cask "font-source-code-pro"
-cask "font-source-sans-pro"
-cask "font-source-serif-pro"
-cask "font-source-code-pro-for-powerline"
-# cask "font-sourcecodepro-nerd-font-mono"
-# cask "font-sourcecodepro-nerd-font"
+
 #
 ##############################################################################
 #
-# Cask Applications
+# Cask Applications - Home only
 #
 cask "1password"
 # Adafruit
@@ -243,13 +236,13 @@ cask "zoomus"
 #
 ##############################################################################
 #
-# App store apps
+# App store apps  - Home only
 #
 # Bulldock Browser (1.0.4)
 #1203425759
 # Deliveries (3.0.7)
 mas "Deliveries", id: 924726344
-  
+
 # Display Menu (2.2.3)
 mas "Display Menu", id: 549083868
 # Flycut (1.5)
@@ -291,36 +284,3 @@ mas "UnPlugged", id: 423123087
 
 # Todoist
 mas "Todoist", id: 585829637
-
-  
-  
-  
-
-# symlinks:
-    # "aws/": "~/.aws"
-    # "bash/bash_profile": "~/.bash_profile"
-    # "bash/bashrc": "~/.bashrc"
-    # "bin/*": "~/bin/"
-    # "fish/*.fish": "~/.config/fish/"
-    # "fish/functions/*": "~/.config/fish/functions/"
-    # "fortunes/": "~/.fortunes"
-    # "git/gitconfig": "~/.gitconfig"
-#    "pihole": "~/.config/pihole"
-#    "pycodestyle": "~/.config/pycodestyle"
-#    "pylintrc": "~/.config/pylintrc"
-    # "sh/.*": "~"
-    # "textmate/tm_properties": "~/.tm_properties"
-    # "tmux/tmux.conf": "~/.tmux.conf"
-    # "tmux/tmux.local": "~/.tmux.local"
-    # "tmux/tmux-powerlinerc": "~/.tmux-powerlinerc"
-    # .vimrc -> /Users/mcox/Devel/dotfiles/maximum-awesome/vimrc
-    # "vim/.*": "~"
-    # "xvim/.*": "~"
-#    "youtube-dl/": "~/.config/youtube-dl"
-    # "zsh/zshenv": "~/.zshenv"
-    # "zsh/zprofile": "~/.zprofile"
-    # "zsh/zshrc": "~/.zshrc"
-#    "zsh/zsh-functions/*": "~/.zsh-functions/"
-    # "zsh/p10k.zsh": "~/.p10k.zsh"
-    # "zsh/.zshrc": "~"
-
