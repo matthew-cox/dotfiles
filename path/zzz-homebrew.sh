@@ -75,3 +75,11 @@ done
 if brew command command-not-found-init > /dev/null 2>&1; then
   eval "$(brew command-not-found-init)";
 fi
+
+#
+# ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed and these are
+# never upgraded.
+#
+# To link Rubies to Homebrew's OpenSSL 1.1 (which is upgraded) add the following:
+#
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
