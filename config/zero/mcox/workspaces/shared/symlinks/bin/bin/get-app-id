@@ -7,7 +7,9 @@ THE_APP_TO_ID="$@"
 _app_paths=(
 "/Applications/${THE_APP_TO_ID}.app"
 "${HOME}/Desktop/${THE_APP_TO_ID}.app"
+"${HOME}/Desktop/Apps/${THE_APP_TO_ID}.app"
 )
+readonly _app_paths
 
 _app_id=""
 for _app in "${_app_paths[@]}"; do

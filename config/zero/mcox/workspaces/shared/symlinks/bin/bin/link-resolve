@@ -17,6 +17,7 @@ from pathlib import Path
 import os
 try:
     from urllib.parse import unquote, urlparse
+    import urllib3.exceptions
 except ImportError:
     from urlparse import urlparse
     import urllib
@@ -25,6 +26,7 @@ except ImportError:
 # Non-standard imports
 #
 import requests
+import requests.exceptions
 
 
 #
@@ -158,32 +160,45 @@ def resolve_url(url: str = None):
         if 'abnb.me' in url:
             redirects = True
 
-        if 'wclink.co' in url:
+        if 'nytimes.com/wirecutter/' in url or 'wclink.co' in url or 'thewirecutter.com' in url:
+            logger.info("Detected WireCutter link")
             redirects = False
 
             if 'merchant=' in url:
                 redirects = True
-
-        if 'thewirecutter.com' in url:
-            redirects = False
-
-            if 'merchant=' in url:
-                redirects = True
-
 
         if 'un.cr' in url:
+            logger.info("Detected Uncrate link")
             redirects = True
 
         if 'shop-links.co' in url:
             redirects = True
 
-        req = requests.get(url, allow_redirects=redirects, headers=HEADERS)
 
-        #from pprint import pprint
-        #pprint(req.history)
-        #pprint(req.headers)
+        req = None
+        try:
+            req = requests.get(url, allow_redirects=redirects, headers=HEADERS)
+        except urllib3.exceptions.MaxRetryError as err:
+            logger.warning("Max retry")
+            # from pprint import pprint
+            # pprint(err)
+        except urllib3.exceptions.NewConnectionError as err:
+            logger.warning("New connection")
+            # from pprint import pprint
+            # pprint(err)
+        except requests.exceptions.ConnectionError as err:
+            logger.warning("Connection refused!")
+            if err.request.url:
+                final_url = err.request.url
+        except Exception as err:
+            logger.warning(err)
 
-        if req.status_code > 300 and req.status_code < 400:
+        # if req:
+        #     from pprint import pprint
+        #     pprint(req.history)
+        #     pprint(req.headers)
+
+        if req and req.status_code > 300 and req.status_code < 400:
             logger.info("Found redirect!")
             if len(req.history) > 0:
                 logger.info("Redirect followed, chossing last one")
@@ -191,7 +206,7 @@ def resolve_url(url: str = None):
             elif req.headers.get('Location'):
                 final_url = req.headers.get('Location')
 
-        else:
+        elif req:
             logger.info("No redirect found!")
             query_url = search_query_string(req.url)
             if query_url:

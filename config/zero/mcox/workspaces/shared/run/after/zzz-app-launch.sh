@@ -24,7 +24,7 @@ _apps_to_start=(
 "Bartender 4"
 "Docker"
 "Fantastical"
-"Itsycal"
+# "Itsycal"
 "KeepingYouAwake"
 "Little Snitch"
 "Plexamp"

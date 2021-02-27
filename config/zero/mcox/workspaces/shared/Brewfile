@@ -307,7 +307,7 @@ cask "tripmode"
 cask "vlc"
 # Personal VPN app
 #- "cloak"
-cask "mullvadvpn"
+# cask "mullvadvpn"
 cask "tunnelbear"
 # Old scanner app
 # Bad MD5
@@ -319,7 +319,7 @@ cask "wireshark"
 cask "xld"
 cask "xquartz"
 cask "yubico-authenticator"
-cask "zoomus"
+cask "zoom"
 #
 ##############################################################################
 #
