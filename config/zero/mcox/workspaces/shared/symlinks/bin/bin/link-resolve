@@ -198,7 +198,16 @@ def resolve_url(url: str = None):
         #     pprint(req.history)
         #     pprint(req.headers)
 
-        if req and req.status_code > 300 and req.status_code < 400:
+        # look for a refresh header
+        if req and req.headers.get('Refresh'):
+            logger.info("Found refresh!")
+            # print(req.headers.get('Refresh').split('url=')[1])
+            refresh_target = req.headers.get('Refresh').split('url=')[1]
+            logger.info("Refresh target is: '%s'", refresh_target)
+            final_url = refresh_target
+
+        # look for an actual redirect
+        elif req and req.status_code > 300 and req.status_code < 400:
             logger.info("Found redirect!")
             if len(req.history) > 0:
                 logger.info("Redirect followed, chossing last one")
