@@ -49,7 +49,7 @@ Install [Homebrew](https://brew.sh):
 Find `GitHub_rsa.priv` in 1password and install at `~/.ssh/GitHub_rsa.priv`; then:
 
     ❯ mkdir -p ~/.ssh; chmod 755 ~/.ssh
-    ❯ eval $(op signin cox_ponting_towers)
+    ❯ eval $(op signin cox-ponting-towers 1password-family@azriel.net)
     ❯ op get document 'GitHub_rsa.priv - github.com (matthew-cox)' > ~/.ssh/GitHub_rsa.priv
     ❯ op signout cox_ponting_towers
     ❯ chmod 400 ~/.ssh/GitHub_rsa.priv
@@ -64,8 +64,9 @@ Configure a very basic `~/.ssh/config`:
 
 ## Bootstrap
 
-Bootstrap many things with [Zero.sh](https://github.com/msanders/zero.sh):
+Bootstrap many things with [Zero.sh](https://github.com/zero-sh/zero.sh):
 
+    ❯ brew install zero-sh/tap/zero
     ❯ ./scripts/zero_init.sh [home|work]
 
 ## Python
