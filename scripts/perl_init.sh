@@ -21,7 +21,7 @@ done
 #
 # Desired perl version
 #
-export PERL_VERSION=5.27.2
+export PERL_VERSION=5.32.0
 #
 ##############################################################################
 #
@@ -42,5 +42,4 @@ else
 fi
 
 echo "Start a new terminal window and execute the following: "
-echo "perlbrew install --skip-existing perl-$PERL_VERSION"
-echo "perlbrew switch perl-$PERL_VERSION"
+echo "perlbrew install --switch perl-$PERL_VERSION"

@@ -164,7 +164,7 @@ def resolve_url(url: str = None):
             if 'merchant=' in url:
                 redirects = True
 
-        if 'thewirecutter.com' in url:
+        if 'www.nytimes.com/wirecutter' in url:
             redirects = False
 
             if 'merchant=' in url:
@@ -177,13 +177,17 @@ def resolve_url(url: str = None):
         if 'shop-links.co' in url:
             redirects = True
 
-        req = requests.get(url, allow_redirects=redirects, headers=HEADERS)
+        req = None
+        try:
+            req = requests.get(url, allow_redirects=redirects, headers=HEADERS)
+        except Exception as err:
+            logger.debug(err)
 
-        #from pprint import pprint
-        #pprint(req.history)
-        #pprint(req.headers)
+        # from pprint import pprint
+        # pprint(req.history)
+        # pprint(req.headers)
 
-        if req.status_code > 300 and req.status_code < 400:
+        if req and req.status_code > 300 and req.status_code < 400:
             logger.info("Found redirect!")
             if len(req.history) > 0:
                 logger.info("Redirect followed, chossing last one")
@@ -191,7 +195,7 @@ def resolve_url(url: str = None):
             elif req.headers.get('Location'):
                 final_url = req.headers.get('Location')
 
-        else:
+        elif req:
             logger.info("No redirect found!")
             query_url = search_query_string(req.url)
             if query_url:
@@ -203,12 +207,12 @@ def resolve_url(url: str = None):
 
         if final_url and final_url.count('http') > 1:
             final_url = search_query_string(final_url)
-        else:
-            parsed = urlparse(final_url)
+        elif "ref=" in url:
+            parsed = urlparse(url)
             # pprint(parsed)
             path = parsed.path
             # Amazon link case
-            if 'ref=' in parsed.path:
+            if "ref=" in parsed.path:
                 path = '/'.join(parsed.path.split('/')[:-1])
             final_url = ''.join([parsed.netloc, path])
 

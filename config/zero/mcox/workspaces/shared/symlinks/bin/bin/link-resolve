@@ -1,0 +1,276 @@
+#!/Users/mcox/.pyenv/versions/mcox-3.8.2/bin/python3
+# -*- coding: utf-8 -*-
+#
+'''
+Resolve shortend URLs
+'''
+#
+# Standard Imports
+#
+from __future__ import absolute_import, division, print_function, unicode_literals
+import argparse
+from datetime import date, datetime
+import json
+import logging
+
+from pathlib import Path
+import os
+try:
+    from urllib.parse import unquote, urlparse
+    import urllib3.exceptions
+except ImportError:
+    from urlparse import urlparse
+    import urllib
+
+#
+# Non-standard imports
+#
+import requests
+import requests.exceptions
+
+
+#
+###############################################################################
+#
+# Global variables
+#
+DEFAULT_LOG_LEVEL = os.environ.get('PY_LOG_LEVEL', 'WARNING')
+
+DESCRIPTION = "Resolve shortend URLs"
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:66.0) Gecko/20100101 Firefox/66.0'
+
+HEADERS = {'user-agent': USER_AGENT}
+
+#
+###############################################################################
+#
+# _clean_loggers()
+#
+def _clean_loggers():
+    '''Remove existing logging handlers (mostly for Lambda)'''
+    root = logging.getLogger()
+    if root.handlers:
+        for handler in root.handlers:
+            root.removeHandler(handler)
+    # try this here
+    logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s.%(funcName)s:%(message)s',
+                        level=getattr(logging, DEFAULT_LOG_LEVEL))
+
+
+#
+###############################################################################
+#
+# _get_logger()
+#
+def _get_logger():
+    '''
+    Reusable code to get the correct logger by name of current file
+
+    Returns:
+        logging.logger: Instance of logger for name of current file
+
+    '''
+    return logging.getLogger(Path(__file__).resolve().name)
+
+
+#
+###############################################################################
+#
+# _json_dump() - Little output to DRY
+#
+def _json_dump(the_thing, pretty=False):
+    '''
+    Reusable JSON dumping code
+
+    Returns:
+        str: JSON string representation suitable for print'ing
+    '''
+    output = None
+    if pretty:
+        output = json.dumps(the_thing, default=_json_serial, sort_keys=True, indent=4,
+                            separators=(',', ': '))
+    else:
+        output = json.dumps(the_thing, default=_json_serial)
+    return output
+
+
+def _json_serial(obj):
+    '''JSON serializer for datetime and date objects'''
+
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    raise TypeError("Type %s not serializable" % type(obj))
+
+
+#
+###############################################################################
+#
+# handle_arguments()
+#
+def handle_arguments():
+    '''
+    Handle CLI arguments
+
+    Returns:
+        parser.Namespace: Representation of the parsed arguments
+    '''
+    #
+    # Handle CLI args
+    #
+    parser = argparse.ArgumentParser(description=DESCRIPTION)
+
+    # add arguments
+    parser.add_argument('url', type=str, help='The URL to resolve')
+    parser.add_argument('-l', '--log-level', action='store', required=False,
+                        choices=["debug", "info", "warning", "error", "critical"],
+                        default=DEFAULT_LOG_LEVEL,
+                        help='Logging verbosity. Default: %(default)s')
+
+    return parser.parse_args()
+
+
+def search_query_string(url=None):
+
+    result = []
+
+    if url:
+        # look for a URL hidden in the query string params
+        parsed = urlparse(url)
+        if 'http' in parsed.query:
+            try:
+                query = urllib.unquote(parsed.query).decode('utf8')
+            except Exception:
+                query = unquote(parsed.query)
+            params = query.split('&')
+            for param in params:
+                if 'http' in param:
+                    result.append('='.join(param.split('=')[1:]))
+    return result
+
+
+def resolve_url(url: str = None):
+    final_url = None
+    logger = _get_logger()
+    if url:
+        redirects = False
+
+        if 'doubleclick.net' in url:
+            raise RuntimeError("DoubleClick is the worst")
+
+        if 'abnb.me' in url:
+            redirects = True
+
+        if 'nytimes.com/wirecutter/' in url or 'wclink.co' in url or 'thewirecutter.com' in url:
+            logger.info("Detected WireCutter link")
+            redirects = False
+
+            if 'merchant=' in url:
+                redirects = True
+
+        if 'un.cr' in url:
+            logger.info("Detected Uncrate link")
+            redirects = True
+
+        if 'shop-links.co' in url:
+            redirects = True
+
+
+        req = None
+        try:
+            req = requests.get(url, allow_redirects=redirects, headers=HEADERS)
+        except urllib3.exceptions.MaxRetryError as err:
+            logger.warning("Max retry")
+            # from pprint import pprint
+            # pprint(err)
+        except urllib3.exceptions.NewConnectionError as err:
+            logger.warning("New connection")
+            # from pprint import pprint
+            # pprint(err)
+        except requests.exceptions.ConnectionError as err:
+            logger.warning("Connection refused!")
+            if err.request.url:
+                final_url = err.request.url
+        except Exception as err:
+            logger.warning(err)
+
+        # if req:
+        #     from pprint import pprint
+        #     pprint(req.history)
+        #     pprint(req.headers)
+
+        # look for a refresh header
+        if req and req.headers.get('Refresh'):
+            logger.info("Found refresh!")
+            # print(req.headers.get('Refresh').split('url=')[1])
+            refresh_target = req.headers.get('Refresh').split('url=')[1]
+            logger.info("Refresh target is: '%s'", refresh_target)
+            final_url = refresh_target
+
+        # look for an actual redirect
+        elif req and req.status_code > 300 and req.status_code < 400:
+            logger.info("Found redirect!")
+            if len(req.history) > 0:
+                logger.info("Redirect followed, chossing last one")
+                final_url = req.url
+            elif req.headers.get('Location'):
+                final_url = req.headers.get('Location')
+
+        elif req:
+            logger.info("No redirect found!")
+            query_url = search_query_string(req.url)
+            if query_url:
+                return query_url
+            elif len(req.history) > 0:
+                final_url = req.url
+            else:
+                raise RuntimeError("Teh badness!")
+
+        if final_url and final_url.count('http') > 1:
+            final_url = search_query_string(final_url)
+        else:
+            parsed = urlparse(final_url)
+            # pprint(parsed)
+            path = parsed.path
+            # Amazon link case
+            if 'ref=' in parsed.path:
+                path = '/'.join(parsed.path.split('/')[:-1])
+            final_url = ''.join([parsed.netloc, path])
+
+    return final_url
+#
+###############################################################################
+#
+# main()
+#
+def main():
+    '''Do the work'''
+
+    args = handle_arguments()
+
+    # Configure logging
+    logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s.%(funcName)s:%(message)s',
+                        level=getattr(logging, args.log_level.upper()))
+
+    logger = _get_logger()
+
+    logger.info("Log level is '%s'", args.log_level.upper())
+
+    # look for a URL hidden in the params
+    query_url = search_query_string(args.url)
+    if query_url:
+        print(query_url)
+        import sys
+        sys.exit(0)
+
+    final_url = resolve_url(args.url)
+
+    # if 'wclink.co' in final_url:
+    #     final_url = resolve_url(final_url)
+    print(final_url)
+#
+###############################################################################
+#
+# Call the main function
+#
+if __name__ == '__main__':
+    main()

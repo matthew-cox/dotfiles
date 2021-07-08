@@ -3,4 +3,4 @@
 #
 # Desired ruby version
 #
-export RUBY_VERSION=2.6.5
+export RUBY_VERSION=2.7.2

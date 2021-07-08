@@ -1,33 +1,33 @@
-[submodule "powerline"]
-	path = powerline
-	url = https://github.com/Lokaltog/powerline.git
 [submodule "fonts/powerline-fonts"]
 	path = fonts/powerline-fonts
-	url = https://github.com/Lokaltog/powerline-fonts.git
+	url = git@github.com:Lokaltog/powerline-fonts.git
 [submodule "themes/solarized"]
 	path = themes/solarized
-	url = https://github.com/altercation/solarized.git
+	url = git@github.com:altercation/solarized.git
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim.git
+	url = git@github.com:gmarik/Vundle.vim.git
 [submodule "themes/alfred-solarized"]
 	path = themes/alfred-solarized
-	url = https://github.com/imkmf/alfred-solarized.git
+	url = git@github.com:imkmf/alfred-solarized.git
 [submodule "tmux-powerline"]
 	path = tmux-powerline
-	url = https://github.com/erikw/tmux-powerline
+	url = git@github.com:erikw/tmux-powerline
 [submodule "maximum-awesome"]
 	path = maximum-awesome
-	url = https://github.com/square/maximum-awesome
+	url = git@github.com:square/maximum-awesome
 [submodule "zsh/plugins/zsh-iterm-touchbar"]
 	path = zsh/plugins/zsh-iterm-touchbar
-	url = https://github.com/iam4x/zsh-iterm-touchbar
+	url = git@github.com:iam4x/zsh-iterm-touchbar
 [submodule "themes/iTerm2-Color-Schemes"]
 	path = themes/iTerm2-Color-Schemes
 	url = git@github.com:mbadolato/iTerm2-Color-Schemes.git
 [submodule "powerlevel10k"]
 	path = powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
+	url = git@github.com:romkatv/powerlevel10k.git
 [submodule "powerlevel10k-media"]
 	path = powerlevel10k-media
 	url = git@github.com:romkatv/powerlevel10k-media.git
+[submodule "zero"]
+	path = zero
+	url = git@github.com:zero-sh/zero.sh

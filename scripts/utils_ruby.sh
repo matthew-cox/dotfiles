@@ -14,12 +14,28 @@ for utility in "${RUBY_UTILS[@]}"; do
     source "${WORKDIR}/utils_${utility}.sh"
   fi
 done
+#
+##############################################################################
+#
+# config stuff
+#
+readonly CONFIG_DIR="${HOME}/.dotfiles/config/ruby"
+DEFAULT_CONFIG_FILE="${CONFIG_DIR}/default.sh"
+if [[ -r "${DEFAULT_CONFIG_FILE}" ]]; then
+  source "${DEFAULT_CONFIG_FILE}"
+fi
+#
+# define and load config file
+#
+USER_CONFIG_FILE="${CONFIG_DIR}/${USER}/config.sh"
+if [[ -r "${USER_CONFIG_FILE}" ]]; then
+  source "${USER_CONFIG_FILE}"
+fi
 ##############################################################################
 #
 # Desired ruby version
 #
-readonly LOCAL_RUBY_VERSION=2.4.1
-# readonly LOCAL_RUBY_VERSION=2.3.4
+readonly LOCAL_RUBY_VERSION=${RUBY_VERSION:-2.7.2}
 export LOCAL_RUBY_VERSION
 #
 ##############################################################################

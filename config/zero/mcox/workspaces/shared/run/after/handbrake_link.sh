@@ -5,6 +5,8 @@
 set -o errexit -o pipefail -o nounset
 # set -x
 WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
+SCRIPTDIR="${HOME}/.dotfiles/scripts"
+readonly WORKDIR SCRIPTDIR
 #
 ##############################################################################
 #
@@ -13,15 +15,14 @@ WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P)
 readonly THE_UTILS=( "common" "homebrew" )
 
 for utility in "${THE_UTILS[@]}"; do
-  if [[ -r "${WORKDIR}/utils_${utility}.sh" ]]; then
-    source "${WORKDIR}/utils_${utility}.sh"
+  if [[ -r "${SCRIPTDIR}/utils_${utility}.sh" ]]; then
+    source "${SCRIPTDIR}/utils_${utility}.sh"
   fi
 done
 #
-# Need ~/lib directory
+##############################################################################
 #
-mkdir -p "${HOME}/lib"
-#
+# global vars
 #
 LIB_SRC="/Applications/MakeMKV.app/Contents/lib/libmmbd.dylib"
 
@@ -29,8 +30,20 @@ LIB_TARGETS=(
 libaacs.dylib
 libbdplus.dylib
 )
+  
+readonly LIB_SRC LIB_TARGETS
 
+#
+##############################################################################
+#
+# Load some utilities
+#
 if [[ -f "${LIB_SRC}" ]]; then
+  
+  #
+  # Need ~/lib directory
+  #
+  mkdir -p "${HOME}/lib"
 
   for target in "${LIB_TARGETS[@]}"; do
     if [[ ! -e "${HOME}/lib/${target}" ]]; then

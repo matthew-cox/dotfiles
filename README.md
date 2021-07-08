@@ -2,7 +2,7 @@
 
 the stuff with dots
 
-**Last Updated: 2018-03-21 16:54 @matthew-cox**
+**Last Updated: 2021-01-12 21:59 @matthew-cox**
 
 Table of Contents
 =================
@@ -11,133 +11,120 @@ Table of Contents
   * [Brew some 🍻](#brew-some-)
     * [Disable analytics](#disable-analytics)
     * [Install 1password](#install-1password)
-    * [Install MAS](#install-mas)
     * [Basic github configure](#basic-github-configure)
   * [Get the dots](#get-the-dots)
-    * [Powerline compatibility](#powerline-compatibility)
-    * [Python](#python)
     * [Bootstrap](#bootstrap)
-    * [Mac AppStore Apps](#mac-appstore-apps)
+    * [Python](#python)
     * [Perl](#perl)
     * [Ruby](#ruby)
     * [SSH](#ssh)
       * [config.d](#configd)
       * [Key Symlinks](#key-symlinks)
     * [TextMate](#textmate)
-    * [Zsh](#zsh)
     * [Revel in your configured environment](#revel-in-your-configured-environment)
 
 # Xcode CLI Tools
 
 A pre-req for most of this is the Xcode tools. One should be able to install them:
 
-    $ xcode-select --install
+    ❯ xcode-select --install
 
 # Brew some 🍻
 
 Install [Homebrew](https://brew.sh):
 
-    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    ❯ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 ## Disable analytics
 
-    $ brew analytics off
+    ❯ brew analytics off
 
 ## Install 1password
 
-    $ brew tap homebrew/cask
-    $ brew cask install 1password
-
-## Install MAS
-
-    $ brew install mas
-
+    ❯ brew tap homebrew/cask
+    ❯ brew install --cask 1password 1password-cli
 
 ## Basic github configure
 
 Find `GitHub_rsa.priv` in 1password and install at `~/.ssh/GitHub_rsa.priv`; then:
 
-    $ chmod 400 ~/.ssh/GitHub_rsa.priv
+    ❯ mkdir -p ~/.ssh; chmod 755 ~/.ssh
+    ❯ eval $(op signin cox-ponting-towers 1password-family@azriel.net)
+    ❯ op get document 'GitHub_rsa.priv - github.com (matthew-cox)' > ~/.ssh/GitHub_rsa.priv
+    ❯ op signout cox_ponting_towers
+    ❯ chmod 400 ~/.ssh/GitHub_rsa.priv
 
 Configure a very basic `~/.ssh/config`:
 
-    $ echo -e "Host *github.com\n    IdentityFile ~/.ssh/GitHub_rsa.priv\n" > ~/.ssh/config
+    ❯ echo -e "Host *github.com\n    IdentityFile ~/.ssh/GitHub_rsa.priv\n" > ~/.ssh/config
 
 # Get the dots
 
-    $ git clone --recurse-submodules https://github.com/matthew-cox/dotfiles.git .dotfiles
-    $ cd .dotfiles/
-    $ git submodule init
-    $ git submodule update
+    ❯ git clone --recurse-submodules git@github.com:matthew-cox/dotfiles.git .dotfiles
+
+## Bootstrap
+
+Bootstrap many things with [Zero.sh](https://github.com/zero-sh/zero.sh):
+
+    ❯ brew install zero-sh/tap/zero
+    ❯ ./scripts/zero_init.sh [home|work]
 
 ## Python
 
 Prefer [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) over the global version:
 
-    $ ./scripts/python_init.sh
-
-## Bootstrap
-
-Bootstrap many things with [Cider](https://github.com/msanders/cider):
-
-    $ ln -s ~/".dotfiles/cider/${USER}" ~/.cider
-    $ pip3 install -U cider
-    $ yes | cider restore 2>&1 | grep -Ev -e 'already installed' -e '(re-|re)install'
-    $ cider apply-defaults
-    $ cider relink
-
-## Mac AppStore Apps
-
-Install the apps from the AppStore:
-
-    # ./scripts/mas_install.sh
+    ❯ ./scripts/python_init.sh
 
 ## Perl
 
 Prefer [perlbrew](https://github.com/gugod/App-perlbrew) over the global version:
 
-    $ ./scripts/perl_init.sh
+    ❯ ./scripts/perl_init
 
-Start a new terminal, then:
+Then:
 
-    $ perlbrew install --skip-existing perl-5.27.2
-    $ perlbrew switch perl-5.27.2
+    ❯ new_iterm_window
+    ❯ perlbrew install --switch perl-5.32.0
 
 ## Ruby
 
 Prefer [rbenv](https://github.com/rbenv/rbenv) over the global version:
 
-    $ ./scripts/ruby_init.sh
+    ❯ ./scripts/ruby_init.sh
 
 ## SSH
 
 ### config.d
 
-Needs [poet](https://github.com/awendt/poet):
+SSH configs are in Keybase git repo:
 
-    $ gem install poet
-    $ rm -f ~/.ssh/config
-    $ poet
+    ❯ open -a Keybase
+    ❯ git clone keybase://private/mcox/ssh_config ~/.ssh/config.d
+
+Needs [poet](https://github.com/awendt/poet) to generate:
+
+    ❯ gem install poet
+    ❯ rm -f ~/.ssh/config
+    ❯ poet
 
 ### Key Symlinks
 
-    $ ln -s ~/.ssh/simplisafe/PrdCommon.pem ~/.ssh/
+    ❯ mkdir -p ~/.ssh/simplisafe
+    ❯ op get document uuid1 > ~/.ssh/simplisafe/QaCommon.pem
+    ❯ op get document uuid2 > ~/.ssh/simplisafe/StgCommon.pem
+    ❯ op get document uuid3 > ~/.ssh/simplisafe/PrdCommon.pem
+    ❯ chmod 400 ~/.ssh/simplisafe/*.pem
+    ❯ for X in ~/.ssh/simplisafe/*.pem; do ln -s $X ~/.ssh/$(basename $X); done
 
 ## TextMate
 
 Install TextMate bundle manager and bundles:
 
-    $ ./scripts/textmate_init.sh
-
-## Zsh
-
-Change the user shell:
-
-    $ chsh -s /bin/zsh
+    ❯ ./scripts/textmate_init.sh
 
 ## Revel in your configured environment
 
 Open a new terminal:
 
-    $ open /Applications/iTerm2.app
+    ❯ new_iterm_window
 

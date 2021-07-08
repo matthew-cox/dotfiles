@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -o nounset
+
+THE_APP_TO_ID="$@"
+
+_app_paths=(
+"/Applications/${THE_APP_TO_ID}.app"
+"${HOME}/Desktop/${THE_APP_TO_ID}.app"
+"${HOME}/Desktop/Apps/${THE_APP_TO_ID}.app"
+)
+readonly _app_paths
+
+_app_id=""
+for _app in "${_app_paths[@]}"; do
+  if [[ -d "${_app}" ]]; then
+    _app_id=$(mdls "${_app}" | grep kMDItemCF | cut -d\" -f 2- | tr -d \")
+  fi
+done
+
+if [[ -n "${_app_id}" ]]; then
+  echo "app://${_app_id}"
+else
+  >&2 echo -e "\a*** Sorry, unable to locate that app."
+fi

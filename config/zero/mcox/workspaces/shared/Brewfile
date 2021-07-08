@@ -1,0 +1,351 @@
+##############################################################################
+#
+# Taps - ALL
+#
+tap 'homebrew/cask'
+tap 'homebrew/cask-drivers'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/command-not-found'
+tap 'homebrew/core'
+  # - 'ravenac95/sudolikeaboss'
+
+##############################################################################
+#
+# Brew formulas - ALL
+#
+brew "ack"
+brew "ansiweather"
+brew "ascii"
+brew "autoconf"
+brew "bash"
+brew "bash-completion"
+brew "bison"
+brew "brew-cask-completion"
+brew "cairo"
+brew "coreutils"
+brew "cscope"
+brew "ctags"
+# brew "cvs"
+brew "dateutils"
+# Camera RAW
+brew "dcraw"
+# fancy git diffs
+brew "diff-so-fancy"
+brew "dos2unix"
+brew "emojify"
+brew "faac"
+brew "ffmpeg"
+brew "fftw"
+brew "figlet"
+brew "fontconfig"
+brew "fortune"
+brew "freetype"
+brew "gdbm"
+brew "gettext"
+brew "git"
+brew "git-standup"
+brew "glib"
+brew "gmp"
+brew "gnu-sed"
+brew "gnu-time"
+brew "gnupg"
+brew "go"
+brew "gobject-introspection"
+    ##- "gpg-agent"
+brew "gpsbabel"
+brew "graphicsmagick"
+brew "harfbuzz"
+brew "httpie"
+# Github's replacement for git
+brew "hub"
+brew "icu4c"
+brew "imagemagick"
+brew "jhead"
+brew "jpeg"
+brew "jq"
+brew "lame"
+brew "libassuan"
+brew "libdvdcss"
+brew "libevent"
+brew "libexif"
+brew "libffi"
+brew "libgcrypt"
+brew "libgpg-error"
+brew "libgsf"
+brew "libksba"
+brew "libpng"
+brew "libtiff"
+brew "libtool"
+brew "libusb"
+brew "libusb-compat"
+brew "libvo-aacenc"
+brew "libxml2"
+brew "libyaml"
+brew "lighttpd"
+## brew "little-cms2"
+
+# Mac App Store CLI
+brew "mas"
+    # - "maven"
+brew "mdcat"
+brew "mercurial"
+brew "mpg123"
+    # - "mysql"
+    # - "node"
+brew "nmap"
+brew "openssl"
+brew "orc"
+brew "ossp-uuid"
+brew "pango"
+brew "pcre"
+brew "pdsh"
+brew "pinentry"
+brew "pixman"
+brew "pkg-config"
+brew "pt"
+brew "pth"
+brew "py2cairo"
+brew "pyenv"
+brew "pyenv-virtualenv"
+    # - "pygobject3"
+    ##- "python"
+# Virtual env for ruby
+brew "rbenv"
+brew "ruby-build"
+brew "readline"
+brew "reattach-to-user-namespace"
+brew "s3cmd"
+brew "shellcheck"
+brew "sqlite"
+# static website deploy - http://stout.is
+brew "stout"
+# needed for some font Casks
+brew "svn"
+brew "the_platinum_searcher"
+brew "the_silver_searcher"
+brew "tmux"
+brew "tree"
+brew "unixodbc"
+brew "unison"
+brew "vips"
+brew "watch"
+brew "webp"
+brew "wget"
+brew "x264"
+brew "xvid"
+brew "xz"
+brew "youtube-dl"
+brew "yuicompressor"
+brew "zlib"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+
+# after-scripts:
+#     # - "./scripts/update_ruby.sh"
+#     # - "./scripts/keybindings/install.sh"
+#     # - "'./scripts/Terminal Launcher/install.sh'"
+#     # - "cd ./scripts/swift && ./install"
+#     # - "./scripts/vim_setup.sh"
+#     - "brew linkapps"
+#
+##############################################################################
+#
+# Fonts - ALL
+#
+cask "font-source-code-pro"
+cask "font-source-sans-pro"
+cask "font-source-serif-pro"
+cask "font-source-code-pro-for-powerline"
+# cask "font-sourcecodepro-nerd-font-mono"
+# cask "font-sourcecodepro-nerd-font"
+cask "font-menlo-for-powerline"
+cask "font-meslo-for-powerline"
+cask "font-monofur-for-powerline"
+
+#
+##############################################################################
+#
+# Cask Applications - ALL
+#
+cask "1password"
+# Adafruit
+cask "adafruit-arduino"
+# cask "adapter"
+    # - "adium"
+cask "adobe-air"
+cask "adobe-creative-cloud"
+cask "adobe-dng-converter"
+cask "airfoil"
+cask "airserver"
+cask "alfred"
+cask "amazon-music"
+cask "atom"
+cask "aws-vault"
+cask "backblaze"
+cask "bartender"
+cask "bean"
+    # - "blink1control"
+cask "brackets"
+cask "brave-browser"
+
+# 2019-03-01 - no longer works
+# - "caffeine"
+cask "calibre"
+
+cask "charles"
+# deprecated on BigSur
+##cask "chatology"
+cask "choosy"
+cask "chromium"
+    ##- "cleanmymac"
+    ##- "colorpicker-hex"
+    # - "controlplane"
+    # - "cyberduck"
+cask "docker"
+cask "dropbox"
+cask "emacs"
+cask "espresso"
+# Etcher - RaspberryPi image burner
+##- "etcher"
+    # - "evernote"
+    # - "expandrive"
+cask "fantastical"
+    ##- "filezilla"
+cask "firefox"
+cask "fission"
+# - "flashlight"
+cask "fluid"
+# serial driver for Arduino
+cask "ftdi-vcp-driver"
+cask "gemini"
+    # - "gfxcardstatus"
+    # - "gimp"
+    ##- "github-desktop"
+    # - "glimmerblocker"
+    ##- "globalsync"
+  # GMail backup
+cask "gmvault"
+cask "graphicconverter"
+    ##- "guitar-tuner"
+cask "handbrake"
+    ##- "heroku"
+cask "hex-fiend"
+    ##- "hosts"
+    ##- "houdahgeo"
+# Crashplan replacement
+cask "idrive"
+cask "iterm2"
+cask "itsycal"
+# cask "java"
+    # - "jenkins-menu"
+    # Customize keyboard
+    # - "karabiner-elements"
+    # - "keepassx"
+# Caffeine replacement
+cask "keepingyouawake"
+cask "keybase"
+cask "kindle"
+cask "kitematic"
+cask "little-snitch"
+    ##- "loadmytracks"
+    # - "logitech-harmony"
+cask "logitech-myharmony"
+    ##- "logitech-unifying"
+cask "macvim"
+cask "magicprefs"
+cask "malwarebytes"
+# bluray support
+cask "makemkv"
+# video file tagging
+cask "metaz"
+cask "micro-snitch"
+# Window management
+# - "moom"
+# CirCuitPython IDE
+cask "mu-editor"
+    # - "nvalt"
+cask "omnigraffle"
+# cask "path-finder"
+cask "plexamp"
+cask "plex-media-player"
+cask "postbox"
+# SimpliSafe VPN client
+cask "pritunl"
+cask "raspberry-pi-imager"
+# ShiftIt replacement
+cask "rectangle"
+cask "resilio-sync"
+# Still need this?
+###- "screenflow"
+cask "scrivener"
+# Moom replacement
+#- "shiftit"
+# driver for arduino
+cask "silicon-labs-vcp-driver"
+cask "silverlight"
+cask "slimbatterymonitor"
+# Sound I/O manager
+cask "soundsource"
+# Still need this?
+###- "spideroakone"
+# - "spotify"
+# nvAlt replacement
+cask "standard-notes"
+# replacement for Moom (auto window layout)
+cask "stay"
+cask "steam"
+cask "textmate"
+# cask "the-hit-list"
+cask "the-unarchiver"
+cask "tripmode"
+#- "totals"
+#- "tower"
+#- "transmission"
+#- "transmit"
+# - "usb-overdrive"
+cask "vlc"
+# Personal VPN app
+#- "cloak"
+# cask "mullvadvpn"
+cask "tunnelbear"
+# Old scanner app
+# Bad MD5
+###- "vuescan"
+#- "wedge"
+cask "wireshark"
+# - "xbox360-controller-driver"
+# X Lossless Decoder
+cask "xld"
+cask "xquartz"
+cask "yubico-authenticator"
+cask "zoom"
+#
+##############################################################################
+#
+# App store apps - ALL
+#
+# Deliveries (3.0.7)
+mas "Deliveries", id: 924726344
+
+# Display Menu (2.2.3)
+mas "Display Menu", id: 549083868
+
+# Microsoft Remote Desktop (8.0.27325)
+mas "Microsoft Remote Desktop", id: 715768417
+
+# Radium (3.1.3)
+# mas "Radium", id: 597611879
+
+# Slack (3.1.0)
+mas "Slack", id: 803453959
+
+# UnPlugged (3.0)
+mas "UnPlugged", id: 423123087
+
+# Xcode (9.2)
+mas "Xcode", id: 497799835
+
+# Todoist
+mas "Todoist", id: 585829637
+

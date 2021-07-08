@@ -59,7 +59,9 @@ output=json
 region=us-east-1
 
 [profile azriel-home]
-
+output=json
+region=us-east-1
+credential_process=aws-vault exec --prompt=osascript --json azriel-home
 
 [profile bi]
 output=json

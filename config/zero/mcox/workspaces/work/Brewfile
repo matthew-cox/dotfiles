@@ -1,0 +1,137 @@
+##############################################################################
+#
+# Brew formulas - Work Only
+#
+brew "git-standup"
+brew "glib"
+brew "gmp"
+brew "gnu-sed"
+brew "gnu-time"
+brew "gnupg"
+brew "go"
+brew "gobject-introspection"
+    ##- "gpg-agent"
+brew "gpsbabel"
+brew "graphicsmagick"
+brew "harfbuzz"
+brew "httpie"
+# Github's replacement for git
+brew "hub"
+brew "icu4c"
+brew "imagemagick"
+brew "jhead"
+brew "jpeg"
+brew "jq"
+brew "lame"
+brew "libassuan"
+brew "libdvdcss"
+brew "libevent"
+brew "libexif"
+brew "libffi"
+brew "libgcrypt"
+brew "libgpg-error"
+brew "libgsf"
+brew "libksba"
+brew "libpng"
+brew "libtiff"
+brew "libtool"
+brew "libusb"
+brew "libusb-compat"
+brew "libvo-aacenc"
+brew "libxml2"
+brew "libyaml"
+brew "lighttpd"
+
+brew "mdcat"
+brew "mercurial"
+brew "mpg123"
+
+brew "pdsh"
+
+brew "pinentry"
+brew "pixman"
+brew "pkg-config"
+brew "pt"
+brew "pth"
+brew "py2cairo"
+brew "pyenv"
+brew "pyenv-virtualenv"
+
+# Virtual env for ruby
+brew "rbenv"
+brew "ruby-build"
+brew "readline"
+brew "reattach-to-user-namespace"
+brew "s3cmd"
+brew "shellcheck"
+brew "sqlite"
+# static website deploy - http://stout.is
+brew "stout"
+
+# manage terraform versions
+brew "tfenv"
+
+brew "the_platinum_searcher"
+brew "the_silver_searcher"
+brew "tmux"
+brew "tree"
+brew "unixodbc"
+brew "unison"
+brew "vips"
+brew "watch"
+brew "webp"
+brew "wget"
+brew "x264"
+brew "xctool"
+brew "xvid"
+brew "xz"
+brew "youtube-dl"
+brew "yuicompressor"
+brew "zlib"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+#
+##############################################################################
+#
+# Cask Applications - Work Only
+#
+
+# serial driver for Arduino
+cask "ftdi-vcp-driver"
+
+# SimpliSafe VPN client
+cask "pritunl"
+
+cask "raspberry-pi-imager"
+# ShiftIt replacement
+cask "rectangle"
+cask "resilio-sync"
+
+# driver for arduino
+cask "silicon-labs-vcp-driver"
+
+# nvAlt replacement
+cask "standard-notes"
+# replacement for Moom (auto window layout)
+cask "stay"
+
+cask "tripmode"
+
+# Personal VPN app
+#- "cloak"
+cask "mullvadvpn"
+cask "tunnelbear"
+
+cask "wireshark"
+# X Lossless Decoder
+cask "xld"
+cask "yubico-authenticator"
+cask "zoomus"
+#
+##############################################################################
+#
+# App store apps - Work only
+#
+# Deliveries (3.0.7)
+mas "Deliveries", id: 924726344
